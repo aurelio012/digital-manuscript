@@ -17,16 +17,16 @@ export default function About() {
 
                 <div className={styles.bioContainer}>
                     <p>
-                        I am Isaac Felix, a creative developer crafting digital experiences that bridge the gap between
-                        editorial design and interactive technology.
+                        I build at the intersection of data, policy, and human-centered AI.
                     </p>
                     <p>
-                        My work is defined by a rigorous attention to typography, motion, and the subtle details that
-                        transform a functional website into a memorable artifact.
+                        I&apos;m a Computer Science M.S. candidate at Georgia Tech and a Quantitative Analyst at Bank of America, where I engineer financial crime detection models and bankruptcy forecasting pipelines. Before that, I studied Computer Science and Linguistics at the University of Illinois at Chicago&mdash;a combination that shaped how I think about language, systems, and the spaces between them.
                     </p>
                     <p>
-                        Currently, I am exploring the intersection of AI interfaces and human-centric design, looking for
-                        ways to make complex systems feel intuitive and alive.
+                        My research spans geospatial analysis of urban infrastructure, AI-assisted educational robotics, and legislative congruence modeling. I&apos;ve consulted the NYC Department of Education on AI adoption frameworks for 1,500+ schools through the Paragon Fellowship, and co-authored work on AI tutoring systems presented at ACM/IEEE HRI.
+                    </p>
+                    <p>
+                        I&apos;m drawn to problems where technical rigor meets real-world consequence&mdash;where a model doesn&apos;t just optimize a metric, but shapes how a city moves, how a student learns, or how a system earns trust.
                     </p>
                 </div>
 
