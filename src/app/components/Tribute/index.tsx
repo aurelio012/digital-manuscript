@@ -5,6 +5,7 @@ import styles from './tribute.module.css';
 
 export default function Tribute() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
 
     // Lock body scroll when open
     useEffect(() => {
@@ -16,6 +17,19 @@ export default function Tribute() {
         return () => { document.body.style.overflow = 'unset'; };
     }, [isOpen]);
 
+    const handleOpen = () => {
+        setIsOpen(true);
+        setIsClosing(false);
+    };
+
+    const handleClose = () => {
+        setIsClosing(true);
+        setTimeout(() => {
+            setIsOpen(false);
+            setIsClosing(false);
+        }, 800); // 0.8s to match CSS transition
+    };
+
     return (
         <>
             <footer className={styles.footer}>
@@ -23,7 +37,7 @@ export default function Tribute() {
                     Made in loving memory of{' '}
                     <button
                         className={styles.trigger}
-                        onClick={() => setIsOpen(true)}
+                        onClick={handleOpen}
                         type="button"
                     >
                         Sandy
@@ -32,7 +46,10 @@ export default function Tribute() {
             </footer>
 
             {isOpen && (
-                <div className={styles.overlay} onClick={() => setIsOpen(false)}>
+                <div
+                    className={`${styles.overlay} ${isClosing ? styles.closing : ''}`}
+                    onClick={handleClose}
+                >
                     {/* Intense Aura Backgrounds */}
                     <div className={`${styles.aura} ${styles.aura1}`} />
                     <div className={`${styles.aura} ${styles.aura2}`} />

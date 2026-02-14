@@ -85,6 +85,22 @@
     }
 }
 
+.closing {
+    animation: fadeOut 0.8s ease forwards;
+    pointer-events: none;
+    /* Prevent clicks while fading out */
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
 /* Intense Auras */
 .aura {
     position: absolute;
