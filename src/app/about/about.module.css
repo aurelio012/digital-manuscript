@@ -31,7 +31,9 @@
 }
 
 .bioContainer p {
-    margin: 0;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: var(--foreground-muted);
 }
 
 /* The lede — serif, larger, full foreground color */
@@ -41,6 +43,16 @@
     color: var(--foreground);
     font-family: var(--font-serif);
     letter-spacing: -0.015em;
+}
+
+.lead {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--foreground);
+    margin-bottom: 2.5rem !important;
+    /* Force breathing room */
 }
 
 @media (max-width: 768px) {

@@ -65,18 +65,26 @@ export default function Resume() {
                     <h2 className={styles.sectionTitle}>Education</h2>
                     <div className={styles.list}>
                         <div className={styles.item}>
-                            <div className={styles.itemHeader}>
-                                <h3 className={styles.role}>Georgia Institute of Technology</h3>
-                                <span className={styles.company}>M.S. Computer Science</span>
+                            <div className={styles.periodCol}>
+                                <span className={styles.period}>Jan 2025 — Dec 2026</span>
                             </div>
-                            <div className={styles.period}>Jan 2025 — Dec 2026</div>
+                            <div className={styles.contentCol}>
+                                <div className={styles.itemHeader}>
+                                    <h3 className={styles.role}>Georgia Institute of Technology</h3>
+                                    <span className={styles.company}>M.S. Computer Science</span>
+                                </div>
+                            </div>
                         </div>
                         <div className={styles.item}>
-                            <div className={styles.itemHeader}>
-                                <h3 className={styles.role}>University of Illinois at Chicago</h3>
-                                <span className={styles.company}>B.S. Computer Science &amp; Linguistics</span>
+                            <div className={styles.periodCol}>
+                                <span className={styles.period}>Jan 2022 — Dec 2023</span>
                             </div>
-                            <div className={styles.period}>Jan 2022 — Dec 2023</div>
+                            <div className={styles.contentCol}>
+                                <div className={styles.itemHeader}>
+                                    <h3 className={styles.role}>University of Illinois at Chicago</h3>
+                                    <span className={styles.company}>B.S. Computer Science &amp; Linguistics</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -86,14 +94,18 @@ export default function Resume() {
                     <div className={styles.list}>
                         {experience.map((job, index) => (
                             <div key={index} className={styles.item}>
-                                <div className={styles.itemHeader}>
-                                    <h3 className={styles.role}>{job.role}</h3>
-                                    <span className={styles.company}>{job.company}</span>
+                                <div className={styles.periodCol}>
+                                    <span className={styles.period}>{job.period}</span>
                                 </div>
-                                <div className={styles.period}>{job.period}</div>
-                                {job.description.split('\n\n').map((paragraph, i) => (
-                                    <p key={i} className={styles.description}>{paragraph}</p>
-                                ))}
+                                <div className={styles.contentCol}>
+                                    <div className={styles.itemHeader}>
+                                        <h3 className={styles.role}>{job.role}</h3>
+                                        <span className={styles.company}>{job.company}</span>
+                                    </div>
+                                    {job.description.split('\n\n').map((paragraph, i) => (
+                                        <p key={i} className={styles.description}>{paragraph}</p>
+                                    ))}
+                                </div>
                             </div>
                         ))}
                     </div>

@@ -10,7 +10,7 @@ export default function About() {
 
             <div className={styles.contentWrapper}>
                 <div className={styles.bioContainer}>
-                    <p>
+                    <p className={styles.lead}>
                         I research how AI systems earn trust&mdash;and what happens when they don&apos;t.
                     </p>
                     <p>

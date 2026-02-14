@@ -59,52 +59,61 @@
 .list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 3rem;
 }
 
 .item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    /* The Vignelli Grid: Axis | Content */
+    gap: 2rem;
+    align-items: baseline;
+}
+
+.periodCol {
+    text-align: right;
+}
+
+.period {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--foreground-muted);
+    opacity: 0.7;
+    letter-spacing: -0.01em;
+}
+
+.contentCol {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 0.75rem;
 }
 
 .itemHeader {
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 6px;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
 .role {
     font-family: var(--font-serif);
-    font-size: 1.05rem;
-    font-weight: 400;
-    margin: 0;
+    font-weight: 300;
+    font-size: 1.1rem;
     color: var(--foreground);
-    letter-spacing: -0.01em;
 }
 
 .company {
     font-family: var(--font-sans);
-    font-size: 0.82rem;
-    color: var(--text-muted);
-}
-
-.period {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    color: var(--text-dim);
-    letter-spacing: 0.02em;
+    font-size: 0.9rem;
+    color: var(--foreground-muted);
 }
 
 .description {
-    font-family: var(--font-sans);
-    font-size: 0.82rem;
-    line-height: 1.55;
-    color: var(--text-muted);
-    margin: 0;
-    max-width: 95%;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--foreground-muted);
+    max-width: 65ch;
+    /* Optimal reading length */
 }
 
 /* Skills */
