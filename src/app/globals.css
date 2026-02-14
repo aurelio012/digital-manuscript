@@ -73,19 +73,19 @@ h4,
 h5,
 h6 {
   font-family: var(--font-serif);
-  font-weight: 350;
-  /* Slightly heavier than Cormorant for legibility */
+  font-weight: 300;
+  /* Light weight for elegance, letting opsz handle the contrast */
   line-height: 1.1;
-  letter-spacing: -0.015em;
-  font-variation-settings: "SOFT" 50, "WONK" 1;
-  /* Softness + slight wonk for whimsy */
+  letter-spacing: -0.01em;
+  font-style: italic;
+  /* Research aesthetic */
 }
 
 h1 {
-  font-weight: 400;
-  font-family: var(--font-serif);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  font-weight: 300;
+  /* Keep it light and sharp */
+  font-style: normal;
+  /* Main title upright */
 }
 
 code,

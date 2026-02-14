@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
-import { Fraunces, Geist, Geist_Mono } from 'next/font/google';
+import { Newsreader, Geist, Geist_Mono } from 'next/font/google';
 import Navigation from './components/Navigation';
 import Tribute from './components/Tribute';
 import './globals.css';
 
-const fraunces = Fraunces({
+const newsreader = Newsreader({
   subsets: ['latin'],
   variable: '--font-serif',
   display: 'swap',
-  axes: ['SOFT', 'WONK', 'opsz'], // Enable soft/wonk axes for character
+  style: ['normal', 'italic'],
+  axes: ['opsz'], // critical for elegance at display sizes
 });
 
 const geistSans = Geist({
@@ -35,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fraunces.variable} ${geistMono.variable} ${geistSans.variable}`}>
+      <body className={`${newsreader.variable} ${geistMono.variable} ${geistSans.variable}`}>
         <Navigation />
         {children}
         <Tribute />
