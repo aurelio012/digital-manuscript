@@ -1,21 +1,16 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import styles from './tribute.module.css';
 
 export default function Tribute() {
+    const pathname = usePathname();
+    const isHome = pathname === '/';
     const [isOpen, setIsOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
 
-    // Lock body scroll when open
-    useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-        return () => { document.body.style.overflow = 'unset'; };
-    }, [isOpen]);
+    // ... useEffect ...
 
     const handleOpen = () => {
         setIsOpen(true);
@@ -27,12 +22,12 @@ export default function Tribute() {
         setTimeout(() => {
             setIsOpen(false);
             setIsClosing(false);
-        }, 800); // 0.8s to match CSS transition
+        }, 800);
     };
 
     return (
         <>
-            <footer className={styles.footer}>
+            <footer className={`${styles.footer} ${isHome ? styles.fixed : ''}`}>
                 <span className={styles.text}>
                     Made in loving memory of{' '}
                     <button
