@@ -17,16 +17,16 @@ export default function About() {
 
                 <div className={styles.bioContainer}>
                     <p>
-                        I build at the intersection of data, policy, and human-centered AI.
+                        I research how AI systems earn trust&mdash;and what happens when they don&apos;t.
                     </p>
                     <p>
-                        I&apos;m a Computer Science M.S. candidate at Georgia Tech and a Quantitative Analyst at Bank of America, where I engineer financial crime detection models and bankruptcy forecasting pipelines. Before that, I studied Computer Science and Linguistics at the University of Illinois at Chicago&mdash;a combination that shaped how I think about language, systems, and the spaces between them.
+                        As a Computer Science M.S. candidate at Georgia Tech, my work focuses on the gap between what AI can do and what it should do. I&apos;ve helped the NYC Department of Education define security guardrails and privacy standards for AI adoption across 1,500+ schools, co-authored research on AI-assisted educational robotics at ACM/IEEE HRI, and built geospatial models that help cities understand how infrastructure decisions ripple through communities.
                     </p>
                     <p>
-                        My research spans geospatial analysis of urban infrastructure, AI-assisted educational robotics, and legislative congruence modeling. I&apos;ve consulted the NYC Department of Education on AI adoption frameworks for 1,500+ schools through the Paragon Fellowship, and co-authored work on AI tutoring systems presented at ACM/IEEE HRI.
+                        I also work as a Quantitative Analyst at Bank of America, where I apply machine learning to financial risk&mdash;but my deeper interest lives in the research lab, asking harder questions about alignment, safety, and the systems we&apos;re building for people who never asked for them.
                     </p>
                     <p>
-                        I&apos;m drawn to problems where technical rigor meets real-world consequence&mdash;where a model doesn&apos;t just optimize a metric, but shapes how a city moves, how a student learns, or how a system earns trust.
+                        I studied Computer Science and Linguistics at UIC&mdash;a pairing that taught me that the most important problems in AI aren&apos;t just technical. They&apos;re about language, power, and who gets to decide what &ldquo;intelligent&rdquo; means.
                     </p>
                 </div>
 

@@ -6,10 +6,16 @@ import styles from './resume.module.css';
 
 const experience = [
     {
-        role: "Quantitative Analyst",
+        role: "Quantitative Analyst — Financial Crime Detection",
         company: "Bank of America",
         period: "Feb 2024 — Present",
-        description: "Financial Crime Detection Models — Engineered fine-tuning data strategies to align external models with bank risk frameworks. Led technical integration of proprietary third-party AI platforms. Consumer Portfolio Strategy — Engineered daily bankruptcy ETL workflows for executive forecasting."
+        description: "Engineered fine-tuning data strategies to align external models with bank risk frameworks. Led technical integration of proprietary third-party AI platforms for transaction monitoring."
+    },
+    {
+        role: "Quantitative Analyst — Consumer Portfolio Strategy",
+        company: "Bank of America",
+        period: "Feb 2024 — Present",
+        description: "Engineered daily bankruptcy ETL workflows powering executive forecasting dashboards. Built automated data pipelines for consumer credit risk modeling."
     },
     {
         role: "Research Assistant (Mussmann Lab)",

@@ -1,0 +1,5 @@
+{
+  "name": "isaacfelix",
+  "buildCommand": "next build",
+  "framework": "nextjs"
+}

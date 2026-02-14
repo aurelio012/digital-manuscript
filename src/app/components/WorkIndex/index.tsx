@@ -10,8 +10,8 @@ const projects = [
         category: 'Mussmann Lab',
         year: '2025',
         link: '#',
-        description: "Partnered with City of Charleston to model train crossing delay predictability. Engineered geospatial features within complex port topography to establish hardware performance benchmarks.",
-        contributions: ["Geospatial Analysis", "Feature Engineering", "Sensor Networks"]
+        description: "Collaborated with the City of Charleston to assess sensor network viability for predicting train crossing delays. Built geospatial feature pipelines across complex port topography to benchmark hardware performance and model infrastructure behavior.",
+        contributions: ["Python", "Geospatial Modeling", "Sensor Data", "Municipal Partnership"]
     },
     {
         id: '02',
@@ -19,8 +19,8 @@ const projects = [
         category: 'NYC DOE',
         year: '2025',
         link: '#',
-        description: "Architected technical procurement framework for AI adoption across 1,500+ NYC schools. Defined security guardrails and data privacy standards for district-wide implementation.",
-        contributions: ["AI Policy", "Technical Strategy", "Data Privacy"]
+        description: "Consulted the NYC Department of Education on responsible AI adoption across 1,500+ public schools. Designed technical procurement criteria, security guardrails, and data privacy standards for district-wide deployment.",
+        contributions: ["AI Policy", "Risk Assessment", "Stakeholder Communication", "EdTech"]
     },
     {
         id: '03',
@@ -28,8 +28,8 @@ const projects = [
         category: 'Research',
         year: '2025',
         link: '#',
-        description: "Engineered Python ETL pipelines (Geopandas/QGIS) to normalize geospatial data for legislative congruence analysis. Created comprehensive data schemas.",
-        contributions: ["ETL Pipelines", "Python/Geopandas", "Data Schema"]
+        description: "Developed data pipelines and codebooks for analyzing legislative congruence between municipal policy and community needs. Normalized heterogeneous geospatial datasets using Geopandas and QGIS.",
+        contributions: ["Python", "Geopandas", "QGIS", "ETL Design", "Policy Analysis"]
     },
     {
         id: '04',
@@ -37,8 +37,8 @@ const projects = [
         category: 'EdTech / AI',
         year: '2023',
         link: '#',
-        description: "Engineered API integration for a robotic AI tutor (PATHWiSE). Designed system prompts to map GPT-4 outputs to pedagogical goals through interdisciplinary collaboration.",
-        contributions: ["AI Integration", "Prompt Engineering", "Robotics"],
+        description: "Built the API backbone for PATHWiSE, an AI-powered robotic tutor. Designed and iterated on system prompts to map GPT-4 outputs to age-appropriate pedagogical goals through classroom field tests.",
+        contributions: ["GPT-4 Integration", "Prompt Engineering", "HRI", "Field Testing"],
         publication: 'M. A. Rahman, I. A. Felix, et al., "PATHWiSE: An AI-Assisted Teacher Authoring Tool..." (HRI \'24)'
     },
 ];
