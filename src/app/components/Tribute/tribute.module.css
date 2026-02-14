@@ -1,0 +1,274 @@
+.footer {
+    width: 100%;
+    padding: var(--space-lg) var(--space-md);
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: auto;
+    /* Push to bottom if in flex container */
+    position: relative;
+    z-index: 10;
+}
+
+.text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.trigger {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    position: relative;
+}
+
+.trigger:hover {
+    color: #fff;
+    text-shadow:
+        0 0 10px rgba(139, 92, 246, 0.8),
+        0 0 20px rgba(56, 189, 248, 0.8),
+        0 0 30px rgba(245, 158, 11, 0.8);
+    animation: glowPulse 1.5s infinite alternate;
+}
+
+@keyframes glowPulse {
+    from {
+        text-shadow: 0 0 5px rgba(139, 92, 246, 0.5), 0 0 10px rgba(56, 189, 248, 0.5);
+    }
+
+    to {
+        text-shadow: 0 0 15px rgba(139, 92, 246, 1), 0 0 30px rgba(245, 158, 11, 1), 0 0 40px rgba(16, 185, 129, 1);
+    }
+}
+
+/* --- OVERLAY --- */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    animation: fadeIn 1s ease forwards;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Intense Auras */
+.aura {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    /* Heavy blur */
+    opacity: 0.6;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    mix-blend-mode: screen;
+    /* Brighter blending */
+}
+
+/* Rapid flickering/moving animations for the tribute effect */
+.aura1 {
+    width: 60vw;
+    height: 60vw;
+    background: rgba(139, 92, 246, 0.8);
+    /* Violet */
+    animation-name: flicker1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.aura2 {
+    width: 50vw;
+    height: 50vw;
+    background: rgba(56, 189, 248, 0.8);
+    /* Teal */
+    animation-name: flicker2;
+    top: 30%;
+    left: 30%;
+}
+
+.aura3 {
+    width: 70vw;
+    height: 70vw;
+    background: rgba(245, 158, 11, 0.6);
+    /* Amber */
+    animation-name: flicker3;
+    bottom: 0%;
+    right: 0%;
+}
+
+.aura4 {
+    width: 40vw;
+    height: 40vw;
+    background: rgba(244, 114, 182, 0.7);
+    /* Pink */
+    animation-name: flicker2;
+    animation-duration: 3s;
+    top: 20%;
+    right: 20%;
+}
+
+.aura5 {
+    width: 90vw;
+    height: 90vw;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+    animation-name: breathe;
+    animation-duration: 6s;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes flicker1 {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+        filter: blur(60px);
+    }
+}
+
+@keyframes flicker2 {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2) translate(20px, -20px);
+    }
+}
+
+@keyframes flicker3 {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    30% {
+        opacity: 0.6;
+        transform: scale(0.9);
+    }
+
+    70% {
+        opacity: 0.5;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        opacity: 0.1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* Image & Content */
+.content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    animation: scaleIn 1.5s ease forwards;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.imageWrapper {
+    position: relative;
+    max-width: 420px;
+    max-height: 520px;
+    overflow: visible;
+    /* Let the mask do the fading, not hard clip */
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 40%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 40%, transparent 72%);
+}
+
+.tributeText {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    animation: fadeInText 2s ease 1s forwards;
+}
+
+@keyframes fadeInText {
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .imageWrapper {
+        max-width: 300px;
+        max-height: 400px;
+    }
+}

@@ -1,0 +1,51 @@
+.centerNav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+}
+
+.centerNav a {
+    position: relative;
+    transition: color 0.4s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.centerNav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--foreground);
+    transition: width 0.4s ease;
+}
+
+.centerNav a:hover {
+    color: var(--foreground);
+}
+
+.centerNav a:hover::after {
+    width: 100%;
+}
+
+.active {
+    color: var(--foreground);
+}
+
+.active::after {
+    width: 100%;
+}
+
+.dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--text-dim);
+}

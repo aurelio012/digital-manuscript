@@ -1,0 +1,136 @@
+"use client";
+
+import { useState } from 'react';
+import styles from './work.module.css';
+
+const projects = [
+    {
+        id: '01',
+        title: 'Train Project',
+        category: 'Mussmann Lab',
+        year: '2025',
+        link: '#',
+        description: "Partnered with City of Charleston to model train crossing delay predictability. Engineered geospatial features within complex port topography to establish hardware performance benchmarks.",
+        contributions: ["Geospatial Analysis", "Feature Engineering", "Sensor Networks"]
+    },
+    {
+        id: '02',
+        title: 'Paragon Fellowship',
+        category: 'NYC DOE',
+        year: '2025',
+        link: '#',
+        description: "Architected technical procurement framework for AI adoption across 1,500+ NYC schools. Defined security guardrails and data privacy standards for district-wide implementation.",
+        contributions: ["AI Policy", "Technical Strategy", "Data Privacy"]
+    },
+    {
+        id: '03',
+        title: 'Friendly Cities',
+        category: 'Research',
+        year: '2025',
+        link: '#',
+        description: "Engineered Python ETL pipelines (Geopandas/QGIS) to normalize geospatial data for legislative congruence analysis. Created comprehensive data schemas.",
+        contributions: ["ETL Pipelines", "Python/Geopandas", "Data Schema"]
+    },
+    {
+        id: '04',
+        title: 'LIT Lab',
+        category: 'EdTech / AI',
+        year: '2023',
+        link: '#',
+        description: "Engineered API integration for a robotic AI tutor (PATHWiSE). Designed system prompts to map GPT-4 outputs to pedagogical goals through interdisciplinary collaboration.",
+        contributions: ["AI Integration", "Prompt Engineering", "Robotics"],
+        publication: 'M. A. Rahman, I. A. Felix, et al., "PATHWiSE: An AI-Assisted Teacher Authoring Tool..." (HRI \'24)'
+    },
+];
+
+export default function WorkIndex() {
+    // Default to the first project for desktop view
+    const [activeProject, setActiveProject] = useState(projects[0]);
+    // For mobile accordion state (using ID allows toggling)
+    const [expandedProjectId, setExpandedProjectId] = useState<string | null>(null);
+
+    const handleMouseEnter = (project: typeof projects[0]) => {
+        setActiveProject(project);
+    };
+
+    const handleMobileClick = (e: React.MouseEvent, projectId: string) => {
+        // Prevent default navigation for the accordian effect on mobile if needed, 
+        // or let it navigate if the user wants to go to the case study. 
+        // For now, let's assume the 'link' is a real page, but we want to show details first?
+        // The prompt asked for "Tap-to-expand". Let's handle it as:
+        // Tap -> Expand. Tap 'View Case Study' inside -> Navigate.
+        e.preventDefault();
+        setExpandedProjectId(expandedProjectId === projectId ? null : projectId);
+        // Also set active for desktop sync if they resize
+        const proj = projects.find(p => p.id === projectId);
+        if (proj) setActiveProject(proj);
+    };
+
+    return (
+        <section id="work" className={styles.container}>
+            <div className={styles.header}>
+                <h2>Selected Works</h2>
+                <span className={styles.meta}>INDEX / 2022—2024</span>
+            </div>
+
+            <div className={styles.list}>
+                {projects.map((project) => {
+                    const isExpanded = expandedProjectId === project.id;
+                    const isActive = activeProject.id === project.id;
+
+                    return (
+                        <div key={project.id} className={`${styles.itemWrapper} ${isActive ? styles.activeWrapper : ''}`}>
+                            <a
+                                href={project.link}
+                                className={`${styles.item} ${isActive ? styles.activeItem : ''}`}
+                                onMouseEnter={() => handleMouseEnter(project)}
+                                onClick={(e) => handleMobileClick(e, project.id)}
+                            >
+                                <span className={styles.id}>({project.id})</span>
+                                <span className={styles.title}>{project.title}</span>
+                                <span className={styles.category}>{project.category}</span>
+                                <span className={styles.year}>{project.year}</span>
+                            </a>
+
+                            {/* Mobile Accordion Content */}
+                            <div className={`${styles.mobileDetails} ${isExpanded ? styles.expanded : ''}`}>
+                                <p className={styles.mobileDesc}>{project.description}</p>
+                                <div className={styles.mobileTags}>
+                                    {project.contributions.map(tag => (
+                                        <span key={tag}>{tag}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+
+            {/* Desktop Sticky Details Panel */}
+            <div className={styles.detailsPanel}>
+                <div className={styles.detailsContent} key={activeProject.id}>
+                    <h3 className={styles.detailTitle}>{activeProject.title}</h3>
+                    <p className={styles.detailDesc}>{activeProject.description}</p>
+
+                    <div className={styles.detailMeta}>
+                        <span className={styles.metaLabel}>Contributions</span>
+                        <ul className={styles.contributionList}>
+                            {activeProject.contributions.map((item, i) => (
+                                <li key={i}>{item}</li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Publication Highlight if available */}
+                    {(activeProject as any).publication && (
+                        <div className={styles.detailMeta}>
+                            <span className={styles.metaLabel}>Publication</span>
+                            <p className={styles.publicationText}>{(activeProject as any).publication}</p>
+                        </div>
+                    )}
+
+                </div>
+            </div>
+        </section>
+    );
+}
