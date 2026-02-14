@@ -1,13 +1,16 @@
 .footer {
-    width: 100%;
-    padding: var(--space-lg) var(--space-md);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0.75rem var(--space-md);
     display: flex;
     justify-content: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    margin-top: auto;
-    /* Push to bottom if in flex container */
-    position: relative;
-    z-index: 10;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(6, 6, 8, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .text {

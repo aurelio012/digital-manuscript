@@ -1,7 +1,6 @@
 "use client";
 
 import GhostGradient from '../components/GhostGradient';
-import Navigation from '../components/Navigation';
 import styles from './about.module.css';
 
 export default function About() {
@@ -25,10 +24,6 @@ export default function About() {
                     <p>
                         I also work as a Quantitative Analyst at Bank of America, applying machine learning to financial risk&mdash;but my deeper interest lives in the research lab, asking harder questions about alignment, safety, and the systems we build for people who never asked for them.
                     </p>
-                </div>
-
-                <div className={styles.navContainer}>
-                    <Navigation />
                 </div>
             </div>
         </main>

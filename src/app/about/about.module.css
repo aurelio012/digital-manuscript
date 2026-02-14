@@ -1,12 +1,12 @@
 .main {
-    min-height: 100vh;
+    height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: var(--space-md);
-    overflow-x: hidden;
+    padding: 56px var(--space-md) 48px;
+    overflow: hidden;
 }
 
 .contentWrapper {
@@ -16,7 +16,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: 1.5rem;
     color: var(--foreground);
     animation: pageEnter 0.8s var(--ease-out-expo) both;
     animation-delay: 0.1s;
@@ -26,12 +26,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-sm);
+    gap: 0.75rem;
 }
 
 .title {
     font-family: var(--font-serif);
-    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
     font-weight: 400;
     letter-spacing: -0.03em;
     color: var(--foreground);
@@ -47,10 +47,10 @@
 .bioContainer {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     font-family: var(--font-sans);
-    font-size: 1.05rem;
-    line-height: 1.75;
+    font-size: 0.95rem;
+    line-height: 1.65;
     color: var(--text-muted);
     text-align: left;
 }
@@ -61,27 +61,19 @@
 
 /* The lede — serif, larger, full foreground color */
 .bioContainer p:first-of-type {
-    font-size: 1.35rem;
-    line-height: 1.45;
+    font-size: 1.2rem;
+    line-height: 1.4;
     color: var(--foreground);
     font-family: var(--font-serif);
     letter-spacing: -0.01em;
 }
 
-.navContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--space-lg);
-    padding-top: var(--space-md);
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
-}
-
 @media (max-width: 768px) {
     .bioContainer {
-        font-size: 0.95rem;
+        font-size: 0.88rem;
     }
 
     .bioContainer p:first-of-type {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 }

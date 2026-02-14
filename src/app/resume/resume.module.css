@@ -1,11 +1,28 @@
 .main {
-    min-height: 100vh;
+    height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: var(--space-md);
+    padding: 56px var(--space-md) 48px;
+    overflow-y: auto;
     overflow-x: hidden;
+    /* Smooth scrollbar for Resume (the only page that may need scrolling) */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
+}
+
+.main::-webkit-scrollbar {
+    width: 4px;
+}
+
+.main::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
 }
 
 .contentWrapper {
@@ -13,10 +30,10 @@
     z-index: 10;
     max-width: 680px;
     width: 100%;
-    padding-top: var(--space-md);
+    padding: var(--space-sm) 0 var(--space-md);
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 36px;
     color: var(--foreground);
     animation: pageEnter 0.8s var(--ease-out-expo) both;
     animation-delay: 0.1s;
@@ -26,13 +43,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-sm);
-    margin-bottom: 0;
+    gap: 0.75rem;
 }
 
 .title {
     font-family: var(--font-serif);
-    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
     font-weight: 400;
     letter-spacing: -0.03em;
     color: var(--foreground);
@@ -49,31 +65,31 @@
 .section {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-sm);
 }
 
 .sectionTitle {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     color: var(--text-muted);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: var(--space-xs);
-    margin-bottom: var(--space-sm);
+    padding-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 /* List Items */
 .list {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 20px;
 }
 
 .item {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 3px;
 }
 
 .itemHeader {
@@ -81,12 +97,12 @@
     justify-content: space-between;
     align-items: baseline;
     flex-wrap: wrap;
-    gap: var(--space-xs);
+    gap: 6px;
 }
 
 .role {
     font-family: var(--font-serif);
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 400;
     margin: 0;
     color: var(--foreground);
@@ -95,22 +111,21 @@
 
 .company {
     font-family: var(--font-sans);
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     color: var(--text-muted);
 }
 
 .period {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     color: var(--text-dim);
     letter-spacing: 0.02em;
-    margin-bottom: 2px;
 }
 
 .description {
     font-family: var(--font-sans);
-    font-size: 0.88rem;
-    line-height: 1.6;
+    font-size: 0.82rem;
+    line-height: 1.55;
     color: var(--text-muted);
     margin: 0;
     max-width: 95%;
@@ -120,14 +135,14 @@
 .skillsList {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     color: var(--text-muted);
 }
 
 .skillsList span {
-    padding: 4px 12px;
+    padding: 3px 10px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 99px;
     transition: all var(--duration-normal) var(--ease-out-expo);
@@ -141,8 +156,8 @@
 
 .publication {
     font-family: var(--font-sans);
-    font-size: 0.9rem;
-    line-height: 1.7;
+    font-size: 0.82rem;
+    line-height: 1.6;
     color: var(--text-muted);
     margin: 0;
     border-left: 2px solid rgba(255, 255, 255, 0.12);
@@ -153,34 +168,21 @@
     color: var(--foreground);
 }
 
-.navContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--space-lg);
-    padding-top: var(--space-md);
-    padding-bottom: var(--space-lg);
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
-}
-
 @media (max-width: 768px) {
     .contentWrapper {
-        gap: 36px;
+        gap: 28px;
     }
 
     .itemHeader {
         flex-direction: column;
-        gap: 4px;
+        gap: 3px;
     }
 
     .role {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .description {
         max-width: 100%;
-    }
-
-    .contentWrapper {
-        gap: 56px;
     }
 }

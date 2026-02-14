@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Space_Mono, Inter } from 'next/font/google';
+import Navigation from './components/Navigation';
 import Tribute from './components/Tribute';
 import './globals.css';
 
@@ -35,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${playfair.variable} ${spaceMono.variable} ${inter.variable}`}>
+        <Navigation />
         {children}
         <Tribute />
       </body>

@@ -1,7 +1,6 @@
 "use client";
 
 import GhostGradient from './components/GhostGradient';
-import Navigation from './components/Navigation';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -18,8 +17,6 @@ export default function Home() {
 
           <h1 className={styles.name}>Isaac Felix</h1>
         </div>
-
-        <Navigation />
       </section>
     </main>
   );

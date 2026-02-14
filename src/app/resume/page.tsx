@@ -1,7 +1,6 @@
 "use client";
 
 import GhostGradient from '../components/GhostGradient';
-import Navigation from '../components/Navigation';
 import styles from './resume.module.css';
 
 const experience = [
@@ -124,10 +123,6 @@ export default function Resume() {
                         ))}
                     </div>
                 </section>
-
-                <div className={styles.navContainer}>
-                    <Navigation />
-                </div>
             </div>
         </main>
     );

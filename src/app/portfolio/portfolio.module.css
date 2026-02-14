@@ -1,22 +1,22 @@
 .main {
-    min-height: 100vh;
+    height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: var(--space-md);
-    overflow-x: hidden;
+    padding: 56px var(--space-md) 48px;
+    overflow: hidden;
 }
 
 .contentWrapper {
     position: relative;
     z-index: 10;
-    max-width: 800px;
+    max-width: 100%;
     width: 100%;
-    padding-top: var(--space-lg);
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: var(--space-sm);
     color: var(--foreground);
     animation: pageEnter 0.8s var(--ease-out-expo) both;
     animation-delay: 0.1s;
@@ -26,13 +26,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-sm);
+    gap: 0.75rem;
+    flex-shrink: 0;
 }
 
 .title {
     font-family: var(--font-serif);
-    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
     font-weight: 400;
     letter-spacing: -0.03em;
     color: var(--foreground);
@@ -47,13 +47,6 @@
 
 .workSection {
     width: 100%;
-}
-
-.navContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--space-lg);
-    padding-top: var(--space-md);
-    padding-bottom: var(--space-lg);
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    flex: 1;
+    min-height: 0;
 }
