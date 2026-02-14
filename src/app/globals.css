@@ -54,6 +54,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+
+  /* Sticky Footer Setup */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Ensure main content fills space to push footer down */
+main {
+  flex-grow: 1;
 }
 
 ::selection {
