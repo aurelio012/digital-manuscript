@@ -39,9 +39,9 @@
 /* Active State (Click/Tap) */
 .active .orb1,
 .active .orb2 {
-    filter: blur(100px) brightness(1.4);
-    transform: scale(1.1);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: blur(80px) brightness(1.7) saturate(1.2);
+    transform: scale(1.15);
+    transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Orb 1 — muted deep violet, drifts slowly */

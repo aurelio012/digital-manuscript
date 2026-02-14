@@ -40,39 +40,26 @@ function InteractiveOrbs() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const handleMove = (e: MouseEvent | TouchEvent) => {
-            let clientX, clientY;
-            if (e instanceof MouseEvent) {
-                clientX = e.clientX;
-                clientY = e.clientY;
-            } else {
-                clientX = e.touches[0].clientX;
-                clientY = e.touches[0].clientY;
-            }
-
+        const handleMove = (e: PointerEvent) => {
             const { innerWidth, innerHeight } = window;
-            // Normalize to -1 to 1 range
             targetRef.current = {
-                x: (clientX / innerWidth) * 2 - 1,
-                y: (clientY / innerHeight) * 2 - 1
+                x: (e.clientX / innerWidth) * 2 - 1,
+                y: (e.clientY / innerHeight) * 2 - 1
             };
         };
 
-        const handleClick = () => {
+        const handleDown = () => {
             setClickActive(true);
-            setTimeout(() => setClickActive(false), 300);
+            setTimeout(() => setClickActive(false), 400); // 400ms pulse
         };
 
-        window.addEventListener('mousemove', handleMove);
-        window.addEventListener('touchmove', handleMove);
-        window.addEventListener('mousedown', handleClick);
-        window.addEventListener('touchstart', handleClick);
+        window.addEventListener('pointermove', handleMove);
+        window.addEventListener('pointerdown', handleDown);
 
         const animate = () => {
-            // Lerp (Linear Interpolation) for softness
-            // 0.03 is the "weight" — lower is softer/slower
-            currentRef.current.x += (targetRef.current.x - currentRef.current.x) * 0.03;
-            currentRef.current.y += (targetRef.current.y - currentRef.current.y) * 0.03;
+            // Increased lerp weight for more responsive feel (0.03 -> 0.08)
+            currentRef.current.x += (targetRef.current.x - currentRef.current.x) * 0.08;
+            currentRef.current.y += (targetRef.current.y - currentRef.current.y) * 0.08;
 
             if (containerRef.current) {
                 containerRef.current.style.setProperty('--mouse-x', currentRef.current.x.toString());
@@ -85,10 +72,8 @@ function InteractiveOrbs() {
         requestRef.current = requestAnimationFrame(animate);
 
         return () => {
-            window.removeEventListener('mousemove', handleMove);
-            window.removeEventListener('touchmove', handleMove);
-            window.removeEventListener('mousedown', handleClick);
-            window.removeEventListener('touchstart', handleClick);
+            window.removeEventListener('pointermove', handleMove);
+            window.removeEventListener('pointerdown', handleDown);
             if (requestRef.current) cancelAnimationFrame(requestRef.current);
         };
     }, []);
