@@ -25,9 +25,11 @@ export default function Tribute() {
         }, 800);
     };
 
+    if (!isHome) return null;
+
     return (
         <>
-            <footer className={`${styles.footer} ${isHome ? styles.fixed : ''}`}>
+            <footer className={styles.footer}>
                 <span className={styles.text}>
                     Made in loving memory of{' '}
                     <button
