@@ -1,4 +1,4 @@
-.centerNav {
+.nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -6,29 +6,48 @@
     z-index: 100;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1.25rem;
-    padding: 1.25rem var(--space-md);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--text-muted);
-    background: rgba(6, 6, 8, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(6, 6, 8, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.centerNav a {
-    position: relative;
-    transition: color var(--duration-normal) var(--ease-out-expo);
+/* Logo / Home link — left-aligned initials */
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--foreground);
     text-decoration: none;
-    color: inherit;
-    padding: 4px 0;
+    letter-spacing: -0.02em;
+    transition: opacity var(--duration-normal) var(--ease-out-expo);
 }
 
-.centerNav a::after {
+.logo:hover {
+    opacity: 0.6;
+}
+
+/* Page links — right-aligned */
+.links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.link {
+    position: relative;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 4px 0;
+    transition: color var(--duration-normal) var(--ease-out-expo);
+}
+
+.link::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -39,27 +58,33 @@
     transition: width var(--duration-normal) var(--ease-out-expo);
 }
 
-.centerNav a:hover {
+.link:hover {
     color: var(--foreground);
 }
 
-.centerNav a:hover::after {
+.link:hover::after {
     width: 100%;
 }
 
+/* Active state */
 .active {
-    color: var(--foreground) !important;
+    color: var(--foreground);
 }
 
 .active::after {
-    width: 100% !important;
+    width: 100%;
 }
 
-.dot {
-    width: 2px;
-    height: 2px;
-    border-radius: 50%;
-    background: var(--text-dim);
-    opacity: 0.6;
-    flex-shrink: 0;
+@media (max-width: 480px) {
+    .nav {
+        padding: 0.85rem 1.25rem;
+    }
+
+    .links {
+        gap: 1.25rem;
+    }
+
+    .link {
+        font-size: 0.62rem;
+    }
 }

@@ -10,11 +10,6 @@ export default function Portfolio() {
             <GhostGradient />
 
             <div className={styles.contentWrapper}>
-                <header className={styles.header}>
-                    <h1 className={styles.title}>Selected Works</h1>
-                    <div className={styles.divider} aria-hidden="true" />
-                </header>
-
                 <section className={styles.workSection}>
                     <WorkIndex />
                 </section>

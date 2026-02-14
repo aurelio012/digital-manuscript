@@ -9,11 +9,6 @@ export default function About() {
             <GhostGradient />
 
             <div className={styles.contentWrapper}>
-                <header className={styles.header}>
-                    <h1 className={styles.title}>About</h1>
-                    <div className={styles.divider} aria-hidden="true" />
-                </header>
-
                 <div className={styles.bioContainer}>
                     <p>
                         I research how AI systems earn trust&mdash;and what happens when they don&apos;t.

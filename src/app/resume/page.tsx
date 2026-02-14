@@ -61,11 +61,6 @@ export default function Resume() {
             <GhostGradient />
 
             <div className={styles.contentWrapper}>
-                <header className={styles.header}>
-                    <h1 className={styles.title}>Resume</h1>
-                    <div className={styles.divider} aria-hidden="true" />
-                </header>
-
                 <section className={styles.section}>
                     <h2 className={styles.sectionTitle}>Education</h2>
                     <div className={styles.list}>
