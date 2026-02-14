@@ -6,16 +6,10 @@ import styles from './resume.module.css';
 
 const experience = [
     {
-        role: "Quantitative Analyst — Financial Crime Detection",
+        role: "Quantitative Analyst",
         company: "Bank of America",
         period: "Feb 2024 — Present",
-        description: "Engineered fine-tuning data strategies to align external models with bank risk frameworks. Led technical integration of proprietary third-party AI platforms for transaction monitoring."
-    },
-    {
-        role: "Quantitative Analyst — Consumer Portfolio Strategy",
-        company: "Bank of America",
-        period: "Feb 2024 — Present",
-        description: "Engineered daily bankruptcy ETL workflows powering executive forecasting dashboards. Built automated data pipelines for consumer credit risk modeling."
+        description: "Financial Crime Detection — Engineered fine-tuning data strategies to align external models with bank risk frameworks. Led technical integration of proprietary third-party AI platforms for transaction monitoring.\n\nConsumer Portfolio Strategy — Engineered daily bankruptcy ETL workflows powering executive forecasting dashboards. Built automated data pipelines for consumer credit risk modeling."
     },
     {
         role: "Research Assistant (Mussmann Lab)",
@@ -103,7 +97,9 @@ export default function Resume() {
                                     <span className={styles.company}>{job.company}</span>
                                 </div>
                                 <div className={styles.period}>{job.period}</div>
-                                <p className={styles.description}>{job.description}</p>
+                                {job.description.split('\n\n').map((paragraph, i) => (
+                                    <p key={i} className={styles.description}>{paragraph}</p>
+                                ))}
                             </div>
                         ))}
                     </div>
