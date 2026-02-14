@@ -49,26 +49,33 @@
     transform: translate(-50%, -50%) scale(0);
     border-radius: 50%;
     pointer-events: none;
-    mix-blend-mode: screen;
-    animation: flarePop 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    mix-blend-mode: plus-lighter;
+    /* Softer bloom than 'screen' */
+    animation: flarePop 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    /* Slower, smoother ease */
     z-index: 2;
     /* Above ambient orbs, below noise */
+    opacity: 0.5;
+    /* Base opacity cap */
 }
 
 @keyframes flarePop {
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.2);
+        transform: translate(-50%, -50%) scale(0.4);
+        /* Start slightly larger for softness */
     }
 
-    10% {
-        opacity: 0.8;
+    15% {
+        opacity: 0.5;
+        /* Capped at 0.5 for subtlety */
         transform: translate(-50%, -50%) scale(var(--flare-scale));
     }
 
     100% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(calc(var(--flare-scale) * 1.5));
+        transform: translate(-50%, -50%) scale(calc(var(--flare-scale) * 1.2));
+        /* Reduced expansion */
     }
 }
 

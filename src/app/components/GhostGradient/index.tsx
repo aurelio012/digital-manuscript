@@ -87,14 +87,16 @@ function InteractiveOrbs() {
             // Decay energy
             energyRef.current = Math.max(energyRef.current - 0.5, 0);
 
-            // Rotate ambient hue based on energy (faster when high energy)
-            hueRef.current += 0.1 + (energyRef.current * 0.05);
+            // Rotate ambient hue based on energy (faster when high energy, but capped)
+            // Reduced multiplier from 0.05 to 0.02 for subtler color shift speed
+            hueRef.current += 0.1 + (energyRef.current * 0.02);
 
             if (containerRef.current) {
                 containerRef.current.style.setProperty('--mouse-x', currentRef.current.x.toString());
                 containerRef.current.style.setProperty('--mouse-y', currentRef.current.y.toString());
                 containerRef.current.style.setProperty('--energy-hue', `${hueRef.current}deg`);
-                containerRef.current.style.setProperty('--energy-scale', `${1 + (energyRef.current * 0.005)}`); // Mild pulsate
+                // Greatly reduced scale impact (0.005 -> 0.001) to keep layout stable
+                containerRef.current.style.setProperty('--energy-scale', `${1 + (energyRef.current * 0.001)}`);
             }
 
             requestRef.current = requestAnimationFrame(animate);
