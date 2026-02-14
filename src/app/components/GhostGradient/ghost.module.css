@@ -36,12 +36,14 @@
     transform: translate(calc(var(--mouse-x, 0) * 40px), calc(var(--mouse-y, 0) * 40px));
 }
 
-/* Active State (Click/Tap) */
+/* Active State (Click/Tap) — Organic Flares */
 .active .orb1,
 .active .orb2 {
-    filter: blur(80px) brightness(1.7) saturate(1.2);
-    transform: scale(1.15);
-    transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: blur(80px) brightness(1.6) saturate(1.5) hue-rotate(var(--flare-hue, 0deg));
+    transform:
+        scale(var(--flare-scale, 1.15)) translate(var(--flare-x, 0px), var(--flare-y, 0px));
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* Soft, natural decay */
 }
 
 /* Orb 1 — muted deep violet, drifts slowly */

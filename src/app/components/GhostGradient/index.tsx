@@ -49,8 +49,20 @@ function InteractiveOrbs() {
         };
 
         const handleDown = () => {
+            if (containerRef.current) {
+                // Randomize flare parameters for organic feel
+                const randomHue = Math.floor(Math.random() * 30) - 15; // +/- 15deg shift (Subtle violation)
+                const randomScale = 1.1 + Math.random() * 0.2; // 1.1 to 1.3 scale (Restrained expansion)
+                const randomX = (Math.random() - 0.5) * 30; // +/- 15px
+                const randomY = (Math.random() - 0.5) * 30;
+
+                containerRef.current.style.setProperty('--flare-hue', `${randomHue}deg`);
+                containerRef.current.style.setProperty('--flare-scale', `${randomScale}`);
+                containerRef.current.style.setProperty('--flare-x', `${randomX}px`);
+                containerRef.current.style.setProperty('--flare-y', `${randomY}px`);
+            }
             setClickActive(true);
-            setTimeout(() => setClickActive(false), 400); // 400ms pulse
+            setTimeout(() => setClickActive(false), 800); // 800ms for smooth decay
         };
 
         window.addEventListener('pointermove', handleMove);

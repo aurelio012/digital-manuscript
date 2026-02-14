@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Fraunces, Geist, Geist_Mono } from 'next/font/google';
 import Navigation from './components/Navigation';
 import Tribute from './components/Tribute';
