@@ -33,9 +33,9 @@
     color: #D67C7C;
     /* Darker blush pink */
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: bold;
+    /* text-transform: uppercase; REMOVED */
+    /* letter-spacing: 0.1em; REMOVED to match sentence */
+    /* font-weight: bold; REMOVED to match sentence */
     position: relative;
 }
 
