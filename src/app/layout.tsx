@@ -1,15 +1,13 @@
-import type { Metadata } from 'next';
-import { Cormorant_Garamond, Geist, Geist_Mono } from 'next/font/google';
+import { Fraunces, Geist, Geist_Mono } from 'next/font/google';
 import Navigation from './components/Navigation';
 import Tribute from './components/Tribute';
 import './globals.css';
 
-const cormorant = Cormorant_Garamond({
+const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-serif',
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
   display: 'swap',
+  axes: ['SOFT', 'WONK', 'opsz'], // Enable soft/wonk axes for character
 });
 
 const geistSans = Geist({
@@ -36,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${cormorant.variable} ${geistMono.variable} ${geistSans.variable}`}>
+      <body className={`${fraunces.variable} ${geistMono.variable} ${geistSans.variable}`}>
         <Navigation />
         {children}
         <Tribute />
