@@ -9,25 +9,25 @@ const experience = [
         role: "Quantitative Analyst",
         company: "Bank of America",
         period: "Feb 2024 — Present",
-        description: "Financial Crime Detection — Engineered fine-tuning data strategies to align external models with bank risk frameworks. Led technical integration of proprietary third-party AI platforms for transaction monitoring.\n\nConsumer Portfolio Strategy — Engineered daily bankruptcy ETL workflows powering executive forecasting dashboards. Built automated data pipelines for consumer credit risk modeling."
+        description: "Financial Crime Detection — Engineered fine-tuning data strategies to align external models with bank risk frameworks. Led technical integration of proprietary third-party AI platforms for transaction monitoring.\n\nConsumer Portfolio Strategy — Built daily bankruptcy ETL workflows powering executive forecasting dashboards. Developed automated pipelines for consumer credit risk modeling."
     },
     {
-        role: "Research Assistant (Mussmann Lab)",
-        company: "Georgia Institute of Technology",
+        role: "Research Assistant",
+        company: "Mussmann Lab — Georgia Tech",
         period: "Aug 2025 — Present",
-        description: "Partnered with City of Charleston to evaluate sensor network viability. Engineered geospatial features to model train crossing delay predictability within complex port topography."
+        description: "Partnered with the City of Charleston to evaluate sensor network viability for predicting train crossing delays. Engineered geospatial feature pipelines across complex port topography."
     },
     {
         role: "AI Policy Fellow",
-        company: "Paragon Policy",
+        company: "Paragon Fellowship — NYC DOE",
         period: "Sep 2025 — Dec 2025",
-        description: "Consulted NYC Dept. of Education on AI adoption frameworks for 1,500+ schools. Defined district-wide security guardrails and privacy standards."
+        description: "Consulted the NYC Department of Education on responsible AI adoption frameworks for 1,500+ public schools. Defined district-wide security guardrails and data privacy standards."
     },
     {
-        role: "Research Assistant (Friendly Cities Lab)",
-        company: "Georgia Institute of Technology",
+        role: "Research Assistant",
+        company: "Friendly Cities Lab — Georgia Tech",
         period: "May 2025 — Jul 2025",
-        description: "Created codebook and data schema for legislative congruence analysis. Engineered Python ETL pipelines (Geopandas/QGIS) to normalize geospatial data."
+        description: "Developed data pipelines and codebooks for legislative congruence analysis. Normalized heterogeneous geospatial datasets using Geopandas and QGIS."
     },
     {
         role: "Quantitative Analyst Intern",
@@ -36,16 +36,16 @@ const experience = [
         description: "Trained multiclass LSTM network using Apache Spark to predict mortgage delinquency. Preprocessed raw loan-level data to correct irregularities."
     },
     {
-        role: "Research Assistant (LIT Lab)",
-        company: "Learning + Interest + Technology Lab",
+        role: "Research Assistant",
+        company: "LIT Lab — UIC",
         period: "Aug 2022 — Dec 2023",
-        description: "Engineered API integration for a robotic AI tutor. Optimized system prompts to map GPT-4 outputs to pedagogically aligned prompts. Iterated on features based on field tests."
+        description: "Built the API backbone for PATHWiSE, an AI-powered robotic tutor. Designed system prompts mapping GPT-4 outputs to pedagogically aligned goals through classroom field tests."
     },
     {
         role: "Mobile Networks Co-op",
         company: "Nokia",
         period: "Sep 2022 — Dec 2022",
-        description: "Collaborated with engineering teams to optimize radio-control software for 5G cellular radios, ensuring stability within high-throughput environments."
+        description: "Optimized radio-control software for 5G cellular radios, ensuring stability within high-throughput network environments."
     }
 ];
 
@@ -102,20 +102,6 @@ export default function Resume() {
                                 ))}
                             </div>
                         ))}
-                    </div>
-                </section>
-
-                <section className={styles.section}>
-                    <h2 className={styles.sectionTitle}>Leadership</h2>
-                    <div className={styles.list}>
-                        <div className={styles.item}>
-                            <div className={styles.itemHeader}>
-                                <h3 className={styles.role}>Society of Hispanic Professional Engineers</h3>
-                                <span className={styles.company}>Mentor</span>
-                            </div>
-                            <div className={styles.period}>Aug 2023 — Dec 2023</div>
-                            <p className={styles.description}>Mentored junior engineering students on academic planning and career development in tech.</p>
-                        </div>
                     </div>
                 </section>
 

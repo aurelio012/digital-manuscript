@@ -10,8 +10,8 @@ const projects = [
         category: 'Mussmann Lab',
         year: '2025',
         link: '#',
-        description: "Collaborated with the City of Charleston to assess sensor network viability for predicting train crossing delays. Built geospatial feature pipelines across complex port topography to benchmark hardware performance and model infrastructure behavior.",
-        contributions: ["Python", "Geospatial Modeling", "Sensor Data", "Municipal Partnership"]
+        description: "Partnered with the City of Charleston to evaluate sensor network viability for predicting train crossing delays. Built geospatial feature pipelines across complex port topography to benchmark hardware performance.",
+        contributions: ["Python", "Geospatial Modeling", "Sensor Data", "City Partnership"]
     },
     {
         id: '02',
@@ -19,7 +19,7 @@ const projects = [
         category: 'NYC DOE',
         year: '2025',
         link: '#',
-        description: "Consulted the NYC Department of Education on responsible AI adoption across 1,500+ public schools. Designed technical procurement criteria, security guardrails, and data privacy standards for district-wide deployment.",
+        description: "Consulted the NYC Department of Education on responsible AI adoption across 1,500+ public schools. Defined technical procurement criteria, security guardrails, and data privacy standards for district-wide deployment.",
         contributions: ["AI Policy", "Risk Assessment", "Stakeholder Communication", "EdTech"]
     },
     {
@@ -37,16 +37,14 @@ const projects = [
         category: 'EdTech / AI',
         year: '2023',
         link: '#',
-        description: "Built the API backbone for PATHWiSE, an AI-powered robotic tutor. Designed and iterated on system prompts to map GPT-4 outputs to age-appropriate pedagogical goals through classroom field tests.",
-        contributions: ["GPT-4 Integration", "Prompt Engineering", "HRI", "Field Testing"],
+        description: "Built the API backbone for PATHWiSE, an AI-powered robotic tutor. Designed system prompts mapping GPT-4 outputs to age-appropriate pedagogical goals through classroom field tests.",
+        contributions: ["GPT-4 API", "Prompt Engineering", "HRI", "Field Testing"],
         publication: 'M. A. Rahman, I. A. Felix, et al., "PATHWiSE: An AI-Assisted Teacher Authoring Tool..." (HRI \'24)'
     },
 ];
 
 export default function WorkIndex() {
-    // Default to the first project for desktop view
     const [activeProject, setActiveProject] = useState(projects[0]);
-    // For mobile accordion state (using ID allows toggling)
     const [expandedProjectId, setExpandedProjectId] = useState<string | null>(null);
 
     const handleMouseEnter = (project: typeof projects[0]) => {
@@ -54,14 +52,8 @@ export default function WorkIndex() {
     };
 
     const handleMobileClick = (e: React.MouseEvent, projectId: string) => {
-        // Prevent default navigation for the accordian effect on mobile if needed, 
-        // or let it navigate if the user wants to go to the case study. 
-        // For now, let's assume the 'link' is a real page, but we want to show details first?
-        // The prompt asked for "Tap-to-expand". Let's handle it as:
-        // Tap -> Expand. Tap 'View Case Study' inside -> Navigate.
         e.preventDefault();
         setExpandedProjectId(expandedProjectId === projectId ? null : projectId);
-        // Also set active for desktop sync if they resize
         const proj = projects.find(p => p.id === projectId);
         if (proj) setActiveProject(proj);
     };
@@ -70,7 +62,7 @@ export default function WorkIndex() {
         <section id="work" className={styles.container}>
             <div className={styles.header}>
                 <h2>Selected Works</h2>
-                <span className={styles.meta}>INDEX / 2022—2024</span>
+                <span className={styles.meta}>INDEX / 2022—2025</span>
             </div>
 
             <div className={styles.list}>

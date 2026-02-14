@@ -11,7 +11,7 @@ export default function About() {
 
             <div className={styles.contentWrapper}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>About Me</h1>
+                    <h1 className={styles.title}>About</h1>
                     <div className={styles.divider} aria-hidden="true" />
                 </header>
 
@@ -20,13 +20,10 @@ export default function About() {
                         I research how AI systems earn trust&mdash;and what happens when they don&apos;t.
                     </p>
                     <p>
-                        As a Computer Science M.S. candidate at Georgia Tech, my work focuses on the gap between what AI can do and what it should do. I&apos;ve helped the NYC Department of Education define security guardrails and privacy standards for AI adoption across 1,500+ schools, co-authored research on AI-assisted educational robotics at ACM/IEEE HRI, and built geospatial models that help cities understand how infrastructure decisions ripple through communities.
+                        As an M.S. Computer Science candidate at Georgia Tech, my work sits at the intersection of AI safety, public policy, and human-centered systems. I&apos;ve defined security guardrails and privacy standards for AI adoption across 1,500+ NYC public schools through the Paragon Fellowship, co-authored research on AI-assisted educational robotics presented at ACM/IEEE HRI, and built geospatial models that help cities understand how infrastructure decisions affect their communities.
                     </p>
                     <p>
-                        I also work as a Quantitative Analyst at Bank of America, where I apply machine learning to financial risk&mdash;but my deeper interest lives in the research lab, asking harder questions about alignment, safety, and the systems we&apos;re building for people who never asked for them.
-                    </p>
-                    <p>
-                        I studied Computer Science and Linguistics at UIC&mdash;a pairing that taught me that the most important problems in AI aren&apos;t just technical. They&apos;re about language, power, and who gets to decide what &ldquo;intelligent&rdquo; means.
+                        I also work as a Quantitative Analyst at Bank of America, applying machine learning to financial risk&mdash;but my deeper interest lives in the research lab, asking harder questions about alignment, safety, and the systems we build for people who never asked for them.
                     </p>
                 </div>
 

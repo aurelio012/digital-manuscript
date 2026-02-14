@@ -13,13 +13,13 @@
     z-index: 10;
     max-width: 680px;
     width: 100%;
-    padding-top: var(--space-lg);
-    /* Ensure top spacing */
+    padding-top: var(--space-md);
     display: flex;
     flex-direction: column;
-    gap: 80px;
-    /* Space between major sections */
+    gap: 48px;
     color: var(--foreground);
+    animation: pageEnter 0.8s var(--ease-out-expo) both;
+    animation-delay: 0.1s;
 }
 
 .header {
@@ -27,21 +27,22 @@
     flex-direction: column;
     align-items: center;
     gap: var(--space-sm);
-    margin-bottom: var(--space-md);
+    margin-bottom: 0;
 }
 
 .title {
     font-family: var(--font-serif);
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2rem, 4vw, 2.8rem);
     font-weight: 400;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     color: var(--foreground);
 }
 
 .divider {
-    width: 40px;
+    width: 32px;
     height: 1px;
     background: var(--text-dim);
+    opacity: 0.6;
 }
 
 /* Sections */
@@ -53,26 +54,26 @@
 
 .sectionTitle {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.14em;
     color: var(--text-muted);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding-bottom: var(--space-xs);
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
 }
 
 /* List Items */
 .list {
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 28px;
 }
 
 .item {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs);
+    gap: 6px;
 }
 
 .itemHeader {
@@ -85,64 +86,66 @@
 
 .role {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     font-weight: 400;
     margin: 0;
     color: var(--foreground);
+    letter-spacing: -0.01em;
 }
 
 .company {
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: 0.88rem;
     color: var(--text-muted);
 }
 
 .period {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     color: var(--text-dim);
-    margin-bottom: var(--space-xs);
+    letter-spacing: 0.02em;
+    margin-bottom: 2px;
 }
 
 .description {
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: 0.88rem;
     line-height: 1.6;
     color: var(--text-muted);
     margin: 0;
-    max-width: 90%;
+    max-width: 95%;
 }
 
 /* Skills */
 .skillsList {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-sm);
+    gap: 8px;
     font-family: var(--font-mono);
-    font-size: 0.9rem;
+    font-size: 0.72rem;
     color: var(--text-muted);
 }
 
 .skillsList span {
     padding: 4px 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 99px;
-    transition: all 0.3s ease;
+    transition: all var(--duration-normal) var(--ease-out-expo);
 }
 
 .skillsList span:hover {
-    border-color: var(--foreground);
+    border-color: rgba(255, 255, 255, 0.25);
     color: var(--foreground);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .publication {
     font-family: var(--font-sans);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.7;
     color: var(--text-muted);
     margin: 0;
-    border-left: 2px solid var(--text-dim);
+    border-left: 2px solid rgba(255, 255, 255, 0.12);
     padding-left: var(--space-sm);
 }
 
@@ -156,16 +159,28 @@
     margin-top: var(--space-lg);
     padding-top: var(--space-md);
     padding-bottom: var(--space-lg);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 @media (max-width: 768px) {
+    .contentWrapper {
+        gap: 36px;
+    }
+
     .itemHeader {
         flex-direction: column;
         gap: 4px;
     }
 
+    .role {
+        font-size: 1.2rem;
+    }
+
     .description {
         max-width: 100%;
+    }
+
+    .contentWrapper {
+        gap: 56px;
     }
 }

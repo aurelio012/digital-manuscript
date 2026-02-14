@@ -23,8 +23,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Digital Manuscript Portfolio',
-  description: 'A design-forward portfolio exploring the intersection of editorial warmth and technical intelligence.',
+  title: 'Isaac Felix',
+  description: 'AI safety researcher, quantitative analyst, and M.S. Computer Science candidate at Georgia Tech.',
 };
 
 export default function RootLayout({

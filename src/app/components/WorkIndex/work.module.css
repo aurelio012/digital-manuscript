@@ -1,15 +1,9 @@
 .container {
-    margin-top: var(--space-xl);
-    padding: 0 var(--space-md) var(--space-xl);
+    margin-top: var(--space-md);
+    padding: 0;
     display: grid;
-    /* 12 column grid: 
-       1-2: Header/Empty
-       3-7: List
-       8: Gap 
-       9-12: Details
-    */
     grid-template-columns: repeat(12, 1fr);
-    gap: var(--grid-gap);
+    gap: var(--space-md);
     position: relative;
     z-index: 10;
 }
@@ -26,39 +20,37 @@
 
 .header h2 {
     font-family: var(--font-serif);
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 400;
     color: var(--foreground);
     line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
 .meta {
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: var(--text-dim);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
 }
 
 /* --- Project List (Left/Center) --- */
 .list {
     grid-column: 4 / 9;
-    /* Changed to sit in the middle-left */
     display: flex;
     flex-direction: column;
 }
 
 .itemWrapper {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    transition: opacity 0.4s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: opacity var(--duration-normal) var(--ease-out-expo);
 }
 
-/* Dim other items when one is active? Optional. */
-/* 
+/* Dim non-hovered items for focus effect */
 .list:hover .itemWrapper:not(:hover) {
-    opacity: 0.4;
-} 
-*/
+    opacity: 0.35;
+}
 
 .item {
     display: grid;
@@ -66,7 +58,7 @@
     align-items: baseline;
     gap: var(--space-md);
     padding: var(--space-md) 0;
-    transition: all 0.4s ease;
+    transition: all var(--duration-normal) var(--ease-out-expo);
     cursor: pointer;
     text-decoration: none;
 }
@@ -83,35 +75,36 @@
 
 .item:hover .id,
 .activeItem .id {
-    color: var(--foreground);
+    color: var(--text-muted);
 }
 
 .id {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: var(--text-dim);
-    transition: color 0.4s ease;
+    transition: color var(--duration-normal) var(--ease-out-expo);
 }
 
 .title {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 400;
     color: var(--text-muted);
-    transition: color 0.4s ease;
+    transition: color var(--duration-normal) var(--ease-out-expo);
+    letter-spacing: -0.01em;
 }
 
 .category {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     color: var(--text-dim);
 }
 
 .year {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: var(--text-dim);
 }
 
@@ -127,13 +120,13 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    animation: fadeIn 0.5s ease;
+    animation: fadeIn 0.5s var(--ease-out-expo);
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(8px);
     }
 
     to {
@@ -148,13 +141,12 @@
     color: var(--foreground);
     margin: 0;
     display: none;
-    /* Hidden on desktop as it repeats the list item, or keep for clarity? Let's hide to be cleaner */
 }
 
 .detailDesc {
     font-family: var(--font-sans);
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    line-height: 1.65;
     color: var(--text-muted);
     margin: 0;
 }
@@ -163,15 +155,15 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
-    margin-top: var(--space-sm);
+    margin-top: var(--space-xs);
 }
 
 .metaLabel {
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     text-transform: uppercase;
     color: var(--text-dim);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
 }
 
 .contributionList {
@@ -180,30 +172,37 @@
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
 }
 
 .contributionList li {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--foreground);
-    background: rgba(255, 255, 255, 0.05);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.03);
     padding: 4px 10px;
     border-radius: 99px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.contributionList li:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    color: var(--foreground);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .viewLink {
     display: inline-block;
     margin-top: var(--space-sm);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--foreground);
     text-decoration: none;
     border-bottom: 1px solid var(--foreground);
     width: fit-content;
     padding-bottom: 2px;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--duration-normal) var(--ease-out-expo);
 }
 
 .viewLink:hover {
@@ -213,28 +212,31 @@
 /* --- Mobile / Hidden Elements --- */
 .mobileDetails {
     display: none;
-    /* Hidden by default */
 }
 
 @media (max-width: 1024px) {
     .container {
         grid-template-columns: 1fr;
-        padding: 0 var(--space-md) var(--space-xl);
+        padding: 0;
     }
 
     .header {
         position: relative;
         top: 0;
-        margin-bottom: var(--space-lg);
+        margin-bottom: var(--space-md);
     }
 
     .list {
         grid-column: 1 / -1;
     }
 
+    /* Disable the dim effect on mobile (no hover) */
+    .list:hover .itemWrapper:not(:hover) {
+        opacity: 1;
+    }
+
     .detailsPanel {
         display: none;
-        /* Hide sticky panel on mobile */
     }
 
     .item {
@@ -245,40 +247,15 @@
     .category,
     .year {
         display: none;
-        /* Hide extra cols on mobile similar to before */
     }
 
     /* Mobile Accordion */
     .mobileDetails {
-        display: grid;
-        grid-template-rows: 0fr;
-        transition: grid-template-rows 0.4s ease;
-        overflow: hidden;
-    }
-
-    .mobileDetails.expanded {
-        grid-template-rows: 1fr;
-        padding-bottom: var(--space-md);
-    }
-
-    .mobileDetails>* {
-        min-height: 0;
-        /* Need a wrapper for smooth animation usually, but let's try direct grid */
-    }
-
-    /* Wait, direct children of grid `mobileDetails` need to be wrapped to animate height properly with rows usually 
-       Actually, `display: block` with max-height is easier for vanilla css accordion 
-    */
-}
-
-@media (max-width: 1024px) {
-    .mobileDetails {
         display: block;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), padding 0.5s ease;
+        transition: max-height 0.5s var(--ease-out-expo), padding 0.5s ease;
         padding-left: calc(40px + var(--space-sm));
-        /* Align with title */
     }
 
     .mobileDetails.expanded {
@@ -288,8 +265,8 @@
 
     .mobileDesc {
         font-family: var(--font-sans);
-        font-size: 0.95rem;
-        line-height: 1.6;
+        font-size: 0.9rem;
+        line-height: 1.65;
         color: var(--text-muted);
         margin: 0 0 var(--space-sm) 0;
     }
@@ -303,16 +280,17 @@
 
     .mobileTags span {
         font-family: var(--font-mono);
-        font-size: 0.7rem;
-        color: var(--foreground);
-        background: rgba(255, 255, 255, 0.05);
-        padding: 2px 8px;
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        background: rgba(255, 255, 255, 0.03);
+        padding: 3px 8px;
         border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .mobileLink {
         font-family: var(--font-mono);
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         color: var(--foreground);
         text-decoration: underline;
     }
@@ -321,10 +299,10 @@
 .publicationText {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 0.85rem;
-    color: var(--foreground);
-    border-left: 2px solid var(--text-dim);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-left: 2px solid rgba(255, 255, 255, 0.12);
     padding-left: var(--space-sm);
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.55;
 }
