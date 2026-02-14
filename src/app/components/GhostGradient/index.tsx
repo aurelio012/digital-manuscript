@@ -3,12 +3,14 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './ghost.module.css';
 
-interface TransientOrb {
+interface AtmosphericOrb {
     id: number;
-    x: number;
-    y: number;
-    scale: number;
+    top: number;
+    left: number;
+    width: string;
     hue: number;
+    duration: string;
+    delay: string;
 }
 
 export default function GhostGradient() {
@@ -33,36 +35,32 @@ function StaticOrbs() {
 }
 
 function InteractiveOrbs() {
-    const [transientOrbs, setTransientOrbs] = useState<TransientOrb[]>([]);
+    const [extraOrbs, setExtraOrbs] = useState<AtmosphericOrb[]>([]);
     const targetRef = useRef({ x: 0, y: 0 });
     const currentRef = useRef({ x: 0, y: 0 });
-    const energyRef = useRef(0); // 0 to 100
+    const energyRef = useRef(0);
     const hueRef = useRef(0);
     const requestRef = useRef<number | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const orbIdRef = useRef(0);
 
-    const spawnTransientOrb = useCallback((x: number, y: number) => {
+    const spawnAtmosphericOrb = useCallback(() => {
+        if (extraOrbs.length > 15) return; // Cap population for performance
+
         const id = orbIdRef.current++;
-        // Create a large, soft aura similar to the background ones
-        const newOrb: TransientOrb = {
+        const newOrb: AtmosphericOrb = {
             id,
-            x,
-            y,
-            scale: 0.8 + Math.random() * 0.5,
-            hue: Math.floor(Math.random() * 60) - 30, // Subtle hue shift relative to base
+            top: Math.random() * 100,
+            left: Math.random() * 100,
+            width: `${40 + Math.random() * 20}vh`, // Large and atmospheric
+            hue: Math.floor(Math.random() * 60) - 30,
+            duration: `${30 + Math.random() * 20}s`,
+            delay: `-${Math.random() * 20}s`, // Start mid-animation
         };
 
-        setTransientOrbs(prev => [...prev, newOrb]);
-
-        // Boost energy for global color speed
-        energyRef.current = Math.min(energyRef.current + 15, 100);
-
-        // Slow fade out
-        setTimeout(() => {
-            setTransientOrbs(prev => prev.filter(o => o.id !== id));
-        }, 2000); // 2s duration for atmospheric feel
-    }, []);
+        setExtraOrbs(prev => [...prev, newOrb]);
+        energyRef.current = Math.min(energyRef.current + 10, 100);
+    }, [extraOrbs.length]);
 
     useEffect(() => {
         const handleMove = (e: PointerEvent) => {
@@ -73,8 +71,8 @@ function InteractiveOrbs() {
             };
         };
 
-        const handleDown = (e: PointerEvent) => {
-            spawnTransientOrb(e.clientX, e.clientY);
+        const handleDown = () => {
+            spawnAtmosphericOrb();
         };
 
         window.addEventListener('pointermove', handleMove);
@@ -86,10 +84,10 @@ function InteractiveOrbs() {
             currentRef.current.y += (targetRef.current.y - currentRef.current.y) * 0.08;
 
             // Decay energy
-            energyRef.current = Math.max(energyRef.current - 0.5, 0);
+            energyRef.current = Math.max(energyRef.current - 0.2, 0);
 
             // Rotate hue
-            hueRef.current += 0.1 + (energyRef.current * 0.05);
+            hueRef.current += 0.05 + (energyRef.current * 0.03);
 
             if (containerRef.current) {
                 containerRef.current.style.setProperty('--mouse-x', currentRef.current.x.toString());
@@ -107,7 +105,7 @@ function InteractiveOrbs() {
             window.removeEventListener('pointerdown', handleDown);
             if (requestRef.current) cancelAnimationFrame(requestRef.current);
         };
-    }, [spawnTransientOrb]);
+    }, [spawnAtmosphericOrb]);
 
     return (
         <div ref={containerRef} className={styles.container}>
@@ -119,16 +117,19 @@ function InteractiveOrbs() {
                 <div className={styles.orb2} />
             </div>
 
-            {/* Transient Orbs (Dynamic Aura Accumulation) */}
-            {transientOrbs.map(orb => (
+            {/* Increasing Population of Atmospheric Orbs */}
+            {extraOrbs.map(orb => (
                 <div
                     key={orb.id}
-                    className={styles.transientOrb}
+                    className={styles.atmosphericOrb}
                     style={{
-                        left: orb.x,
-                        top: orb.y,
+                        top: `${orb.top}%`,
+                        left: `${orb.left}%`,
+                        width: orb.width,
+                        height: orb.width, // pulsing square -> border-radius 50% = circle
                         '--orb-hue': `${orb.hue}deg`,
-                        '--orb-scale': orb.scale,
+                        animationDuration: orb.duration,
+                        animationDelay: orb.delay,
                     } as React.CSSProperties}
                 />
             ))}

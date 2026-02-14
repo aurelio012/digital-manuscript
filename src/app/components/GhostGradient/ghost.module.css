@@ -36,6 +36,27 @@
     transform: translate(calc(var(--mouse-x, 0) * 40px), calc(var(--mouse-y, 0) * 40px));
 }
 
+/* Atmospheric Orb — Drifting accumulation */
+.atmosphericOrb {
+    position: absolute;
+    background: radial-gradient(circle,
+            hsla(calc(260 + var(--orb-hue)), 80%, 75%, 0.15) 0%,
+            hsla(calc(260 + var(--orb-hue)), 80%, 75%, 0) 70%);
+    transform: translate(-50%, -50%);
+    filter: blur(80px) hue-rotate(var(--energy-hue, 0deg));
+    border-radius: 50%;
+    pointer-events: none;
+    animation: driftFadeIn 3s ease-out forwards, float 40s infinite ease-in-out;
+    opacity: 0;
+    z-index: 1;
+}
+
+@keyframes driftFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
 /* Transient Orb — Atmosperic accumulation on click */
 .transientOrb {
     position: absolute;
