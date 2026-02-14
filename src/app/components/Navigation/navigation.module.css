@@ -14,18 +14,19 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-/* Logo / Home link — left-aligned initials */
+/* Logo / Home link — geometric house icon */
 .logo {
-    font-family: var(--font-serif);
-    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--foreground);
     text-decoration: none;
-    letter-spacing: -0.02em;
     transition: opacity var(--duration-normal) var(--ease-out-expo);
+    opacity: 0.8;
 }
 
 .logo:hover {
-    opacity: 0.6;
+    opacity: 1;
 }
 
 /* Page links — right-aligned */
