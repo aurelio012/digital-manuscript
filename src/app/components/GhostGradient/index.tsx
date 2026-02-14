@@ -1,24 +1,24 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './ghost.module.css';
 
+interface Flare {
+    id: number;
+    x: number;
+    y: number;
+    scale: number;
+    hue: number;
+}
+
 export default function GhostGradient() {
-    return (
-        <InteractiveWrapper />
-    );
+    return <InteractiveWrapper />;
 }
 
 function InteractiveWrapper() {
-    // Only run on client to avoid hydration mismatch
     const [isMounted, setIsMounted] = useState(false);
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
-
+    useEffect(() => setIsMounted(true), []);
     if (!isMounted) return <div className={styles.container}><StaticOrbs /></div>;
-
     return <InteractiveOrbs />;
 }
 
@@ -33,11 +33,35 @@ function StaticOrbs() {
 }
 
 function InteractiveOrbs() {
-    const [clickActive, setClickActive] = useState(false);
+    const [flares, setFlares] = useState<Flare[]>([]);
     const targetRef = useRef({ x: 0, y: 0 });
     const currentRef = useRef({ x: 0, y: 0 });
+    const energyRef = useRef(0); // 0 to 100
+    const hueRef = useRef(0);
     const requestRef = useRef<number | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
+    const flareIdRef = useRef(0);
+
+    const spawnFlare = useCallback((x: number, y: number) => {
+        const id = flareIdRef.current++;
+        const newFlare: Flare = {
+            id,
+            x,
+            y,
+            scale: 0.8 + Math.random() * 0.8, // 0.8 - 1.6
+            hue: Math.floor(Math.random() * 360),
+        };
+
+        setFlares(prev => [...prev, newFlare]);
+
+        // Boost energy
+        energyRef.current = Math.min(energyRef.current + 20, 100);
+
+        // Auto-remove flare after animation
+        setTimeout(() => {
+            setFlares(prev => prev.filter(f => f.id !== id));
+        }, 1000); // Match CSS duration
+    }, []);
 
     useEffect(() => {
         const handleMove = (e: PointerEvent) => {
@@ -48,34 +72,29 @@ function InteractiveOrbs() {
             };
         };
 
-        const handleDown = () => {
-            if (containerRef.current) {
-                // Randomize flare parameters for organic feel
-                const randomHue = Math.floor(Math.random() * 30) - 15; // +/- 15deg shift (Subtle violation)
-                const randomScale = 1.1 + Math.random() * 0.2; // 1.1 to 1.3 scale (Restrained expansion)
-                const randomX = (Math.random() - 0.5) * 30; // +/- 15px
-                const randomY = (Math.random() - 0.5) * 30;
-
-                containerRef.current.style.setProperty('--flare-hue', `${randomHue}deg`);
-                containerRef.current.style.setProperty('--flare-scale', `${randomScale}`);
-                containerRef.current.style.setProperty('--flare-x', `${randomX}px`);
-                containerRef.current.style.setProperty('--flare-y', `${randomY}px`);
-            }
-            setClickActive(true);
-            setTimeout(() => setClickActive(false), 800); // 800ms for smooth decay
+        const handleDown = (e: PointerEvent) => {
+            spawnFlare(e.clientX, e.clientY);
         };
 
         window.addEventListener('pointermove', handleMove);
         window.addEventListener('pointerdown', handleDown);
 
         const animate = () => {
-            // Increased lerp weight for more responsive feel (0.03 -> 0.08)
+            // Lerp mouse position
             currentRef.current.x += (targetRef.current.x - currentRef.current.x) * 0.08;
             currentRef.current.y += (targetRef.current.y - currentRef.current.y) * 0.08;
+
+            // Decay energy
+            energyRef.current = Math.max(energyRef.current - 0.5, 0);
+
+            // Rotate ambient hue based on energy (faster when high energy)
+            hueRef.current += 0.1 + (energyRef.current * 0.05);
 
             if (containerRef.current) {
                 containerRef.current.style.setProperty('--mouse-x', currentRef.current.x.toString());
                 containerRef.current.style.setProperty('--mouse-y', currentRef.current.y.toString());
+                containerRef.current.style.setProperty('--energy-hue', `${hueRef.current}deg`);
+                containerRef.current.style.setProperty('--energy-scale', `${1 + (energyRef.current * 0.005)}`); // Mild pulsate
             }
 
             requestRef.current = requestAnimationFrame(animate);
@@ -88,19 +107,32 @@ function InteractiveOrbs() {
             window.removeEventListener('pointerdown', handleDown);
             if (requestRef.current) cancelAnimationFrame(requestRef.current);
         };
-    }, []);
+    }, [spawnFlare]);
 
     return (
-        <div
-            ref={containerRef}
-            className={`${styles.container} ${clickActive ? styles.active : ''}`}
-        >
+        <div ref={containerRef} className={styles.container}>
+            {/* Ambient Orbs (React to energy) */}
             <div className={styles.interactiveWrapper}>
                 <div className={styles.orb1} />
             </div>
             <div className={styles.interactiveWrapperReverse}>
                 <div className={styles.orb2} />
             </div>
+
+            {/* Click Flares */}
+            {flares.map(flare => (
+                <div
+                    key={flare.id}
+                    className={styles.flare}
+                    style={{
+                        left: flare.x,
+                        top: flare.y,
+                        '--flare-hue': `${flare.hue}deg`,
+                        '--flare-scale': flare.scale,
+                    } as React.CSSProperties}
+                />
+            ))}
+
             <div className={styles.noise} />
         </div>
     );
