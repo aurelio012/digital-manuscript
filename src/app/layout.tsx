@@ -1,25 +1,26 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Space_Mono, Inter } from 'next/font/google';
+import { Cormorant_Garamond, Geist, Geist_Mono } from 'next/font/google';
 import Navigation from './components/Navigation';
 import Tribute from './components/Tribute';
 import './globals.css';
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   variable: '--font-serif',
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
   display: 'swap',
 });
 
-const spaceMono = Space_Mono({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  variable: '--font-mono',
-  display: 'swap',
-});
-
-const inter = Inter({
+const geistSans = Geist({
   subsets: ['latin'],
   variable: '--font-sans',
+  display: 'swap',
+});
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
   display: 'swap',
 });
 
@@ -35,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} ${spaceMono.variable} ${inter.variable}`}>
+      <body className={`${cormorant.variable} ${geistMono.variable} ${geistSans.variable}`}>
         <Navigation />
         {children}
         <Tribute />
