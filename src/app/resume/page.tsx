@@ -115,9 +115,14 @@ export default function Resume() {
                     <h2 className={styles.sectionTitle}>Research &amp; Publications</h2>
                     <div className={styles.list}>
                         <div className={styles.item}>
-                            <p className={styles.publication}>
-                                M. A. Rahman, <strong>I. A. Felix</strong>, U. Shahid, and J. E. Michaelis, &ldquo;PATHWiSE: An AI-Assisted Teacher Authoring Tool for Creating Custom Robot-Assisted Learning Activities&rdquo;, <em>Companion of the 2024 ACM/IEEE International Conference on Human-Robot Interaction (HRI &apos;24)</em>, pp. 88&ndash;90, March 2024.
-                            </p>
+                            <div className={styles.periodCol}>
+                                <span className={styles.period}>March 2024</span>
+                            </div>
+                            <div className={styles.contentCol}>
+                                <p className={styles.publication}>
+                                    M. A. Rahman, <strong>I. A. Felix</strong>, U. Shahid, and J. E. Michaelis, &ldquo;PATHWiSE: An AI-Assisted Teacher Authoring Tool for Creating Custom Robot-Assisted Learning Activities&rdquo;, <em>Companion of the 2024 ACM/IEEE International Conference on Human-Robot Interaction (HRI &apos;24)</em>, pp. 88&ndash;90.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </section>
