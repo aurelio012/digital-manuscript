@@ -36,46 +36,41 @@
     transform: translate(calc(var(--mouse-x, 0) * 40px), calc(var(--mouse-y, 0) * 40px));
 }
 
-/* Active State replaced by Particle System */
-
-/* Particle Flare */
-.flare {
+/* Transient Orb — Atmosperic accumulation on click */
+.transientOrb {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 50vh;
+    /* Large, soft presence */
+    height: 50vh;
     background: radial-gradient(circle,
-            hsla(var(--flare-hue), 80%, 70%, 0.6) 0%,
-            hsla(var(--flare-hue), 80%, 70%, 0) 70%);
-    transform: translate(-50%, -50%) scale(0);
+            hsla(calc(260 + var(--orb-hue)), 80%, 75%, 0.3) 0%,
+            hsla(calc(260 + var(--orb-hue)), 80%, 75%, 0) 70%);
+    transform: translate(-50%, -50%);
+    filter: blur(100px) hue-rotate(var(--energy-hue, 0deg));
+    /* Match global shift */
     border-radius: 50%;
     pointer-events: none;
-    mix-blend-mode: plus-lighter;
-    /* Softer bloom than 'screen' */
-    animation: flarePop 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    /* Slower, smoother ease */
-    z-index: 2;
-    /* Above ambient orbs, below noise */
-    opacity: 0.5;
-    /* Base opacity cap */
+    mix-blend-mode: screen;
+    animation: orbFade 2s ease-out forwards;
+    z-index: 1;
+    /* Same layer as ambient orbs */
+    will-change: opacity, transform;
 }
 
-@keyframes flarePop {
+@keyframes orbFade {
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.4);
-        /* Start slightly larger for softness */
+        transform: translate(-50%, -50%) scale(0.8);
     }
 
-    15% {
-        opacity: 0.5;
-        /* Capped at 0.5 for subtlety */
-        transform: translate(-50%, -50%) scale(var(--flare-scale));
+    20% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(var(--orb-scale));
     }
 
     100% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(calc(var(--flare-scale) * 1.2));
-        /* Reduced expansion */
+        transform: translate(-50%, -50%) scale(calc(var(--orb-scale) * 1.1));
     }
 }
 
@@ -86,9 +81,7 @@
     /* Consume energy variables for dynamic shift */
     filter:
         blur(100px) hue-rotate(var(--energy-hue, 0deg));
-    transform: scale(var(--energy-scale, 1));
-    transition: transform 0.1s linear, filter 0.1s linear;
-    /* Fast response to energy updates */
+    transition: filter 0.1s linear;
 }
 
 /* Orb 1 — muted deep violet, drifts slowly */

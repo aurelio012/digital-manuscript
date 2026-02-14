@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './ghost.module.css';
 
-interface Flare {
+interface TransientOrb {
     id: number;
     x: number;
     y: number;
@@ -33,34 +33,35 @@ function StaticOrbs() {
 }
 
 function InteractiveOrbs() {
-    const [flares, setFlares] = useState<Flare[]>([]);
+    const [transientOrbs, setTransientOrbs] = useState<TransientOrb[]>([]);
     const targetRef = useRef({ x: 0, y: 0 });
     const currentRef = useRef({ x: 0, y: 0 });
     const energyRef = useRef(0); // 0 to 100
     const hueRef = useRef(0);
     const requestRef = useRef<number | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-    const flareIdRef = useRef(0);
+    const orbIdRef = useRef(0);
 
-    const spawnFlare = useCallback((x: number, y: number) => {
-        const id = flareIdRef.current++;
-        const newFlare: Flare = {
+    const spawnTransientOrb = useCallback((x: number, y: number) => {
+        const id = orbIdRef.current++;
+        // Create a large, soft aura similar to the background ones
+        const newOrb: TransientOrb = {
             id,
             x,
             y,
-            scale: 0.8 + Math.random() * 0.8, // 0.8 - 1.6
-            hue: Math.floor(Math.random() * 360),
+            scale: 0.8 + Math.random() * 0.5,
+            hue: Math.floor(Math.random() * 60) - 30, // Subtle hue shift relative to base
         };
 
-        setFlares(prev => [...prev, newFlare]);
+        setTransientOrbs(prev => [...prev, newOrb]);
 
-        // Boost energy
-        energyRef.current = Math.min(energyRef.current + 20, 100);
+        // Boost energy for global color speed
+        energyRef.current = Math.min(energyRef.current + 15, 100);
 
-        // Auto-remove flare after animation
+        // Slow fade out
         setTimeout(() => {
-            setFlares(prev => prev.filter(f => f.id !== id));
-        }, 1000); // Match CSS duration
+            setTransientOrbs(prev => prev.filter(o => o.id !== id));
+        }, 2000); // 2s duration for atmospheric feel
     }, []);
 
     useEffect(() => {
@@ -73,7 +74,7 @@ function InteractiveOrbs() {
         };
 
         const handleDown = (e: PointerEvent) => {
-            spawnFlare(e.clientX, e.clientY);
+            spawnTransientOrb(e.clientX, e.clientY);
         };
 
         window.addEventListener('pointermove', handleMove);
@@ -87,16 +88,13 @@ function InteractiveOrbs() {
             // Decay energy
             energyRef.current = Math.max(energyRef.current - 0.5, 0);
 
-            // Rotate ambient hue based on energy (faster when high energy, but capped)
-            // Reduced multiplier from 0.05 to 0.02 for subtler color shift speed
-            hueRef.current += 0.1 + (energyRef.current * 0.02);
+            // Rotate hue
+            hueRef.current += 0.1 + (energyRef.current * 0.05);
 
             if (containerRef.current) {
                 containerRef.current.style.setProperty('--mouse-x', currentRef.current.x.toString());
                 containerRef.current.style.setProperty('--mouse-y', currentRef.current.y.toString());
                 containerRef.current.style.setProperty('--energy-hue', `${hueRef.current}deg`);
-                // Greatly reduced scale impact (0.005 -> 0.001) to keep layout stable
-                containerRef.current.style.setProperty('--energy-scale', `${1 + (energyRef.current * 0.001)}`);
             }
 
             requestRef.current = requestAnimationFrame(animate);
@@ -109,11 +107,11 @@ function InteractiveOrbs() {
             window.removeEventListener('pointerdown', handleDown);
             if (requestRef.current) cancelAnimationFrame(requestRef.current);
         };
-    }, [spawnFlare]);
+    }, [spawnTransientOrb]);
 
     return (
         <div ref={containerRef} className={styles.container}>
-            {/* Ambient Orbs (React to energy) */}
+            {/* Base Ambient Orbs */}
             <div className={styles.interactiveWrapper}>
                 <div className={styles.orb1} />
             </div>
@@ -121,16 +119,16 @@ function InteractiveOrbs() {
                 <div className={styles.orb2} />
             </div>
 
-            {/* Click Flares */}
-            {flares.map(flare => (
+            {/* Transient Orbs (Dynamic Aura Accumulation) */}
+            {transientOrbs.map(orb => (
                 <div
-                    key={flare.id}
-                    className={styles.flare}
+                    key={orb.id}
+                    className={styles.transientOrb}
                     style={{
-                        left: flare.x,
-                        top: flare.y,
-                        '--flare-hue': `${flare.hue}deg`,
-                        '--flare-scale': flare.scale,
+                        left: orb.x,
+                        top: orb.y,
+                        '--orb-hue': `${orb.hue}deg`,
+                        '--orb-scale': orb.scale,
                     } as React.CSSProperties}
                 />
             ))}
