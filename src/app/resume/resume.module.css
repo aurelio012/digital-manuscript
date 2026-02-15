@@ -12,12 +12,13 @@
     text-align: center;
 }
 
-.name {
+.headerName {
     font-family: var(--font-serif);
-    font-size: 2.5rem;
-    font-weight: 300;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
+    font-weight: 400;
+    color: var(--foreground);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
 }
 
 .contact {
