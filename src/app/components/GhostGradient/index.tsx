@@ -34,7 +34,7 @@ function InteractiveOrbs() {
             left: Math.random() * 100,
             hue: Math.floor(Math.random() * 360), // Full spectrum
             size: `${100 + Math.random() * 150}px`, // 100px - 250px
-            delay: `${Math.random() * 0.6 + 0.2}s`, // Random delay 0.2s - 0.8s
+            delay: `${Math.random() * 0.3 + 0.1}s`, // Random delay 0.1s - 0.4s
         };
 
         setFireflies(prev => [...prev, newFirefly]);
