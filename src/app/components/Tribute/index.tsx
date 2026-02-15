@@ -60,19 +60,28 @@ export default function Tribute() {
 
                     <div className={styles.content}>
                         <div className={styles.imageWrapper}>
-                            {/* Blurred background — extends beyond sharp image, both fade via wrapper mask */}
+                            {/* Layer 0: Heavy Blur Background */}
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src="/sandy_tribute.png"
                                 alt=""
-                                className={styles.imageBlurred}
+                                className={styles.imageBlurHeavy}
                                 aria-hidden="true"
                             />
+                            {/* Layer 1: Medium Blur Middle */}
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src="/sandy_tribute.png"
+                                alt=""
+                                className={styles.imageBlurMedium}
+                                aria-hidden="true"
+                            />
+                            {/* Layer 2: Sharp Foreground */}
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src="/sandy_tribute.png"
                                 alt="Sandy"
-                                className={styles.image}
+                                className={styles.imageSharp}
                             />
                         </div>
                         <p className={styles.tributeText}>Forever in our hearts.</p>
