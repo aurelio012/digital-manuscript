@@ -40,16 +40,7 @@
     font: inherit;
     cursor: pointer;
     color: #D67C7C;
-    /* Darker blush pink */
     transition: all 0.3s ease;
-    /* text-transform: uppercase; REMOVED */
-    /* letter-spacing: 0.1em; REMOVED to match sentence */
-    /* font-weight: bold; REMOVED to match sentence */
-    position: relative;
-
-    /* text-transform: uppercase; REMOVED */
-    /* letter-spacing: 0.1em; REMOVED to match sentence */
-    /* font-weight: bold; REMOVED to match sentence */
     position: relative;
 }
 
@@ -129,12 +120,7 @@
     animation-timing-function: ease-in-out;
 }
 
-@media (max-width: 768px) {
-    .aura {
-        /* Slightly reduced blur for mobile GPU relief while keeping parity */
-        filter: blur(80px);
-    }
-}
+/* Mobile: identical blur to desktop for full parity */
 
 /* Rapid flickering/moving animations for the tribute effect */
 .aura1 {
@@ -179,14 +165,7 @@
     right: 20%;
 }
 
-@media (max-width: 768px) {
-
-    .aura4,
-    .aura5 {
-        /* Restored - user requested maximum quality across devices */
-        display: block;
-    }
-}
+/* All 5 aura layers visible on every viewport */
 
 .aura5 {
     width: 90vw;
@@ -207,9 +186,19 @@
         transform: translate3d(-50%, -50%, 0) scale(1);
     }
 
+    25% {
+        opacity: 0.65;
+        transform: translate3d(-50%, -50%, 0) scale(1.06);
+    }
+
     50% {
         opacity: 0.8;
-        transform: translate3d(-50%, -50%, 0) scale(1.1);
+        transform: translate3d(-50%, -50%, 0) scale(1.12);
+    }
+
+    75% {
+        opacity: 0.6;
+        transform: translate3d(-50%, -50%, 0) scale(1.04);
     }
 }
 
@@ -221,9 +210,19 @@
         transform: translate3d(0, 0, 0) scale(1);
     }
 
+    20% {
+        opacity: 0.55;
+        transform: translate3d(10px, -10px, 0) scale(1.08);
+    }
+
     50% {
         opacity: 0.7;
         transform: translate3d(20px, -20px, 0) scale(1.2);
+    }
+
+    80% {
+        opacity: 0.5;
+        transform: translate3d(8px, -5px, 0) scale(1.05);
     }
 }
 

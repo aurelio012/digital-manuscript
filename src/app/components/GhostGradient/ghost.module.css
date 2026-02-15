@@ -17,13 +17,7 @@
     pointer-events: none;
 }
 
-@media (max-width: 768px) {
-    .noise {
-        /* Restored - user requested maximum quality */
-        display: block;
-        /* Blend modes on top of blurs kill mobile performance */
-    }
-}
+/* Noise: identical on all viewports */
 
 /* Interactive Wrappers */
 .interactiveWrapper,
@@ -86,27 +80,42 @@
     will-change: opacity, transform;
 }
 
-@media (max-width: 768px) {
-    .firefly {
-        /* Restored to full blur for aesthetic parity */
-        filter: blur(40px);
-    }
-}
+/* Firefly: identical blur on all viewports */
 
 @keyframes fireflyLife {
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
+        transform: translate(-50%, -50%) scale(0.4);
     }
 
-    15% {
-        opacity: 0.8;
-        transform: translate(-50%, -50%) scale(1.1);
+    8% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.85);
+    }
+
+    18% {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+
+    35% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    55% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1.0);
+    }
+
+    75% {
+        opacity: 0.25;
+        transform: translate(-50%, -50%) scale(0.95);
     }
 
     100% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.9);
+        transform: translate(-50%, -50%) scale(0.85);
     }
 }
 
@@ -119,14 +128,7 @@
     transition: transform 0.1s linear;
 }
 
-@media (max-width: 768px) {
-
-    .orb1,
-    .orb2 {
-        /* Restored - no visual quality sacrificed */
-        filter: blur(100px);
-    }
-}
+/* Orbs: identical blur on all viewports */
 
 /* Orb 1 — muted deep violet, drifts slowly */
 .orb1 {

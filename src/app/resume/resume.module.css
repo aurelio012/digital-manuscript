@@ -3,8 +3,7 @@
     padding: 120px var(--space-lg) 60px;
     max-width: 1000px;
     margin: 0 auto;
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out forwards;
+    position: relative;
 }
 
 .header {
@@ -117,11 +116,7 @@
     font-weight: 500;
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
+/* fadeIn removed — template.tsx handles all page transitions uniformly */
 
 @media (max-width: 768px) {
     .main {

@@ -1,10 +1,12 @@
 "use client";
 
+import GhostGradient from '../components/GhostGradient';
 import styles from './resume.module.css';
 
 export default function Resume() {
     return (
         <main className={styles.main}>
+            <GhostGradient />
             <header className={styles.header}>
                 <div className={styles.contact}>
                     <span className={styles.headerName}>Isaac Aurelio Felix</span>

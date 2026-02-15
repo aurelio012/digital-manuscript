@@ -20,7 +20,7 @@
   gap: 1.5rem;
   position: relative;
   z-index: 10;
-  animation: pageEnter 1s var(--ease-out-expo) both;
+  /* Page transition handled by template.tsx */
 }
 
 .nameContainer {
@@ -42,7 +42,6 @@
   position: relative;
   z-index: 2;
   user-select: none;
-  /* Prevent selection */
   -webkit-user-select: none;
 }
 
@@ -51,7 +50,7 @@
    
    Each aura orbits on a different path
    with staggered durations to prevent sync.
-   Reduced opacity for subtlety.
+   Identical on Desktop and Mobile.
    ─────────────────────────────────────── */
 
 .aura {
@@ -207,7 +206,7 @@
 }
 
 /* ───────────────────────────────────────
-   Responsive  
+   Responsive — same aesthetics, adjusted spacing
    ─────────────────────────────────────── */
 
 @media (max-width: 768px) {
@@ -221,24 +220,5 @@
 
   .nameContainer {
     padding: 50px 60px;
-  }
-
-  .aura {
-    filter: blur(40px);
-  }
-
-  .aura1 {
-    width: 130px;
-    height: 130px;
-  }
-
-  .aura2 {
-    width: 110px;
-    height: 110px;
-  }
-
-  .aura3 {
-    width: 90px;
-    height: 90px;
   }
 }
