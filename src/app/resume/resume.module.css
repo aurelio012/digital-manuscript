@@ -112,6 +112,38 @@
     margin-bottom: 0.5rem;
 }
 
+.subHeader {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--foreground);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.list {
+    list-style-type: none;
+    /* We'll use custom bullets or just simple spacing? User used hyphens. */
+    padding-left: 0;
+    margin: 0;
+}
+
+.listItem {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.listItem::before {
+    content: "—";
+    /* User used hyphens/dashes */
+    position: absolute;
+    left: 0;
+    color: var(--foreground-muted);
+    opacity: 0.6;
+}
+
 .description strong {
     color: var(--foreground);
     font-weight: 500;
