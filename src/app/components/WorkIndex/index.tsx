@@ -21,7 +21,7 @@ const projects: Project[] = [
         category: 'Mussmann Lab',
         year: '2025',
         link: '#',
-        description: "Partnered with the City of Charleston to evaluate sensor network viability for predicting train crossing delays. Built geospatial feature pipelines across complex port topography to benchmark hardware performance.",
+        description: "Spearheaded geospatial analysis for the City of Charleston to evaluate sensor network viability for predicting train crossing delays. Built feature pipelines across complex port topography to benchmark hardware performance and established ROI metrics.",
         contributions: ["Python", "Geospatial Modeling", "Sensor Data", "City Partnership"]
     },
     {
@@ -30,7 +30,7 @@ const projects: Project[] = [
         category: 'NYC DOE',
         year: '2025',
         link: '#',
-        description: "Consulted the NYC Department of Education on responsible AI adoption across 1,500+ public schools. Defined technical procurement criteria, security guardrails, and data privacy standards for district-wide deployment.",
+        description: "Advised the NYC Department of Education on responsible AI adoption across 1,500+ public schools. Architected technical procurement frameworks, security guardrails, and data privacy standards for district-wide software deployment.",
         contributions: ["AI Policy", "Risk Assessment", "Stakeholder Communication", "EdTech"]
     },
     {
@@ -39,7 +39,7 @@ const projects: Project[] = [
         category: 'Research',
         year: '2025',
         link: '#',
-        description: "Developed data pipelines and codebooks for analyzing legislative congruence between municipal policy and community needs. Normalized heterogeneous geospatial datasets using Geopandas and QGIS.",
+        description: "Developed formal codebooks and data schemas for analyzing legislative congruence between municipal policy and community outcomes. Engineered Python ETL pipelines to normalize heterogeneous geospatial datasets for manuscript publication.",
         contributions: ["Python", "Geopandas", "QGIS", "ETL Design", "Policy Analysis"]
     },
     {
@@ -48,9 +48,9 @@ const projects: Project[] = [
         category: 'EdTech / AI',
         year: '2023',
         link: '#',
-        description: "Built the API backbone for PATHWiSE, an AI-powered robotic tutor. Designed system prompts mapping GPT-4 outputs to age-appropriate pedagogical goals through classroom field tests.",
+        description: "Engineered the API backbone for a GPT-4 powered robotic tutor. Designed intricate system prompts mapping LLM outputs to age-appropriate pedagogical goals, validated through longitudinal classroom field tests.",
         contributions: ["GPT-4 API", "Prompt Engineering", "HRI", "Field Testing"],
-        publication: 'M. A. Rahman, I. A. Felix, et al., "PATHWiSE: An AI-Assisted Teacher Authoring Tool..." (HRI \'24)'
+        publication: 'M. A. Rahman, I. A. Felix, et al., "PATHWiSE: An AI-Assisted Teacher Authoring Tool for Robot-Based Classroom Activities" (HRI \'24)'
     },
 ];
 
