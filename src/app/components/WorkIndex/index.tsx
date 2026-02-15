@@ -22,7 +22,7 @@ const projects: Project[] = [
         year: '2025',
         link: '#',
         description: "A geospatial study with the City of Charleston exploring whether a network of sensors can reliably predict train crossing delays across the city. The project maps complex topography to model signal propagation and establishes ROI benchmarks for hardware investment.",
-        contributions: ["Python", "Geospatial Modeling", "Sensor Data", "City Partnership", "ROI Analysis"]
+        contributions: ["Python", "Geospatial Modeling", "Sensor Data", "City Partnership"]
     },
     {
         id: '02',
