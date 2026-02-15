@@ -6,7 +6,7 @@ import styles from './work.module.css';
 const projects = [
     {
         id: '01',
-        title: 'Train Project',
+        title: 'Charleston Project',
         category: 'Mussmann Lab',
         year: '2025',
         link: '#',
