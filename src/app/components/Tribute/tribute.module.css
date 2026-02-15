@@ -122,12 +122,16 @@
     border-radius: 50%;
     will-change: transform, opacity;
     mix-blend-mode: screen;
-    /* Brighter blending */
+    filter: blur(100px);
+    /* Restored for desktop */
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }
 
 @media (max-width: 768px) {
     .aura {
-        /* Restored to full intensity blur for aesthetic parity */
+        /* Slightly reduced blur for mobile GPU relief while keeping parity */
         filter: blur(80px);
     }
 }
