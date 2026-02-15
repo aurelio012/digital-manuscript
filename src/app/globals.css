@@ -114,6 +114,7 @@ pre {
   from {
     opacity: 0;
     transform: translateY(12px);
+    will-change: transform, opacity;
   }
 
   to {

@@ -29,11 +29,11 @@
 }
 
 .interactiveWrapper {
-    transform: translate(calc(var(--mouse-x, 0) * -30px), calc(var(--mouse-y, 0) * -30px));
+    transform: translate3d(calc(var(--mouse-x, 0) * -30px), calc(var(--mouse-y, 0) * -30px), 0);
 }
 
 .interactiveWrapperReverse {
-    transform: translate(calc(var(--mouse-x, 0) * 40px), calc(var(--mouse-y, 0) * 40px));
+    transform: translate3d(calc(var(--mouse-x, 0) * 40px), calc(var(--mouse-y, 0) * 40px), 0);
 }
 
 /* Atmospheric Orb — Drifting accumulation */
@@ -74,6 +74,14 @@
     animation: fireflyLife 8s ease-out forwards;
     filter: blur(40px);
     /* Heavy blur for "Aura" feel */
+    will-change: opacity, transform;
+}
+
+@media (max-width: 768px) {
+    .firefly {
+        filter: blur(20px);
+        /* Half blur on mobile for GPU relief */
+    }
 }
 
 @keyframes fireflyLife {
@@ -96,11 +104,19 @@
 /* Ambient Orbs */
 .orb1,
 .orb2 {
-    will-change: transform, filter;
+    will-change: transform, opacity;
     /* Consume energy variables for dynamic shift */
-    filter:
-        blur(100px) hue-rotate(var(--energy-hue, 0deg));
-    transition: filter 0.1s linear;
+    filter: blur(100px);
+    transition: transform 0.1s linear;
+}
+
+@media (max-width: 768px) {
+
+    .orb1,
+    .orb2 {
+        filter: blur(50px);
+        /* Reduced blur on mobile */
+    }
 }
 
 /* Orb 1 — muted deep violet, drifts slowly */
