@@ -8,9 +8,8 @@ export default function Resume() {
         <main className={styles.main}>
             <GhostGradient />
             <header className={styles.header}>
+                <span className={styles.headerName}>Isaac Aurelio Felix</span>
                 <div className={styles.contact}>
-                    <span className={styles.headerName}>Isaac Aurelio Felix</span>
-                    <span className={styles.separator}>•</span>
                     <span>New York, NY</span>
                     <span className={styles.separator}>•</span>
                     {/* Obfuscated Contact Info: Reversed in HTML, corrected via CSS */}
