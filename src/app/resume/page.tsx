@@ -8,24 +8,29 @@ export default function Resume() {
         <main className={styles.main}>
             <GhostGradient />
             <header className={styles.header}>
-                <span className={styles.headerName}>Isaac Aurelio Felix</span>
+                <div className={styles.headerLeft}>
+                    <h1 className={styles.headerName}>Isaac Aurelio Felix</h1>
+                    <a
+                        href="/Isaac_Felix_Resume.pdf"
+                        download="Isaac_Felix_Resume.pdf"
+                        className={styles.downloadButton}
+                        aria-label="Download Resume PDF"
+                    >
+                        Download PDF
+                    </a>
+                </div>
+
                 <div className={styles.contact}>
                     <span>New York, NY</span>
                     <span className={styles.separator}>•</span>
-                    {/* Obfuscated Contact Info: Reversed in HTML, corrected via CSS */}
-                    <span className={styles.obfuscated}>xilefcaasi/ni/moc.nideknil.www</span>
+                    <a href="https://www.linkedin.com/in/isaacfelix/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                        linkedin.com/in/isaacfelix
+                    </a>
                     <span className={styles.separator}>•</span>
-                    <span className={styles.obfuscated}>moc.kooltuo@7890xilefcaasi</span>
+                    <a href="mailto:isaacfelix0987@outlook.com" className={styles.link}>
+                        isaacfelix0987@outlook.com
+                    </a>
                 </div>
-
-                <a
-                    href="/Isaac_Felix_Resume.pdf"
-                    download="Isaac_Felix_Resume.pdf"
-                    className={styles.downloadButton}
-                    aria-label="Download Resume PDF"
-                >
-                    Download PDF
-                </a>
             </header>
 
             <section className={styles.section}>
