@@ -33,7 +33,7 @@ const projects = [
     },
     {
         id: '04',
-        title: 'LIT Lab',
+        title: 'PATHWiSE',
         category: 'EdTech / AI',
         year: '2023',
         link: '#',

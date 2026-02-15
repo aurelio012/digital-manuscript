@@ -102,7 +102,7 @@ export default function Resume() {
                         </div>
                         <div className={styles.rightCol}>
                             <h3 className={styles.role}>Research Assistant</h3>
-                            <h4 className={styles.company}>Learning + Interest + Technology Lab</h4>
+                            <h4 className={styles.company}>PATHWiSE</h4>
                             <p className={styles.description}>
                                 Engineered API integration for robotic AI tutor. Designed system prompts to map GPT-4 outputs to pedagogical goals. Iterated on features based on field tests with educators.
                             </p>
