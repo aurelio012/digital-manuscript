@@ -57,41 +57,52 @@
     }
 }
 
-/* Transient Orb — Atmosperic accumulation on click */
-.transientOrb {
+/* --- FIREFLIES --- */
+.firefly {
     position: absolute;
-    width: 50vh;
-    /* Large, soft presence */
-    height: 50vh;
+    /* Soft, intense core with wide glow */
     background: radial-gradient(circle,
-            hsla(calc(260 + var(--orb-hue)), 80%, 75%, 0.3) 0%,
-            hsla(calc(260 + var(--orb-hue)), 80%, 75%, 0) 70%);
+            hsla(var(--hue), 85%, 70%, 0.9) 0%,
+            hsla(var(--hue), 85%, 60%, 0.4) 10%,
+            hsla(var(--hue), 85%, 60%, 0) 60%);
     transform: translate(-50%, -50%);
-    filter: blur(100px) hue-rotate(var(--energy-hue, 0deg));
-    /* Match global shift */
     border-radius: 50%;
     pointer-events: none;
+    z-index: 2;
+    /* Above ambient orbs */
     mix-blend-mode: screen;
-    animation: orbFade 2s ease-out forwards;
-    z-index: 1;
-    /* Same layer as ambient orbs */
-    will-change: opacity, transform;
+    /* Additive blending */
+    animation: fireflyAppear 2s ease-out forwards, fireflyFloat 20s infinite alternate ease-in-out;
+    filter: blur(8px);
 }
 
-@keyframes orbFade {
-    0% {
+@keyframes fireflyAppear {
+    from {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
+        transform: translate(-50%, -50%) scale(0.5);
     }
 
-    20% {
-        opacity: 0.6;
-        transform: translate(-50%, -50%) scale(var(--orb-scale));
+    to {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes fireflyFloat {
+    0% {
+        transform: translate(-50%, -50%) translate(0, 0);
+    }
+
+    33% {
+        transform: translate(-50%, -50%) translate(30px, -50px);
+    }
+
+    66% {
+        transform: translate(-50%, -50%) translate(-20px, 40px);
     }
 
     100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(calc(var(--orb-scale) * 1.1));
+        transform: translate(-50%, -50%) translate(10px, -10px);
     }
 }
 
