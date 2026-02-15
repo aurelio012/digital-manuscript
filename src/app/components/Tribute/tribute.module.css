@@ -281,6 +281,9 @@
     max-width: 420px;
     max-height: 520px;
     overflow: visible;
+    /* Mask the entire wrapper — both sharp and blurred layers fade together */
+    mask-image: radial-gradient(ellipse 85% 85% at 50% 48%, black 40%, rgba(0, 0, 0, 0.4) 60%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 48%, black 40%, rgba(0, 0, 0, 0.4) 60%, transparent 75%);
 }
 
 /* Dreamy glow halo around the photo */
@@ -297,12 +300,26 @@
     z-index: -1;
 }
 
+.imageBlurred {
+    position: absolute;
+    inset: -40%;
+    width: 180%;
+    height: 180%;
+    object-fit: cover;
+    filter: blur(40px) saturate(0.5);
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+}
+
 .image {
+    position: relative;
+    z-index: 1;
     display: block;
     width: 100%;
     height: auto;
     object-fit: contain;
-    filter: url(#edgeBlur) saturate(0.8) contrast(1.05);
+    filter: saturate(0.8) contrast(1.05);
 }
 
 .tributeText {
