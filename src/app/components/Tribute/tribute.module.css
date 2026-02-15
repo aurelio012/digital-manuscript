@@ -126,8 +126,7 @@
 .aura1 {
     width: 60vw;
     height: 60vw;
-    background: rgba(139, 92, 246, 0.8);
-    /* Violet */
+    background: rgba(244, 143, 177, 0.7);
     animation-name: flicker1;
     top: 50%;
     left: 50%;
@@ -137,8 +136,7 @@
 .aura2 {
     width: 50vw;
     height: 50vw;
-    background: rgba(56, 189, 248, 0.8);
-    /* Teal */
+    background: rgba(236, 112, 162, 0.7);
     animation-name: flicker2;
     top: 30%;
     left: 30%;
@@ -147,8 +145,7 @@
 .aura3 {
     width: 70vw;
     height: 70vw;
-    background: rgba(245, 158, 11, 0.6);
-    /* Amber */
+    background: rgba(255, 182, 193, 0.5);
     animation-name: flicker3;
     bottom: 0%;
     right: 0%;
@@ -157,8 +154,7 @@
 .aura4 {
     width: 40vw;
     height: 40vw;
-    background: rgba(244, 114, 182, 0.7);
-    /* Pink */
+    background: rgba(219, 112, 147, 0.6);
     animation-name: flicker2;
     animation-duration: 3s;
     top: 20%;
@@ -293,8 +289,8 @@
     position: absolute;
     inset: -40%;
     background: radial-gradient(ellipse 50% 50% at 50% 50%,
-            rgba(139, 92, 246, 0.12) 0%,
-            rgba(56, 189, 248, 0.08) 30%,
+            rgba(244, 143, 177, 0.15) 0%,
+            rgba(236, 112, 162, 0.08) 30%,
             transparent 60%);
     filter: blur(60px);
     pointer-events: none;
