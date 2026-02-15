@@ -37,6 +37,10 @@
     /* letter-spacing: 0.1em; REMOVED to match sentence */
     /* font-weight: bold; REMOVED to match sentence */
     position: relative;
+
+    /* Exception: Allow highlighting */
+    user-select: text;
+    -webkit-user-select: text;
 }
 
 .trigger:hover {

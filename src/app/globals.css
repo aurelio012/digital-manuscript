@@ -59,6 +59,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  /* Global non-selectable text (Art Object feel) */
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Ensure main content fills space to push footer down */
