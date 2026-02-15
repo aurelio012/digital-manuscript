@@ -35,12 +35,12 @@ const projects: Project[] = [
     },
     {
         id: '03',
-        title: 'Legislative Congruence Architecture',
-        category: 'Research',
-        year: '2025',
+        title: "Legislative Architecture",
+        category: "Research / Data",
+        year: "2023",
         link: '#',
-        description: "A research methodology for measuring alignment between municipal legislation and community-level outcomes. Combines formal codebook development with Python ETL pipelines that normalize heterogeneous geospatial datasets for quantitative policy analysis.",
-        contributions: ["Python", "Geopandas", "QGIS", "ETL Design", "Policy Analysis"]
+        description: "A computational framework for analyzing alignment between legislative text and urban policy outcomes. Developed natural language processing pipelines to quantify semantic similarity between bill proposals and enacted city ordnances, revealing gaps in political representation.",
+        contributions: ["NLP Pipeline Development", "Policy Alignment Scoring", "Data Visualization"]
     },
     {
         id: '04',
