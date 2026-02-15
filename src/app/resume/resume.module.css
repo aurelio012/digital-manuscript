@@ -6,6 +6,7 @@
     position: relative;
 }
 
+/* Header Grid Layout */
 .header {
     display: flex;
     justify-content: space-between;
@@ -37,7 +38,6 @@
     display: flex;
     gap: 0.75rem;
     align-items: center;
-    /* Align with text baseline roughly */
     font-family: var(--font-mono);
     font-size: 0.75rem;
     color: var(--foreground-muted);
@@ -82,30 +82,7 @@
     transform: translateY(-1px);
 }
 
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        gap: 2rem;
-        align-items: flex-start;
-        text-align: left;
-    }
-
-    .contact {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .separator {
-        display: none;
-    }
-
-    .downloadButton {
-        width: 100%;
-        margin-top: 0.5rem;
-    }
-}
-
+/* Section Layout */
 .section {
     margin-bottom: 4rem;
 }
@@ -187,7 +164,6 @@
 
 .list {
     list-style-type: none;
-    /* We'll use custom bullets or just simple spacing? User used hyphens. */
     padding-left: 0;
     margin: 0;
 }
@@ -200,7 +176,6 @@
 
 .listItem::before {
     content: "—";
-    /* User used hyphens/dashes */
     position: absolute;
     left: 0;
     color: var(--foreground-muted);
@@ -212,11 +187,31 @@
     font-weight: 500;
 }
 
-/* fadeIn removed — template.tsx handles all page transitions uniformly */
-
 @media (max-width: 768px) {
     .main {
         padding: 100px var(--space-md) 40px;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .contact {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    .downloadButton {
+        width: 100%;
+        margin-top: 0.5rem;
     }
 
     .row {
@@ -227,51 +222,5 @@
     .leftCol {
         text-align: left;
         margin-bottom: 0.25rem;
-    }
-}
-
-/* Additions to resume.module.css for the download button */
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: var(--space-md);
-}
-
-.downloadButton {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    transition: all 0.2s var(--ease-out-expo);
-    border-radius: 2px;
-}
-
-.downloadButton:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.3);
-    color: var(--foreground);
-    transform: translateY(-1px);
-}
-
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .downloadButton {
-        width: 100%;
-        justify-content: center;
-        padding: 10px;
     }
 }
