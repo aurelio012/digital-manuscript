@@ -255,33 +255,45 @@
         display: none;
     }
 
-    /* Mobile Accordion */
+    /* Mobile Accordion - Counter-Scale Technique (GPU only) */
     .mobileDetails {
-        display: grid;
-        grid-template-rows: 0fr;
+        display: block;
+        /* Back to block for scaleY */
         overflow: hidden;
-        transition: grid-template-rows 0.5s var(--ease-out-expo);
+        height: 0;
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.6s var(--ease-out-expo), opacity 0.4s ease, height 0.6s var(--ease-out-expo);
         padding-left: calc(40px + var(--space-sm));
         contain: content;
-        /* Isolates layout, style, and paint */
-        will-change: grid-template-rows;
+        will-change: transform, opacity;
     }
 
     .mobileDetails.expanded {
-        grid-template-rows: 1fr;
+        height: auto;
+        /* Browser handles this as a snap, transition handles the visual */
+        opacity: 1;
+        transform: scaleY(1);
     }
 
     .mobileInner {
         min-height: 0;
-        opacity: 0;
-        transform: translateY(-8px);
-        transition: opacity 0.4s ease, transform 0.4s var(--ease-out-expo);
+        transform: scaleY(1);
+        /* Default */
+        transform-origin: top;
+        transition: transform 0.6s var(--ease-out-expo);
+        will-change: transform;
+    }
+
+    .mobileDetails:not(.expanded) .mobileInner {
+        transform: scaleY(2);
+        /* Counter-scale to prevent squash (simplified) */
     }
 
     .mobileDetails.expanded .mobileInner {
-        opacity: 1;
-        transform: translateY(0);
         padding-bottom: var(--space-md);
+        transform: scaleY(1);
     }
 
     .mobileDesc {
