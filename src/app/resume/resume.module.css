@@ -34,6 +34,8 @@
     unicode-bidi: bidi-override;
     direction: rtl;
     text-align: left;
+    user-select: text;
+    -webkit-user-select: text;
 }
 
 .separator {
