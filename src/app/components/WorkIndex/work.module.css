@@ -50,6 +50,7 @@
 /* Dim non-hovered items for focus effect */
 .list:hover .itemWrapper:not(:hover) {
     opacity: 0.35;
+    will-change: opacity;
 }
 
 .item {
@@ -58,14 +59,15 @@
     align-items: baseline;
     gap: var(--space-md);
     padding: var(--space-md) 0;
-    transition: all var(--duration-normal) var(--ease-out-expo);
+    transition: transform var(--duration-normal) var(--ease-out-expo), color var(--duration-normal) var(--ease-out-expo);
     cursor: pointer;
     text-decoration: none;
+    will-change: transform;
 }
 
 .item:hover,
 .activeItem {
-    padding-left: var(--space-xs);
+    transform: translate3d(var(--space-xs), 0, 0);
 }
 
 .item:hover .title,

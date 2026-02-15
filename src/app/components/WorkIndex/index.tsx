@@ -1,9 +1,20 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import styles from './work.module.css';
 
-const projects = [
+interface Project {
+    id: string;
+    title: string;
+    category: string;
+    year: string;
+    link: string;
+    description: string;
+    contributions: string[];
+    publication?: string;
+}
+
+const projects: Project[] = [
     {
         id: '01',
         title: 'The Charleston Project',
@@ -43,20 +54,47 @@ const projects = [
     },
 ];
 
+interface ProjectItemProps {
+    project: Project;
+    isActive: boolean;
+    isExpanded: boolean;
+    onMouseEnter: () => void;
+    onClick: (e: React.MouseEvent) => void;
+}
+
+const ProjectItem = memo(({ project, isActive, isExpanded, onMouseEnter, onClick }: ProjectItemProps) => {
+    return (
+        <div className={`${styles.itemWrapper} ${isActive ? styles.activeWrapper : ''}`}>
+            <a
+                href={project.link}
+                className={`${styles.item} ${isActive ? styles.activeItem : ''}`}
+                onMouseEnter={onMouseEnter}
+                onClick={onClick}
+            >
+                <span className={styles.id}>({project.id})</span>
+                <span className={styles.title}>{project.title}</span>
+                <span className={styles.category}>{project.category}</span>
+                <span className={styles.year}>{project.year}</span>
+            </a>
+
+            {/* Mobile Accordion Content */}
+            <div className={`${styles.mobileDetails} ${isExpanded ? styles.expanded : ''}`}>
+                <p className={styles.mobileDesc}>{project.description}</p>
+                <div className={styles.mobileTags}>
+                    {project.contributions.map((tag: string) => (
+                        <span key={tag}>{tag}</span>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+});
+
+ProjectItem.displayName = 'ProjectItem';
+
 export default function WorkIndex() {
-    const [activeProject, setActiveProject] = useState(projects[0]);
+    const [activeProject, setActiveProject] = useState<Project>(projects[0]);
     const [expandedProjectId, setExpandedProjectId] = useState<string | null>(null);
-
-    const handleMouseEnter = (project: typeof projects[0]) => {
-        setActiveProject(project);
-    };
-
-    const handleMobileClick = (e: React.MouseEvent, projectId: string) => {
-        e.preventDefault();
-        setExpandedProjectId(expandedProjectId === projectId ? null : projectId);
-        const proj = projects.find(p => p.id === projectId);
-        if (proj) setActiveProject(proj);
-    };
 
     return (
         <section id="work" className={styles.container}>
@@ -66,36 +104,20 @@ export default function WorkIndex() {
             </div>
 
             <div className={styles.list}>
-                {projects.map((project) => {
-                    const isExpanded = expandedProjectId === project.id;
-                    const isActive = activeProject.id === project.id;
-
-                    return (
-                        <div key={project.id} className={`${styles.itemWrapper} ${isActive ? styles.activeWrapper : ''}`}>
-                            <a
-                                href={project.link}
-                                className={`${styles.item} ${isActive ? styles.activeItem : ''}`}
-                                onMouseEnter={() => handleMouseEnter(project)}
-                                onClick={(e) => handleMobileClick(e, project.id)}
-                            >
-                                <span className={styles.id}>({project.id})</span>
-                                <span className={styles.title}>{project.title}</span>
-                                <span className={styles.category}>{project.category}</span>
-                                <span className={styles.year}>{project.year}</span>
-                            </a>
-
-                            {/* Mobile Accordion Content */}
-                            <div className={`${styles.mobileDetails} ${isExpanded ? styles.expanded : ''}`}>
-                                <p className={styles.mobileDesc}>{project.description}</p>
-                                <div className={styles.mobileTags}>
-                                    {project.contributions.map(tag => (
-                                        <span key={tag}>{tag}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })}
+                {projects.map((project: Project) => (
+                    <ProjectItem
+                        key={project.id}
+                        project={project}
+                        isActive={activeProject.id === project.id}
+                        isExpanded={expandedProjectId === project.id}
+                        onMouseEnter={() => setActiveProject(project)}
+                        onClick={(e: React.MouseEvent) => {
+                            e.preventDefault();
+                            setExpandedProjectId(expandedProjectId === project.id ? null : project.id);
+                            setActiveProject(project);
+                        }}
+                    />
+                ))}
             </div>
 
             {/* Desktop Sticky Details Panel */}
@@ -107,20 +129,19 @@ export default function WorkIndex() {
                     <div className={styles.detailMeta}>
                         <span className={styles.metaLabel}>Contributions</span>
                         <ul className={styles.contributionList}>
-                            {activeProject.contributions.map((item, i) => (
+                            {activeProject.contributions.map((item: string, i: number) => (
                                 <li key={i}>{item}</li>
                             ))}
                         </ul>
                     </div>
 
                     {/* Publication Highlight if available */}
-                    {(activeProject as any).publication && (
+                    {activeProject.publication && (
                         <div className={styles.detailMeta}>
                             <span className={styles.metaLabel}>Publication</span>
-                            <p className={styles.publicationText}>{(activeProject as any).publication}</p>
+                            <p className={styles.publicationText}>{activeProject.publication}</p>
                         </div>
                     )}
-
                 </div>
             </div>
         </section>
