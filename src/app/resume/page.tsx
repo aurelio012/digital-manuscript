@@ -46,7 +46,7 @@ export default function Resume() {
                         </div>
                         <div className={styles.rightCol}>
                             <h3 className={styles.role}>AI Policy Fellow</h3>
-                            <h4 className={styles.company}>Paragon Policy</h4>
+                            <h4 className={styles.company}>Paragon</h4>
                             <p className={styles.description}>
                                 Consulted NYC Dept. of Education to architect technical procurement framework for AI adoption across 1,500+ schools. Defined district-wide security guardrails and data privacy standards for vendor software implementation.
                             </p>

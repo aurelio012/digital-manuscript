@@ -15,7 +15,7 @@ const projects = [
     },
     {
         id: '02',
-        title: 'Paragon Fellowship',
+        title: 'Paragon',
         category: 'NYC DOE',
         year: '2025',
         link: '#',
