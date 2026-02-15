@@ -312,8 +312,8 @@
     pointer-events: none;
     z-index: 0;
     /* Wide mask but strictly within image bounds to prevent hard edges */
-    mask-image: radial-gradient(ellipse closest-side at 50% 48%, black 60%, transparent 95%);
-    -webkit-mask-image: radial-gradient(ellipse closest-side at 50% 48%, black 60%, transparent 95%);
+    mask-image: radial-gradient(ellipse closest-side at 40% 35%, black 60%, transparent 95%);
+    -webkit-mask-image: radial-gradient(ellipse closest-side at 40% 35%, black 60%, transparent 95%);
 }
 
 /* Layer 1: Medium Blur - Bridges the sharp image to the heavy blur */
@@ -327,8 +327,8 @@
     opacity: 0.9;
     pointer-events: none;
     z-index: 1;
-    mask-image: radial-gradient(ellipse closest-side at 50% 48%, black 50%, transparent 90%);
-    -webkit-mask-image: radial-gradient(ellipse closest-side at 50% 48%, black 50%, transparent 90%);
+    mask-image: radial-gradient(ellipse closest-side at 40% 35%, black 50%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse closest-side at 40% 35%, black 50%, transparent 90%);
 }
 
 /* Layer 2: Sharp Foreground - Focused center */
@@ -340,8 +340,8 @@
     height: auto;
     object-fit: contain;
     /* Tight mask - sharp pixels fade out early to reveal the blur layers */
-    mask-image: radial-gradient(ellipse closest-side at 50% 48%, black 40%, rgba(0, 0, 0, 0.2) 60%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse closest-side at 50% 48%, black 40%, rgba(0, 0, 0, 0.2) 60%, transparent 80%);
+    mask-image: radial-gradient(ellipse closest-side at 40% 35%, black 40%, rgba(0, 0, 0, 0.2) 60%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse closest-side at 40% 35%, black 40%, rgba(0, 0, 0, 0.2) 60%, transparent 80%);
     filter: saturate(0.8) contrast(1.05);
 }
 
