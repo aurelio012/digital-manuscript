@@ -16,6 +16,13 @@
     mix-blend-mode: screen;
 }
 
+@media (max-width: 768px) {
+    .noise {
+        display: none;
+        /* Blend modes on top of blurs kill mobile performance */
+    }
+}
+
 /* Interactive Wrappers */
 .interactiveWrapper,
 .interactiveWrapperReverse {

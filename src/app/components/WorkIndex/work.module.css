@@ -45,6 +45,10 @@
 .itemWrapper {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     transition: opacity var(--duration-normal) var(--ease-out-expo);
+    transform: translateZ(0);
+    /* Force project card to its own layer */
+    contain: layout;
+    /* Prevent expansion from affecting sibling heights in same pass */
 }
 
 /* Dim non-hovered items for focus effect */
@@ -258,6 +262,9 @@
         overflow: hidden;
         transition: grid-template-rows 0.5s var(--ease-out-expo);
         padding-left: calc(40px + var(--space-sm));
+        contain: content;
+        /* Isolates layout, style, and paint */
+        will-change: grid-template-rows;
     }
 
     .mobileDetails.expanded {
