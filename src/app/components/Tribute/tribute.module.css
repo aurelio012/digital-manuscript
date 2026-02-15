@@ -293,8 +293,9 @@
     width: 100%;
     height: auto;
     object-fit: contain;
-    mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 40%, transparent 72%);
-    -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 40%, transparent 72%);
+    mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, black 25%, transparent 65%);
+    -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, black 25%, transparent 65%);
+    filter: saturate(0.85) contrast(1.05);
 }
 
 .tributeText {
