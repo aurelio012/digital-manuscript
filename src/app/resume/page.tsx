@@ -1,141 +1,182 @@
 "use client";
 
-import GhostGradient from '../components/GhostGradient';
 import styles from './resume.module.css';
-
-const experience = [
-    {
-        role: "Quantitative Analyst",
-        company: "Bank of America",
-        period: "Feb 2024 — Present",
-        description: "Financial Crime Detection — Engineered fine-tuning data strategies to align external models with bank risk frameworks. Led technical integration of proprietary third-party AI platforms for transaction monitoring.\n\nConsumer Portfolio Strategy — Built daily bankruptcy ETL workflows powering executive forecasting dashboards. Developed automated pipelines for consumer credit risk modeling."
-    },
-    {
-        role: "Research Assistant",
-        company: "Mussmann Lab — Georgia Tech",
-        period: "Aug 2025 — Present",
-        description: "Partnered with the City of Charleston to evaluate sensor network viability for predicting train crossing delays. Engineered geospatial feature pipelines across complex port topography."
-    },
-    {
-        role: "AI Policy Fellow",
-        company: "Paragon Fellowship — NYC DOE",
-        period: "Sep 2025 — Dec 2025",
-        description: "Consulted the NYC Department of Education on responsible AI adoption frameworks for 1,500+ public schools. Defined district-wide security guardrails and data privacy standards."
-    },
-    {
-        role: "Research Assistant",
-        company: "Friendly Cities Lab — Georgia Tech",
-        period: "May 2025 — Jul 2025",
-        description: "Developed data pipelines and codebooks for legislative congruence analysis. Normalized heterogeneous geospatial datasets using Geopandas and QGIS."
-    },
-    {
-        role: "Quantitative Analyst Intern",
-        company: "Bank of America",
-        period: "Jun 2023 — Aug 2023",
-        description: "Trained multiclass LSTM network using Apache Spark to predict mortgage delinquency. Preprocessed raw loan-level data to correct irregularities."
-    },
-    {
-        role: "Research Assistant",
-        company: "LIT Lab — UIC",
-        period: "Aug 2022 — Dec 2023",
-        description: "Built the API backbone for PATHWiSE, an AI-powered robotic tutor. Designed system prompts mapping GPT-4 outputs to pedagogically aligned goals through classroom field tests."
-    },
-    {
-        role: "Mobile Networks Co-op",
-        company: "Nokia",
-        period: "Sep 2022 — Dec 2022",
-        description: "Optimized radio-control software for 5G cellular radios, ensuring stability within high-throughput network environments."
-    }
-];
-
-const skills = [
-    "Python", "Apache Spark", "SQL", "TensorFlow", "PyTorch",
-    "Geopandas", "QGIS", "NLP / LLMs", "Prompt Engineering",
-    "React / Next.js", "TypeScript", "ETL Pipelines",
-    "Data Visualization", "Geospatial Analysis"
-];
 
 export default function Resume() {
     return (
         <main className={styles.main}>
-            <GhostGradient />
+            <header className={styles.header}>
+                <h1 className={styles.name}>Isaac Aurelio Felix</h1>
+                <div className={styles.contact}>
+                    <span>New York, NY</span>
+                    <span className={styles.separator}>•</span>
+                    {/* Obfuscated Contact Info: Reversed in HTML, corrected via CSS */}
+                    <span className={styles.obfuscated}>xilefcaasi/ni/moc.nideknil.www</span>
+                    <span className={styles.separator}>•</span>
+                    <span className={styles.obfuscated}>moc.kooltuo@7890xilefcaasi</span>
+                </div>
+            </header>
 
-            <div className={styles.contentWrapper}>
-                <section className={styles.section}>
-                    <h2 className={styles.sectionTitle}>Education</h2>
-                    <div className={styles.list}>
-                        <div className={styles.item}>
-                            <div className={styles.periodCol}>
-                                <span className={styles.period}>Jan 2025 — Dec 2026</span>
-                            </div>
-                            <div className={styles.contentCol}>
-                                <div className={styles.itemHeader}>
-                                    <h3 className={styles.role}>Georgia Institute of Technology</h3>
-                                    <span className={styles.company}>M.S. Computer Science</span>
-                                </div>
-                            </div>
+            <section className={styles.section}>
+                <h2 className={styles.sectionTitle}>Experience</h2>
+
+                <div className={styles.grid}>
+                    {/* Bank of America */}
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Feb 2024 — Present</span>
                         </div>
-                        <div className={styles.item}>
-                            <div className={styles.periodCol}>
-                                <span className={styles.period}>Jan 2022 — Dec 2023</span>
-                            </div>
-                            <div className={styles.contentCol}>
-                                <div className={styles.itemHeader}>
-                                    <h3 className={styles.role}>University of Illinois at Chicago</h3>
-                                    <span className={styles.company}>B.S. Computer Science &amp; Linguistics</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section className={styles.section}>
-                    <h2 className={styles.sectionTitle}>Experience</h2>
-                    <div className={styles.list}>
-                        {experience.map((job, index) => (
-                            <div key={index} className={styles.item}>
-                                <div className={styles.periodCol}>
-                                    <span className={styles.period}>{job.period}</span>
-                                </div>
-                                <div className={styles.contentCol}>
-                                    <div className={styles.itemHeader}>
-                                        <h3 className={styles.role}>{job.role}</h3>
-                                        <span className={styles.company}>{job.company}</span>
-                                    </div>
-                                    {job.description.split('\n\n').map((paragraph, i) => (
-                                        <p key={i} className={styles.description}>{paragraph}</p>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-
-                <section className={styles.section}>
-                    <h2 className={styles.sectionTitle}>Research &amp; Publications</h2>
-                    <div className={styles.list}>
-                        <div className={styles.item}>
-                            <div className={styles.periodCol}>
-                                <span className={styles.period}>March 2024</span>
-                            </div>
-                            <div className={styles.contentCol}>
-                                <p className={styles.publication}>
-                                    M. A. Rahman, <strong>I. A. Felix</strong>, U. Shahid, and J. E. Michaelis, &ldquo;PATHWiSE: An AI-Assisted Teacher Authoring Tool for Creating Custom Robot-Assisted Learning Activities&rdquo;, <em>Companion of the 2024 ACM/IEEE International Conference on Human-Robot Interaction (HRI &apos;24)</em>, pp. 88&ndash;90.
-                                </p>
-                            </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>Quantitative Analyst</h3>
+                            <h4 className={styles.company}>Bank of America</h4>
+                            <p className={styles.description}>
+                                <strong>Financial Crime Detection Models:</strong> Engineered fine-tuning data strategy to align external models with bank risk frameworks. Curated ground-truth corpus by standardizing historical fraud records. Led technical integration of proprietary third-party AI platform, managing due diligence and precision/recall acceptance gates.
+                            </p>
+                            <p className={styles.description}>
+                                <strong>Consumer Portfolio Strategy:</strong> Engineered daily bankruptcy ETL workflows (SAS/SQL) for real-time forecasting. Modeled credit degradation curves via cohort analysis, influencing strategic risk management adjustments. Validated challenger models via stress-testing and interpretability analysis.
+                            </p>
                         </div>
                     </div>
-                </section>
 
-                <section className={styles.section}>
-                    <h2 className={styles.sectionTitle}>Skills</h2>
-                    <div className={styles.skillsList}>
-                        {skills.map((skill) => (
-                            <span key={skill}>{skill}</span>
-                        ))}
+                    {/* Paragon Policy */}
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Sep 2025 — Dec 2025</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>AI Policy Fellow</h3>
+                            <h4 className={styles.company}>Paragon Policy</h4>
+                            <p className={styles.description}>
+                                Consulted NYC Dept. of Education to architect technical procurement framework for AI adoption across 1,500+ schools. Defined district-wide security guardrails and data privacy standards for vendor software implementation.
+                            </p>
+                        </div>
                     </div>
-                </section>
-            </div>
+
+                    {/* Mussmann Lab */}
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Aug 2025 — Present</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>Research Assistant</h3>
+                            <h4 className={styles.company}>Georgia Tech (Mussmann Lab)</h4>
+                            <p className={styles.description}>
+                                Partnered with City of Charleston to model train crossing delay predictability. Engineered geospatial features to analyze complex port topography and established performance benchmarks for new sensor hardware ROI.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Friendly Cities Lab */}
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>May 2025 — Jul 2025</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>Research Assistant</h3>
+                            <h4 className={styles.company}>Georgia Tech (Friendly Cities Lab)</h4>
+                            <p className={styles.description}>
+                                Created codebook and data schema for legislative congruence analysis. Engineered Python ETL pipelines (Geopandas/QGIS) to normalize geospatial data. Contributed to draft research manuscript via comprehensive literature review.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Bank of America Intern */}
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Jun 2023 — Aug 2023</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>Quantitative Analyst Intern</h3>
+                            <h4 className={styles.company}>Bank of America</h4>
+                            <p className={styles.description}>
+                                Trained multiclass LSTM network using Apache Spark to predict mortgage delinquency. Preprocessed raw loan-level data to correct irregularities and optimize data integrity for downstream risk modeling.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* LIT Lab */}
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Aug 2022 — Dec 2023</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>Research Assistant</h3>
+                            <h4 className={styles.company}>Learning + Interest + Technology Lab</h4>
+                            <p className={styles.description}>
+                                Engineered API integration for robotic AI tutor. Designed system prompts to map GPT-4 outputs to pedagogical goals. Iterated on features based on field tests with educators.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Nokia */}
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Sep 2022 — Dec 2022</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>Mobile Networks Co-op</h3>
+                            <h4 className={styles.company}>Nokia</h4>
+                            <p className={styles.description}>
+                                Collaborated with engineering teams to optimize radio-control software for 5G cellular radios, ensuring stability within high-throughput network environments.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.section}>
+                <h2 className={styles.sectionTitle}>Education</h2>
+                <div className={styles.grid}>
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Jan 2025 — Dec 2026</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>M.S. Computer Science</h3>
+                            <h4 className={styles.company}>Georgia Institute of Technology</h4>
+                        </div>
+                    </div>
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Jan 2022 — Dec 2023</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>B.S. Computer Science & Linguistics</h3>
+                            <h4 className={styles.company}>University of Illinois at Chicago</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.section}>
+                <h2 className={styles.sectionTitle}>Research & Leadership</h2>
+                <div className={styles.grid}>
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>March 2024</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>Publication (HRI '24)</h3>
+                            <h4 className={styles.company}>"PATHWiSE: An AI-Assisted Teacher Authoring Tool..."</h4>
+                            <p className={styles.description}>
+                                M. A. Rahman, I. A. Felix, et al. Companion of the 2024 ACM/IEEE International Conference on Human-Robot Interaction.
+                            </p>
+                        </div>
+                    </div>
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Aug 2023 — Dec 2023</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>Mentor</h3>
+                            <h4 className={styles.company}>Society of Hispanic Professional Engineers</h4>
+                            <p className={styles.description}>
+                                Mentored junior engineering students on academic planning and career development in tech.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
     );
 }
