@@ -22,7 +22,7 @@ const projects: Project[] = [
         year: '2025',
         link: '#',
         description: "A geospatial study with the City of Charleston exploring whether a network of sensors can reliably predict train crossing delays across the city. The project maps complex topography to model signal propagation and establishes ROI benchmarks for hardware investment.",
-        contributions: ["Python", "Geospatial Modeling", "Sensor Data", "City Partnership"]
+        contributions: ["Python", "Geospatial Modeling", "Sensor Data", "City Partnership", "ROI Analysis"]
     },
     {
         id: '02',
@@ -31,7 +31,7 @@ const projects: Project[] = [
         year: '2025',
         link: '#',
         description: "A policy framework guiding the NYC Department of Education's adoption of AI tools across 1,500+ public schools. The work defines technical procurement criteria, security guardrails, data privacy standards, and more for evaluating vendor software at district scale.",
-        contributions: ["AI Policy", "Risk Assessment", "Stakeholder Communication", "EdTech"]
+        contributions: ["AI Policy", "City Partnership", "Technical Procurement", "Data Privacy & Security", "EdTech"]
     },
     {
         id: '03',
@@ -40,7 +40,7 @@ const projects: Project[] = [
         year: "2023",
         link: '#',
         description: "A computational framework for analyzing alignment between legislative text and urban policy outcomes. Developed natural language processing pipelines to quantify semantic similarity between bill proposals and enacted city ordnances, revealing gaps in political representation.",
-        contributions: ["NLP Pipeline Development", "Policy Alignment Scoring", "Data Visualization"]
+        contributions: ["Python ETL", "Geospatial Analysis", "Data Schema Design", "Policy Analysis"]
     },
     {
         id: '04',
@@ -49,7 +49,7 @@ const projects: Project[] = [
         year: '2023',
         link: '#',
         description: "An AI-powered robotic tutoring platform that translates GPT-4 outputs into pedagogical interactions. The system pairs carefully designed prompts with a physical robot, validated through longitudinal classroom field tests with K-5 students.",
-        contributions: ["GPT-4 API", "Prompt Engineering", "HRI", "Field Testing"],
+        contributions: ["Product Development", "GPT-4 API", "Prompt Engineering", "HRI", "Field Testing"],
         publication: 'M. A. Rahman, I. A. Felix, et al., "PATHWiSE: An AI-Assisted Teacher Authoring Tool for Robot-Based Classroom Activities" (HRI \'24)'
     },
 ];
