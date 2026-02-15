@@ -48,7 +48,7 @@ export default function Resume() {
                             <h3 className={styles.role}>AI Policy Fellow</h3>
                             <h4 className={styles.company}>Paragon</h4>
                             <p className={styles.description}>
-                                Consulted NYC Dept. of Education to architect technical procurement framework for AI adoption across 1,500+ schools. Defined district-wide security guardrails and data privacy standards for vendor software implementation.
+                                Advised the NYC Department of Education to architect technical procurement frameworks for AI adoption across 1,500+ schools. Defined district-wide security guardrails and data privacy standards for vendor software implementation.
                             </p>
                         </div>
                     </div>
@@ -62,7 +62,7 @@ export default function Resume() {
                             <h3 className={styles.role}>Research Assistant</h3>
                             <h4 className={styles.company}>Georgia Tech (Mussmann Lab)</h4>
                             <p className={styles.description}>
-                                Partnered with City of Charleston to model train crossing delay predictability. Engineered geospatial features to analyze complex port topography and established performance benchmarks for new sensor hardware ROI.
+                                Spearheaded analysis for the City of Charleston to model train crossing delay predictability. Engineered geospatial features to analyze complex port topography and established performance benchmarks for new sensor hardware ROI.
                             </p>
                         </div>
                     </div>
