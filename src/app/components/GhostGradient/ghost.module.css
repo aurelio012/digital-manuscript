@@ -87,8 +87,8 @@
 
 @media (max-width: 768px) {
     .firefly {
-        filter: blur(20px);
-        /* Half blur on mobile for GPU relief */
+        /* Restored to full blur for aesthetic parity */
+        filter: blur(40px);
     }
 }
 
@@ -122,8 +122,8 @@
 
     .orb1,
     .orb2 {
-        filter: blur(50px);
-        /* Reduced blur on mobile */
+        /* Restored - no visual quality sacrificed */
+        filter: blur(100px);
     }
 }
 

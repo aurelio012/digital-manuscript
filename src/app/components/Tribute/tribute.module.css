@@ -127,8 +127,8 @@
 
 @media (max-width: 768px) {
     .aura {
-        filter: blur(40px);
-        /* Reduced from 80px */
+        /* Restored to full intensity blur for aesthetic parity */
+        filter: blur(80px);
     }
 }
 
@@ -179,8 +179,8 @@
 
     .aura4,
     .aura5 {
-        display: none;
-        /* Remove expensive layers on mobile */
+        /* Restored - user requested maximum quality across devices */
+        display: block;
     }
 }
 
