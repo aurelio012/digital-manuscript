@@ -297,7 +297,22 @@
     z-index: -1;
 }
 
+.imageBlurred {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: blur(20px) saturate(0.7);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+}
+
 .image {
+    position: relative;
+    z-index: 1;
     display: block;
     width: 100%;
     height: auto;

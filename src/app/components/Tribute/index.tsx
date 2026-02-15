@@ -60,6 +60,15 @@ export default function Tribute() {
 
                     <div className={styles.content}>
                         <div className={styles.imageWrapper}>
+                            {/* Blurred background layer — visible where sharp image mask fades */}
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src="/sandy_tribute.png"
+                                alt=""
+                                className={styles.imageBlurred}
+                                aria-hidden="true"
+                            />
+                            {/* Sharp foreground with radial mask */}
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src="/sandy_tribute.png"
