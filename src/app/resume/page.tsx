@@ -49,7 +49,7 @@ export default function Resume() {
                             <h3 className={styles.role}>AI Policy Fellow</h3>
                             <h4 className={styles.company}>Paragon</h4>
                             <p className={styles.description}>
-                                Advised the NYC Department of Education to architect technical procurement frameworks for AI adoption across 1,500+ schools. Defined district-wide security guardrails and data privacy standards for vendor software implementation.
+                                Consulted NYC Dept. of Education to architect technical procurement framework for AI adoption across 1,500+ schools. Defined district-wide security guardrails and data privacy standards for vendor software implementation.
                             </p>
                         </div>
                     </div>
@@ -97,7 +97,7 @@ export default function Resume() {
                             <h3 className={styles.role}>Research Assistant</h3>
                             <h4 className={styles.company}>Georgia Tech (Mussmann Lab)</h4>
                             <p className={styles.description}>
-                                Spearheaded analysis for the City of Charleston to model train crossing delay predictability. Engineered geospatial features to analyze complex port topography and established performance benchmarks for new sensor hardware ROI.
+                                Partnered with City of Charleston to model train crossing delay predictability. Engineered geospatial features to analyze complex port topography and established performance benchmarks for new sensor hardware ROI.
                             </p>
                         </div>
                     </div>
@@ -111,7 +111,7 @@ export default function Resume() {
                             <h3 className={styles.role}>Research Assistant</h3>
                             <h4 className={styles.company}>Friendly Cities Lab</h4>
                             <p className={styles.description}>
-                                Created codebook and data schema for legislative congruence analysis. Engineered Python ETL pipelines (Geopandas/QGIS) to normalize geospatial data. Contributed to draft research manuscript via comprehensive literature review.
+                                Developed data pipelines and codebooks for analyzing legislative congruence between municipal policy and community needs. Normalized heterogeneous geospatial datasets using Geopandas and QGIS.
                             </p>
                         </div>
                     </div>
@@ -125,7 +125,7 @@ export default function Resume() {
                             <h3 className={styles.role}>Research Assistant</h3>
                             <h4 className={styles.company}>Georgia Tech (LIT Lab)</h4>
                             <p className={styles.description}>
-                                Engineered API integration for robotic AI tutor. Designed system prompts to map GPT-4 outputs to pedagogical goals. Iterated on features based on field tests with educators.
+                                Built the API backbone for PATHWiSE, an AI-powered robotic tutor. Designed system prompts mapping GPT-4 outputs to age-appropriate pedagogical goals through classroom field tests.
                             </p>
                         </div>
                     </div>
