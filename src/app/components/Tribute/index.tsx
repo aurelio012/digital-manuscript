@@ -10,7 +10,11 @@ export default function Tribute() {
     const [isOpen, setIsOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
 
-    // ... useEffect ...
+    // Preload Sandy's photo on mount to prevent 'glitch' during first view
+    useEffect(() => {
+        const img = new Image();
+        img.src = "/sandy_tribute.png";
+    }, []);
 
     const handleOpen = () => {
         setIsOpen(true);
