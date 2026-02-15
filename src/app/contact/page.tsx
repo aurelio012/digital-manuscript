@@ -9,7 +9,7 @@ export default function Contact() {
             <GhostGradient />
 
             <div className={styles.contentWrapper}>
-                <h1 className={styles.title}>Correspondence.</h1>
+                <h1 className={styles.title}>Contact.</h1>
 
                 <div className={styles.buttonGrid}>
                     <a
