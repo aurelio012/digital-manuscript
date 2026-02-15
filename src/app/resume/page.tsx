@@ -17,6 +17,15 @@ export default function Resume() {
                     <span className={styles.separator}>•</span>
                     <span className={styles.obfuscated}>moc.kooltuo@7890xilefcaasi</span>
                 </div>
+
+                <a
+                    href="/Isaac_Felix_Resume.pdf"
+                    download="Isaac_Felix_Resume.pdf"
+                    className={styles.downloadButton}
+                    aria-label="Download Resume PDF"
+                >
+                    Download PDF
+                </a>
             </header>
 
             <section className={styles.section}>
