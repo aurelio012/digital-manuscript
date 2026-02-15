@@ -74,7 +74,7 @@ export default function Resume() {
                         </div>
                         <div className={styles.rightCol}>
                             <h3 className={styles.role}>Research Assistant</h3>
-                            <h4 className={styles.company}>Georgia Tech (Friendly Cities Lab)</h4>
+                            <h4 className={styles.company}>Georgia Tech (Legislative Congruence Architecture)</h4>
                             <p className={styles.description}>
                                 Created codebook and data schema for legislative congruence analysis. Engineered Python ETL pipelines (Geopandas/QGIS) to normalize geospatial data. Contributed to draft research manuscript via comprehensive literature review.
                             </p>

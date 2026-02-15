@@ -24,7 +24,7 @@ const projects = [
     },
     {
         id: '03',
-        title: 'Friendly Cities',
+        title: 'Legislative Congruence Architecture',
         category: 'Research',
         year: '2025',
         link: '#',
