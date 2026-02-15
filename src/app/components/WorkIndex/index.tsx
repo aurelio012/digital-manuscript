@@ -21,7 +21,7 @@ const projects: Project[] = [
         category: 'Mussmann Lab',
         year: '2025',
         link: '#',
-        description: "A geospatial study with the City of Charleston exploring whether a network of sensors can reliably predict train crossing delays across its port district. The project maps complex topography to model signal propagation and establishes ROI benchmarks for hardware investment.",
+        description: "A geospatial study with the City of Charleston exploring whether a network of sensors can reliably predict train crossing delays across the city. The project maps complex topography to model signal propagation and establishes ROI benchmarks for hardware investment.",
         contributions: ["Python", "Geospatial Modeling", "Sensor Data", "City Partnership"]
     },
     {
@@ -30,7 +30,7 @@ const projects: Project[] = [
         category: 'NYC DOE',
         year: '2025',
         link: '#',
-        description: "A policy framework guiding the NYC Department of Education's adoption of AI tools across 1,500+ public schools. The work defines technical procurement criteria, security guardrails, and data privacy standards for evaluating vendor software at district scale.",
+        description: "A policy framework guiding the NYC Department of Education's adoption of AI tools across 1,500+ public schools. The work defines technical procurement criteria, security guardrails, data privacy standards, and more for evaluating vendor software at district scale.",
         contributions: ["AI Policy", "Risk Assessment", "Stakeholder Communication", "EdTech"]
     },
     {
@@ -48,7 +48,7 @@ const projects: Project[] = [
         category: 'EdTech / AI',
         year: '2023',
         link: '#',
-        description: "An AI-powered robotic tutoring platform that translates GPT-4 outputs into age-appropriate pedagogical interactions. The system pairs carefully designed prompts with a physical robot, validated through longitudinal classroom field tests with K-5 students.",
+        description: "An AI-powered robotic tutoring platform that translates GPT-4 outputs into pedagogical interactions. The system pairs carefully designed prompts with a physical robot, validated through longitudinal classroom field tests with K-5 students.",
         contributions: ["GPT-4 API", "Prompt Engineering", "HRI", "Field Testing"],
         publication: 'M. A. Rahman, I. A. Felix, et al., "PATHWiSE: An AI-Assisted Teacher Authoring Tool for Robot-Based Classroom Activities" (HRI \'24)'
     },
