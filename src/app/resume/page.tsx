@@ -20,6 +20,30 @@ export default function Resume() {
             </header>
 
             <section className={styles.section}>
+                <h2 className={styles.sectionTitle}>Education</h2>
+                <div className={styles.grid}>
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Jan 2025 — Dec 2026</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>M.S. Computer Science</h3>
+                            <h4 className={styles.company}>Georgia Institute of Technology</h4>
+                        </div>
+                    </div>
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Jan 2022 — Dec 2023</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>B.S. Computer Science & Linguistics</h3>
+                            <h4 className={styles.company}>University of Illinois at Chicago</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>Experience</h2>
 
                 <div className={styles.grid}>
@@ -186,29 +210,7 @@ export default function Resume() {
                 </div>
             </section>
 
-            <section className={styles.section}>
-                <h2 className={styles.sectionTitle}>Education</h2>
-                <div className={styles.grid}>
-                    <div className={styles.row}>
-                        <div className={styles.leftCol}>
-                            <span className={styles.date}>Jan 2025 — Dec 2026</span>
-                        </div>
-                        <div className={styles.rightCol}>
-                            <h3 className={styles.role}>M.S. Computer Science</h3>
-                            <h4 className={styles.company}>Georgia Institute of Technology</h4>
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.leftCol}>
-                            <span className={styles.date}>Jan 2022 — Dec 2023</span>
-                        </div>
-                        <div className={styles.rightCol}>
-                            <h3 className={styles.role}>B.S. Computer Science & Linguistics</h3>
-                            <h4 className={styles.company}>University of Illinois at Chicago</h4>
-                        </div>
-                    </div>
-                </div>
-            </section>
+
         </main>
     );
 }
