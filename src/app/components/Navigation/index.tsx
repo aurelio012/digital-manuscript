@@ -19,15 +19,18 @@ export default function Navigation() {
                 <span style={{ fontSize: '1.5rem', lineHeight: 1, fontFamily: 'var(--font-serif)', fontWeight: 300 }}>*</span>
             </Link>
             <div className={styles.links}>
-                {navItems.map((item) => (
-                    <Link
-                        key={item.href}
-                        href={item.href}
-                        className={`${styles.link} ${pathname === item.href ? styles.active : ''}`}
-                    >
-                        {item.label}
-                    </Link>
-                ))}
+                {navItems.map((item) => {
+                    const isActive = pathname === item.href || pathname?.startsWith(`${item.href}/`);
+                    return (
+                        <Link
+                            key={item.href}
+                            href={item.href}
+                            className={`${styles.link} ${isActive ? styles.active : ''}`}
+                        >
+                            {item.label}
+                        </Link>
+                    );
+                })}
             </div>
         </nav>
     );
