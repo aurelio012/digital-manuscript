@@ -55,6 +55,40 @@ export default function Resume() {
                         </div>
                     </div>
 
+                    {/* Bank of America Intern */}
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Jun 2023 — Aug 2023</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>Quantitative Analyst Intern</h3>
+                            <h4 className={styles.company}>Bank of America</h4>
+                            <p className={styles.description}>
+                                Trained multiclass LSTM network using Apache Spark to predict mortgage delinquency. Preprocessed raw loan-level data to correct irregularities and optimize data integrity for downstream risk modeling.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Nokia */}
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Sep 2022 — Dec 2022</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>Mobile Networks Co-op</h3>
+                            <h4 className={styles.company}>Nokia</h4>
+                            <p className={styles.description}>
+                                Collaborated with engineering teams to optimize radio-control software for 5G cellular radios, ensuring stability within high-throughput network environments.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.section}>
+                <h2 className={styles.sectionTitle}>Research</h2>
+
+                <div className={styles.grid}>
                     {/* Mussmann Lab */}
                     <div className={styles.row}>
                         <div className={styles.leftCol}>
@@ -76,23 +110,9 @@ export default function Resume() {
                         </div>
                         <div className={styles.rightCol}>
                             <h3 className={styles.role}>Research Assistant</h3>
-                            <h4 className={styles.company}>Georgia Tech (Legislative Congruence Architecture)</h4>
+                            <h4 className={styles.company}>Friendly Cities Lab</h4>
                             <p className={styles.description}>
                                 Created codebook and data schema for legislative congruence analysis. Engineered Python ETL pipelines (Geopandas/QGIS) to normalize geospatial data. Contributed to draft research manuscript via comprehensive literature review.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Bank of America Intern */}
-                    <div className={styles.row}>
-                        <div className={styles.leftCol}>
-                            <span className={styles.date}>Jun 2023 — Aug 2023</span>
-                        </div>
-                        <div className={styles.rightCol}>
-                            <h3 className={styles.role}>Quantitative Analyst Intern</h3>
-                            <h4 className={styles.company}>Bank of America</h4>
-                            <p className={styles.description}>
-                                Trained multiclass LSTM network using Apache Spark to predict mortgage delinquency. Preprocessed raw loan-level data to correct irregularities and optimize data integrity for downstream risk modeling.
                             </p>
                         </div>
                     </div>
@@ -104,23 +124,41 @@ export default function Resume() {
                         </div>
                         <div className={styles.rightCol}>
                             <h3 className={styles.role}>Research Assistant</h3>
-                            <h4 className={styles.company}>PATHWiSE</h4>
+                            <h4 className={styles.company}>Georgia Tech (LIT Lab)</h4>
                             <p className={styles.description}>
                                 Engineered API integration for robotic AI tutor. Designed system prompts to map GPT-4 outputs to pedagogical goals. Iterated on features based on field tests with educators.
                             </p>
                         </div>
                     </div>
 
-                    {/* Nokia */}
+                    {/* Publication */}
                     <div className={styles.row}>
                         <div className={styles.leftCol}>
-                            <span className={styles.date}>Sep 2022 — Dec 2022</span>
+                            <span className={styles.date}>March 2024</span>
                         </div>
                         <div className={styles.rightCol}>
-                            <h3 className={styles.role}>Mobile Networks Co-op</h3>
-                            <h4 className={styles.company}>Nokia</h4>
+                            <h3 className={styles.role}>Publication (HRI '24)</h3>
+                            <h4 className={styles.company}>"PATHWiSE: An AI-Assisted Teacher Authoring Tool..."</h4>
                             <p className={styles.description}>
-                                Collaborated with engineering teams to optimize radio-control software for 5G cellular radios, ensuring stability within high-throughput network environments.
+                                M. A. Rahman, I. A. Felix, et al. Companion of the 2024 ACM/IEEE International Conference on Human-Robot Interaction.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.section}>
+                <h2 className={styles.sectionTitle}>Leadership</h2>
+                <div className={styles.grid}>
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Aug 2023 — Dec 2023</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>Mentor</h3>
+                            <h4 className={styles.company}>Society of Hispanic Professional Engineers</h4>
+                            <p className={styles.description}>
+                                Mentored junior engineering students on academic planning and career development in tech.
                             </p>
                         </div>
                     </div>
@@ -146,36 +184,6 @@ export default function Resume() {
                         <div className={styles.rightCol}>
                             <h3 className={styles.role}>B.S. Computer Science & Linguistics</h3>
                             <h4 className={styles.company}>University of Illinois at Chicago</h4>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className={styles.section}>
-                <h2 className={styles.sectionTitle}>Research & Leadership</h2>
-                <div className={styles.grid}>
-                    <div className={styles.row}>
-                        <div className={styles.leftCol}>
-                            <span className={styles.date}>March 2024</span>
-                        </div>
-                        <div className={styles.rightCol}>
-                            <h3 className={styles.role}>Publication (HRI '24)</h3>
-                            <h4 className={styles.company}>"PATHWiSE: An AI-Assisted Teacher Authoring Tool..."</h4>
-                            <p className={styles.description}>
-                                M. A. Rahman, I. A. Felix, et al. Companion of the 2024 ACM/IEEE International Conference on Human-Robot Interaction.
-                            </p>
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.leftCol}>
-                            <span className={styles.date}>Aug 2023 — Dec 2023</span>
-                        </div>
-                        <div className={styles.rightCol}>
-                            <h3 className={styles.role}>Mentor</h3>
-                            <h4 className={styles.company}>Society of Hispanic Professional Engineers</h4>
-                            <p className={styles.description}>
-                                Mentored junior engineering students on academic planning and career development in tech.
-                            </p>
                         </div>
                     </div>
                 </div>
