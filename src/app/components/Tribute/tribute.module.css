@@ -304,7 +304,7 @@
     width: 100%;
     height: auto;
     object-fit: contain;
-    filter: blur(20px) saturate(0.7);
+    filter: blur(35px) saturate(0.7);
     opacity: 0.6;
     pointer-events: none;
     z-index: 0;
