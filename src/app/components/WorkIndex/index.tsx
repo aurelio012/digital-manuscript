@@ -79,11 +79,13 @@ const ProjectItem = memo(({ project, isActive, isExpanded, onMouseEnter, onClick
 
             {/* Mobile Accordion Content */}
             <div className={`${styles.mobileDetails} ${isExpanded ? styles.expanded : ''}`}>
-                <p className={styles.mobileDesc}>{project.description}</p>
-                <div className={styles.mobileTags}>
-                    {project.contributions.map((tag: string) => (
-                        <span key={tag}>{tag}</span>
-                    ))}
+                <div className={styles.mobileInner}>
+                    <p className={styles.mobileDesc}>{project.description}</p>
+                    <div className={styles.mobileTags}>
+                        {project.contributions.map((tag: string) => (
+                            <span key={tag}>{tag}</span>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
