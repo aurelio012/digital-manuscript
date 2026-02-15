@@ -70,8 +70,8 @@
     pointer-events: none;
     z-index: 2;
     mix-blend-mode: screen;
-    /* Single combined lifecycle animation: 3s duration */
-    animation: fireflyLife 3s ease-out forwards;
+    /* Single combined lifecycle animation: 8s duration */
+    animation: fireflyLife 8s ease-out forwards;
     filter: blur(40px);
     /* Heavy blur for "Aura" feel */
 }
