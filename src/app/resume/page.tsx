@@ -8,17 +8,7 @@ export default function Resume() {
         <main className={styles.main}>
             <GhostGradient />
             <header className={styles.header}>
-                <div className={styles.headerLeft}>
-                    <h1 className={styles.headerName}>Isaac Aurelio Felix</h1>
-                    <a
-                        href="/Isaac_Felix_Resume.pdf"
-                        download="Isaac_Felix_Resume.pdf"
-                        className={styles.downloadButton}
-                        aria-label="Download Resume PDF"
-                    >
-                        Download PDF
-                    </a>
-                </div>
+                <h1 className={styles.headerName}>Isaac Aurelio Felix</h1>
 
                 <div className={styles.contact}>
                     <span>New York, NY</span>
@@ -31,6 +21,15 @@ export default function Resume() {
                         isaacfelix0987@outlook.com
                     </a>
                 </div>
+
+                <a
+                    href="/Isaac_Felix_Resume.pdf"
+                    download="Isaac_Felix_Resume.pdf"
+                    className={styles.downloadButton}
+                    aria-label="Download Resume PDF"
+                >
+                    Download PDF
+                </a>
             </header>
 
             <section className={styles.section}>

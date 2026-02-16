@@ -6,27 +6,16 @@
     position: relative;
 }
 
-/* Header Grid Layout */
+/* Header — Centered Stack */
 .header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    column-gap: 2rem;
-    row-gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
     margin-bottom: 4rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    align-items: end;
-}
-
-.headerLeft {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    align-items: flex-start;
-    /* Prevents button from stretching */
 }
 
 .headerName {
@@ -41,18 +30,14 @@
 }
 
 .contact {
-    grid-column: 2;
-    grid-row: 2;
     display: flex;
     gap: 0.75rem;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     font-family: var(--font-mono);
     font-size: 0.75rem;
     color: var(--foreground-muted);
-    text-align: right;
-    padding-bottom: 5px;
-    /* Optical align with button text baseline */
+    flex-wrap: wrap;
 }
 
 .link {
