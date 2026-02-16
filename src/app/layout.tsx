@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Newsreader, Geist, Geist_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import Navigation from './components/Navigation';
 import Tribute from './components/Tribute';
 import './globals.css';
@@ -40,6 +41,7 @@ export default function RootLayout({
         <Navigation />
         {children}
         <Tribute />
+        <Analytics />
       </body>
     </html>
   );
