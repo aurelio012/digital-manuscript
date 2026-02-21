@@ -36,7 +36,7 @@ const projects: Project[] = [
     {
         id: '03',
         title: "Legislative Architecture",
-        category: "Research / Data",
+        category: "Friendly Cities Lab",
         year: "2023",
         link: '#',
         description: "A computational framework for analyzing alignment between legislative text and urban policy outcomes. Developed natural language processing pipelines to quantify semantic similarity between bill proposals and enacted city ordnances, revealing gaps in political representation.",
@@ -45,7 +45,7 @@ const projects: Project[] = [
     {
         id: '04',
         title: 'PATHWiSE',
-        category: 'EdTech / AI',
+        category: 'Learning + Interest + Technology Lab',
         year: '2023',
         link: '#',
         description: "An AI-powered robotic tutoring platform that translates GPT-4 outputs into pedagogical interactions. The system pairs carefully designed prompts with a physical robot, validated through longitudinal classroom field tests with K-5 students.",
