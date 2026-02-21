@@ -45,7 +45,7 @@ const projects: Project[] = [
     {
         id: '04',
         title: 'PATHWiSE',
-        category: 'Learning + Interest + Technology Lab',
+        category: 'LIT Lab',
         year: '2023',
         link: '#',
         description: "An AI-powered robotic tutoring platform that translates GPT-4 outputs into pedagogical interactions. The system pairs carefully designed prompts with a physical robot, validated through longitudinal classroom field tests with K-5 students.",
