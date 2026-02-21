@@ -58,7 +58,8 @@
     background: var(--foreground);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform var(--duration-normal) var(--ease-out-expo);
+    visibility: hidden;
+    transition: transform var(--duration-normal) var(--ease-out-expo), visibility 0s linear var(--duration-normal);
 }
 
 .link:hover {
@@ -67,6 +68,8 @@
 
 .link:hover::after {
     transform: scaleX(1);
+    visibility: visible;
+    transition: transform var(--duration-normal) var(--ease-out-expo), visibility 0s linear 0s;
 }
 
 /* Active state */
@@ -76,6 +79,8 @@
 
 .active::after {
     transform: scaleX(1);
+    visibility: visible;
+    transition: transform var(--duration-normal) var(--ease-out-expo), visibility 0s linear 0s;
 }
 
 @media (max-width: 480px) {
