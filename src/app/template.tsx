@@ -8,6 +8,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
+        // eslint-disable-next-line
         setIsVisible(false);
         // Trigger animation on next frame
         const frame = requestAnimationFrame(() => {

@@ -77,7 +77,7 @@ export default function Resume() {
                                 <span className={styles.subHeader}>Consumer Portfolio Strategy & Analytics</span>
                                 <ul className={styles.list}>
                                     <li className={styles.listItem}>Analyzed consumer behavior by modeling credit degradation curves via cohort analysis to better predict portfolio performance; findings influenced a material strategic adjustment in risk management.</li>
-                                    <li className={styles.listItem}>Built and managed a daily bankruptcy analytics pipeline (SAS, SQL), delivering critical 'beat/miss' signals to directors to drive data-informed portfolio strategy changes.</li>
+                                    <li className={styles.listItem}>Built and managed a daily bankruptcy analytics pipeline (SAS, SQL), delivering critical &apos;beat/miss&apos; signals to directors to drive data-informed portfolio strategy changes.</li>
                                     <li className={styles.listItem}>Validated challenger models by analyzing feature importance and conducting stress-tests, translating technical findings into actionable recommendations for directors on improving loss prediction accuracy.</li>
                                 </ul>
                             </div>
@@ -161,7 +161,7 @@ export default function Resume() {
                             <h4 className={styles.company}>Learning + Interest + Technology Lab</h4>
                             <div className={styles.description}>
                                 <ul className={styles.list}>
-                                    <li className={styles.listItem}>Co-developed PATHWiSE (published at HRI '24), an AI authoring tool co-designed with 13 teachers to create custom robot-assisted learning activities using GPT-4.</li>
+                                    <li className={styles.listItem}>Co-developed PATHWiSE (published at HRI &apos;24), an AI authoring tool co-designed with 13 teachers to create custom robot-assisted learning activities using GPT-4.</li>
                                     <li className={styles.listItem}>Iterated on product features based on field tests with educators, directly translating qualitative user feedback into technical engineering specifications.</li>
                                 </ul>
                             </div>
@@ -229,9 +229,9 @@ export default function Resume() {
                             <span className={styles.date}>March 2024</span>
                         </div>
                         <div className={styles.rightCol}>
-                            <h3 className={styles.role}>Publication (HRI '24)</h3>
+                            <h3 className={styles.role}>Publication (HRI &apos;24)</h3>
                             <p className={styles.description}>
-                                M. A. Rahman, I. A. Felix, U. Shahid, and J. E. Michaelis, "PATHWiSE: An AI-Assisted Teacher Authoring Tool for Creating Custom Robot-Assisted Learning Activities", Companion of the 2024 ACM/IEEE International Conference on Human-Robot Interaction (HRI '24), pp. 88–90, March 2024. DOI: 10.1145/3610978.3641086
+                                M. A. Rahman, I. A. Felix, U. Shahid, and J. E. Michaelis, &quot;PATHWiSE: An AI-Assisted Teacher Authoring Tool for Creating Custom Robot-Assisted Learning Activities&quot;, Companion of the 2024 ACM/IEEE International Conference on Human-Robot Interaction (HRI &apos;24), pp. 88–90, March 2024. DOI: 10.1145/3610978.3641086
                             </p>
                         </div>
                     </div>
