@@ -23,12 +23,12 @@ export default function Resume() {
                 </div>
 
                 <a
-                    href="/Isaac_Felix_Resume.pdf"
-                    download="Isaac_Felix_Resume.pdf"
+                    href="/Isaac_Felix_Resume.docx"
+                    download="Isaac_Felix_Resume_Product.docx"
                     className={styles.downloadButton}
-                    aria-label="Download Resume PDF"
+                    aria-label="Download Resume"
                 >
-                    Download PDF
+                    Download Resume
                 </a>
             </header>
 
@@ -71,14 +71,14 @@ export default function Resume() {
                             <div className={styles.description}>
                                 <span className={styles.subHeader}>Financial Crime Detection Models</span>
                                 <ul className={styles.list}>
-                                    <li className={styles.listItem}>Engineered the fine-tuning data strategy to align external models with bank risk frameworks; curated the ground-truth corpus by standardizing historical fraud records, ensuring the vendor's detection logic matched internal protocols.</li>
-                                    <li className={styles.listItem}>Led the technical integration of a proprietary third-party AI platform, managing vendor due diligence and establishing precision/recall acceptance gates for production deployment.</li>
+                                    <li className={styles.listItem}>Led the integration and launch of an AI platform now used by 1,000+ investigators as their primary tool, managing vendor due diligence and defining precision/recall acceptance gates for production deployment.</li>
+                                    <li className={styles.listItem}>Defined the performance metrics and monitoring framework for an AI-powered investigation tool that auto-generates entity resolution and risk scores, tracking tool adoption and investigator sentiment post-launch.</li>
                                 </ul>
                                 <span className={styles.subHeader}>Consumer Portfolio Strategy & Analytics</span>
                                 <ul className={styles.list}>
-                                    <li className={styles.listItem}>Engineered the daily bankruptcy ETL workflow using SAS and SQL, processing high-volume daily records to generate real-time "beat/miss" forecasting signals for executive leadership.</li>
-                                    <li className={styles.listItem}>Modeled credit degradation curves via cohort analysis to challenge existing reserve assumptions; findings influenced a material strategic adjustment in portfolio risk management.</li>
-                                    <li className={styles.listItem}>Validated challenger models by conducting stress-tests and interpretability analysis, translating black-box outputs into actionable risk memos for non-technical stakeholders.</li>
+                                    <li className={styles.listItem}>Analyzed consumer behavior by modeling credit degradation curves via cohort analysis to better predict portfolio performance; findings influenced a material strategic adjustment in risk management.</li>
+                                    <li className={styles.listItem}>Built and managed a daily bankruptcy analytics pipeline (SAS, SQL), delivering critical 'beat/miss' signals to directors to drive data-informed portfolio strategy changes.</li>
+                                    <li className={styles.listItem}>Validated challenger models by analyzing feature importance and conducting stress-tests, translating technical findings into actionable recommendations for directors on improving loss prediction accuracy.</li>
                                 </ul>
                             </div>
                         </div>
@@ -94,7 +94,7 @@ export default function Resume() {
                             <h4 className={styles.company}>Georgia Institute of Technology (Mussmann Lab)</h4>
                             <div className={styles.description}>
                                 <ul className={styles.list}>
-                                    <li className={styles.listItem}>Partnered with the City of Charleston to evaluate the viability of expanding the city’s sensor network by engineering geospatial features to model train crossing delay predictability within Charleston’s complex port topography, establishing performance benchmarks that new hardware must exceed to ensure ROI.</li>
+                                    <li className={styles.listItem}>Partnered with the City of Charleston to evaluate sensor network expansion by modeling train crossing delay predictability, establishing performance benchmarks new hardware must exceed.</li>
                                 </ul>
                             </div>
                         </div>
@@ -110,7 +110,7 @@ export default function Resume() {
                             <h4 className={styles.company}>Paragon Policy</h4>
                             <div className={styles.description}>
                                 <ul className={styles.list}>
-                                    <li className={styles.listItem}>Consulted the NYC Dept. of Education (the largest US school district) to architect the technical procurement framework for AI adoption across 1,500+ schools.</li>
+                                    <li className={styles.listItem}>Consulted the NYC Dept. of Education to design the technical procurement framework for AI adoption across 1,500+ schools serving 1M+ students.</li>
                                     <li className={styles.listItem}>Defined district-wide security guardrails and data privacy standards, establishing the equitable implementation plans for vendor software.</li>
                                 </ul>
                             </div>
@@ -127,7 +127,7 @@ export default function Resume() {
                             <h4 className={styles.company}>Georgia Institute of Technology (Friendly Cities Lab)</h4>
                             <div className={styles.description}>
                                 <ul className={styles.list}>
-                                    <li className={styles.listItem}>Created the codebook and data schema to structure processed datasets; engineered Python ETL pipelines (Geopandas/QGIS) to normalize geospatial data in preparation for legislative congruence analysis.</li>
+                                    <li className={styles.listItem}>Created the data schema to structure processed datasets; built Python ETL pipelines (Geopandas) to normalize geospatial data for legislative congruence analysis.</li>
                                     <li className={styles.listItem}>Contributed to the draft research manuscript by conducting a comprehensive literature review on legislative congruence.</li>
                                 </ul>
                             </div>
@@ -144,7 +144,7 @@ export default function Resume() {
                             <h4 className={styles.company}>Bank of America</h4>
                             <div className={styles.description}>
                                 <ul className={styles.list}>
-                                    <li className={styles.listItem}>Trained a multiclass LSTM network using Apache Spark to predict mortgage delinquency; performed feature selection to optimize validation accuracy.</li>
+                                    <li className={styles.listItem}>Prototyped a mortgage delinquency risk engine (LSTM on Spark), identifying key consumer risk features to improve early-warning signals for loan defaults.</li>
                                     <li className={styles.listItem}>Preprocessed raw loan-level data to correct irregularities and outlier biases, optimizing data integrity for downstream risk modeling.</li>
                                 </ul>
                             </div>
@@ -161,7 +161,7 @@ export default function Resume() {
                             <h4 className={styles.company}>Learning + Interest + Technology Lab</h4>
                             <div className={styles.description}>
                                 <ul className={styles.list}>
-                                    <li className={styles.listItem}>Engineered the API integration for a robotic AI tutor; designed and optimized system prompts to map GPT-4 outputs to prompts engineered through interdisciplinary collaboration ensuring pedagogical alignment.</li>
+                                    <li className={styles.listItem}>Co-developed PATHWiSE (published at HRI '24), an AI authoring tool co-designed with 13 teachers to create custom robot-assisted learning activities using GPT-4.</li>
                                     <li className={styles.listItem}>Iterated on product features based on field tests with educators, directly translating qualitative user feedback into technical engineering specifications.</li>
                                 </ul>
                             </div>
@@ -178,7 +178,7 @@ export default function Resume() {
                             <h4 className={styles.company}>Nokia</h4>
                             <div className={styles.description}>
                                 <ul className={styles.list}>
-                                    <li className={styles.listItem}>Collaborated with engineering teams to optimize radio-control software for 5G cellular radios, ensuring stability within high-throughput network environments.</li>
+                                    <li className={styles.listItem}>Partnered with engineering teams to drive the modernization of 5G radio-control software, reducing technical debt and accelerating system maintainability for legacy infrastructure.</li>
                                 </ul>
                             </div>
                         </div>
@@ -187,8 +187,23 @@ export default function Resume() {
             </section>
 
             <section className={styles.section}>
-                <h2 className={styles.sectionTitle}>Leadership Experience</h2>
+                <h2 className={styles.sectionTitle}>Fellowships & Leadership Experience</h2>
                 <div className={styles.grid}>
+                    <div className={styles.row}>
+                        <div className={styles.leftCol}>
+                            <span className={styles.date}>Mar 2026 — Present</span>
+                        </div>
+                        <div className={styles.rightCol}>
+                            <h3 className={styles.role}>AI Safety Policy Fellow</h3>
+                            <h4 className={styles.company}>Georgia Tech AISI</h4>
+                            <div className={styles.description}>
+                                <ul className={styles.list}>
+                                    <li className={styles.listItem}>Evaluating policy frameworks for the responsible deployment of transformative AI systems, analyzing frontier AI regulation, progress timelines, and national security implications.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className={styles.row}>
                         <div className={styles.leftCol}>
                             <span className={styles.date}>Aug 2023 — Dec 2023</span>
