@@ -1,7 +1,8 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Newsreader, Geist, Geist_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import Navigation from './components/Navigation';
+import GhostGradient from './components/GhostGradient';
 import Tribute from './components/Tribute';
 import './globals.css';
 
@@ -25,9 +26,25 @@ const geistMono = Geist_Mono({
   display: 'swap',
 });
 
+const description =
+  'AI safety researcher, quantitative analyst, and M.S. Computer Science candidate at Georgia Tech.';
+
 export const metadata: Metadata = {
-  title: 'Isaac Felix',
-  description: 'AI safety researcher, quantitative analyst, and M.S. Computer Science candidate at Georgia Tech.',
+  title: {
+    default: 'Isaac Felix',
+    template: '%s — Isaac Felix',
+  },
+  description,
+  openGraph: {
+    title: 'Isaac Felix',
+    description,
+    type: 'website',
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#060608',
+  colorScheme: 'dark',
 };
 
 export default function RootLayout({
@@ -38,6 +55,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${newsreader.variable} ${geistMono.variable} ${geistSans.variable}`}>
+        <a href="#content" className="skip-link">Skip to content</a>
+        {/* Lives in the layout so the ambient field persists across navigations */}
+        <GhostGradient />
         <Navigation />
         {children}
         <Tribute />

@@ -1,65 +1,51 @@
+/* A colophon line, not a toolbar — no bar, no border */
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    padding: 0.75rem var(--space-md);
     display: flex;
     justify-content: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
-    background: rgba(6, 6, 8, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-@media (max-width: 768px) {
-    .footer {
-        /* Restored - user requested maximum quality */
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        background: rgba(6, 6, 8, 0.8);
-    }
+    padding: 1.25rem var(--gutter) max(1.25rem, env(safe-area-inset-bottom));
+    pointer-events: none;
 }
 
 .text {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    letter-spacing: 0.05em;
     display: flex;
-    align-items: center;
-    gap: 4px;
+    align-items: baseline;
+    gap: 0.45em;
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.06em;
+    color: var(--ink-4);
+    pointer-events: auto;
 }
 
 .trigger {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    cursor: pointer;
-    color: #D67C7C;
-    transition: all 0.3s ease;
     position: relative;
+    padding: 6px 2px;
+    margin: -6px -2px;
+    font: inherit;
+    letter-spacing: inherit;
+    color: var(--rose);
+    transition: color 0.4s ease, text-shadow 0.4s ease;
 }
 
-.trigger:hover {
-    color: #fff;
-    text-shadow:
-        0 0 10px rgba(139, 92, 246, 0.8),
-        0 0 20px rgba(56, 189, 248, 0.8),
-        0 0 30px rgba(245, 158, 11, 0.8);
-    animation: glowPulse 1.5s infinite alternate;
+.trigger:hover,
+.trigger:focus-visible {
+    color: #F6D5D5;
+    animation: glowPulse 1.6s ease-in-out infinite alternate;
 }
 
+/* Rose — the tribute's own colour — rather than the site spectrum */
 @keyframes glowPulse {
     from {
-        text-shadow: 0 0 5px rgba(139, 92, 246, 0.5), 0 0 10px rgba(56, 189, 248, 0.5);
+        text-shadow: 0 0 6px rgba(244, 143, 177, 0.45), 0 0 14px rgba(214, 124, 124, 0.3);
     }
 
     to {
-        text-shadow: 0 0 15px rgba(139, 92, 246, 1), 0 0 30px rgba(245, 158, 11, 1), 0 0 40px rgba(16, 185, 129, 1);
+        text-shadow: 0 0 12px rgba(244, 143, 177, 0.85), 0 0 28px rgba(236, 112, 162, 0.55), 0 0 44px rgba(255, 182, 193, 0.35);
     }
 }
 
@@ -79,6 +65,7 @@
     animation: fadeIn 1s ease forwards;
     cursor: pointer;
     overflow: hidden;
+    outline: none;
 }
 
 @keyframes fadeIn {

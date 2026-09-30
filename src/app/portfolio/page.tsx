@@ -1,18 +1,18 @@
-"use client";
-
-import GhostGradient from '../components/GhostGradient';
+import type { Metadata } from 'next';
+import RunningHead from '../components/RunningHead';
 import WorkIndex from '../components/WorkIndex';
 import styles from './portfolio.module.css';
+
+export const metadata: Metadata = {
+    title: 'Portfolio',
+};
 
 export default function Portfolio() {
     return (
         <main className={styles.main}>
-            <GhostGradient />
-
-            <div className={styles.contentWrapper}>
-                <section className={styles.workSection}>
-                    <WorkIndex />
-                </section>
+            <div className={styles.frame}>
+                <RunningHead folio="03" label="Portfolio" className={styles.head} />
+                <WorkIndex />
             </div>
         </main>
     );

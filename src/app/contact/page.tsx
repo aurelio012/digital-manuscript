@@ -1,17 +1,27 @@
-"use client";
-
-import GhostGradient from '../components/GhostGradient';
+import type { Metadata } from 'next';
+import RunningHead from '../components/RunningHead';
+import CopyEmail from './CopyEmail';
 import styles from './contact.module.css';
+
+export const metadata: Metadata = {
+    title: 'Contact',
+};
+
+const EMAIL = 'isaacfelix0987@outlook.com';
 
 export default function Contact() {
     return (
         <main className={styles.main}>
-            <GhostGradient />
-
             <div className={styles.contentWrapper}>
-                {/* Title removed for minimalism */}
+                <RunningHead folio="04" label="Contact" />
+                <h1 className="visually-hidden">Contact</h1>
+
+                <a href={`mailto:${EMAIL}`} className={styles.email}>
+                    {EMAIL}
+                </a>
 
                 <div className={styles.buttonGrid}>
+                    <CopyEmail email={EMAIL} className={styles.button} />
                     <a
                         href="https://www.linkedin.com/in/isaacfelix/"
                         target="_blank"
@@ -19,15 +29,14 @@ export default function Contact() {
                         className={styles.button}
                     >
                         LinkedIn
-                    </a>
-
-                    <a
-                        href="mailto:isaacfelix0987@outlook.com"
-                        className={styles.button}
-                    >
-                        Email
+                        <svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true">
+                            <path d="M3.5 8.5l5-5M4.5 3.5h4v4" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <span className="visually-hidden">(opens in a new tab)</span>
                     </a>
                 </div>
+
+                <p className={styles.location}>New York, NY</p>
             </div>
         </main>
     );

@@ -1,22 +1,27 @@
-"use client";
-
-import GhostGradient from './components/GhostGradient';
 import styles from './page.module.css';
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <GhostGradient />
-
-      <section className={styles.centeredHero}>
+      <section className={styles.hero} aria-labelledby="home-name">
         <div className={styles.nameContainer}>
-          {/* Ambient color auras that orbit around the name */}
+          {/* Ambient lights that orbit the name; colour mixes where they overlap */}
           <div className={`${styles.aura} ${styles.aura1}`} aria-hidden="true" />
           <div className={`${styles.aura} ${styles.aura2}`} aria-hidden="true" />
           <div className={`${styles.aura} ${styles.aura3}`} aria-hidden="true" />
 
-          <h1 className={styles.name}>Isaac Felix</h1>
+          <h1 id="home-name" className={styles.name}>Isaac Felix</h1>
         </div>
+
+        <p className={styles.descriptor}>
+          <span className={styles.item}>AI Safety</span>
+          <span className={styles.sep} aria-hidden="true">·</span>
+          <span className="visually-hidden">, </span>
+          <span className={styles.item}>Public Policy</span>
+          <span className={`${styles.sep} ${styles.sepBreak}`} aria-hidden="true">·</span>
+          <span className="visually-hidden">, </span>
+          <span className={styles.item}>Human-Centered Systems</span>
+        </p>
       </section>
     </main>
   );

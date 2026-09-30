@@ -5,71 +5,87 @@ import styles from './ghost.module.css';
 
 interface Firefly {
     id: number;
-    top: number;
-    left: number;
+    x: number;
+    y: number;
     hue: number;
-    size: string;
-    delay: string;
+    size: number;
 }
+
+// Curated hues drawn from the ambient field (indigo, violet, sky, amber).
+// Rose is deliberately absent — it belongs to the tribute.
+const HUES = [236, 258, 200, 38];
+const MAX_FIREFLIES = 24;
 
 export default function GhostGradient() {
-    return <InteractiveOrbs />;
-}
-
-function InteractiveOrbs() {
     const [fireflies, setFireflies] = useState<Firefly[]>([]);
     const containerRef = useRef<HTMLDivElement>(null);
-    const orbIdRef = useRef(0);
+    const idRef = useRef(0);
 
-    const spawnFirefly = useCallback(() => {
-        // Limit total number to prevent crash, but allow a lot (e.g., 50)
-        if (fireflies.length > 50) {
-            setFireflies(prev => prev.slice(1)); // Remove oldest
-        }
+    // Click anywhere: a soft light blooms where you touched the page.
+    const spawnFirefly = useCallback((e: MouseEvent) => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-        const id = orbIdRef.current++;
-        const newFirefly: Firefly = {
-            id,
-            top: Math.random() * 100,
-            left: Math.random() * 100,
-            hue: Math.floor(Math.random() * 360), // Full spectrum
-            size: `${100 + Math.random() * 150}px`, // 100px - 250px
-            delay: `${Math.random() * 0.2 + 0.05}s`, // Random delay 0.05s - 0.25s
+        const jitter = () => (Math.random() - 0.5) * 40;
+        const base = HUES[Math.floor(Math.random() * HUES.length)];
+        const fly: Firefly = {
+            id: idRef.current++,
+            x: e.clientX + jitter(),
+            y: e.clientY + jitter(),
+            hue: base + (Math.random() - 0.5) * 24,
+            size: 150 + Math.random() * 140,
         };
+        setFireflies(prev => [...prev.slice(-(MAX_FIREFLIES - 1)), fly]);
+    }, []);
 
-        setFireflies(prev => [...prev, newFirefly]);
-    }, [fireflies.length]);
-
-    // Global Click Listener - ONLY enable client-side
     useEffect(() => {
-        const handleClick = () => spawnFirefly();
-        window.addEventListener('click', handleClick);
-        return () => window.removeEventListener('click', handleClick);
+        window.addEventListener('click', spawnFirefly);
+        return () => window.removeEventListener('click', spawnFirefly);
     }, [spawnFirefly]);
 
+    // Pointer parallax for the ambient orbs — fine pointers only, rAF-throttled.
+    useEffect(() => {
+        const fine = window.matchMedia('(pointer: fine)').matches;
+        const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const el = containerRef.current;
+        if (!fine || still || !el) return;
+
+        let frame = 0;
+        const onMove = (e: PointerEvent) => {
+            cancelAnimationFrame(frame);
+            frame = requestAnimationFrame(() => {
+                el.style.setProperty('--mouse-x', (e.clientX / window.innerWidth - 0.5).toFixed(3));
+                el.style.setProperty('--mouse-y', (e.clientY / window.innerHeight - 0.5).toFixed(3));
+            });
+        };
+        window.addEventListener('pointermove', onMove, { passive: true });
+        return () => {
+            cancelAnimationFrame(frame);
+            window.removeEventListener('pointermove', onMove);
+        };
+    }, []);
+
+    const retire = (id: number) => setFireflies(prev => prev.filter(f => f.id !== id));
+
     return (
-        <div ref={containerRef} className={styles.container}>
-            {/* Base Ambient Orbs (Fixed) */}
-            <div className={styles.interactiveWrapper}>
+        <div ref={containerRef} className={styles.container} aria-hidden="true" data-print="hide">
+            <div className={styles.parallax}>
                 <div className={styles.orb1} />
             </div>
-            <div className={styles.interactiveWrapperReverse}>
+            <div className={styles.parallaxReverse}>
                 <div className={styles.orb2} />
             </div>
 
-            {/* Spawned Fireflies */}
             {fireflies.map(fly => (
                 <div
                     key={fly.id}
                     className={styles.firefly}
+                    onAnimationEnd={() => retire(fly.id)}
                     style={{
-                        top: `${fly.top}%`,
-                        left: `${fly.left}%`,
+                        left: fly.x,
+                        top: fly.y,
                         width: fly.size,
                         height: fly.size,
-                        '--hue': `${fly.hue}`,
-                        animationDelay: fly.delay,
-                        opacity: 0, // Ensure hidden before animation starts
+                        '--hue': fly.hue.toFixed(0),
                     } as React.CSSProperties}
                 />
             ))}

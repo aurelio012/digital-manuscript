@@ -1,26 +1,26 @@
 .main {
   min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-  padding: var(--space-md) var(--space-lg);
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
+  padding: 0 var(--gutter);
+  /* The orbiting auras may swing past narrow viewports; clip without
+     creating a scroll container */
+  overflow-x: clip;
 }
 
 /* ───────────────────────────────────────
-   Hero  
+   Hero
    ─────────────────────────────────────── */
 
-.centeredHero {
-  height: 100vh;
+.hero {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
-  position: relative;
-  z-index: 10;
-  /* Page transition handled by template.tsx */
+  /* Optical centre sits a little above the geometric one */
+  padding-bottom: 6vh;
 }
 
 .nameContainer {
@@ -32,193 +32,202 @@
 }
 
 .name {
-  font-family: var(--font-serif);
-  font-size: clamp(2.6rem, 6vw, 5.5rem);
-  font-weight: 400;
-  letter-spacing: -0.035em;
-  text-align: center;
-  line-height: 1;
-  color: var(--foreground);
   position: relative;
   z-index: 2;
-  user-select: none;
-  -webkit-user-select: none;
+  font-family: var(--font-serif);
+  font-size: var(--step-4);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  text-align: center;
+  color: var(--ink);
+}
+
+.descriptor {
+  position: relative;
+  z-index: 2;
+  margin-top: -40px;
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  line-height: 1.8;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--ink-4);
+  opacity: 0;
+  animation: rise 1.4s var(--ease-out-expo) 0.5s forwards;
+}
+
+.item {
+  white-space: nowrap;
+}
+
+.sep {
+  margin: 0 0.9em;
+  color: var(--ink-4);
+  opacity: 0.7;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ───────────────────────────────────────
-   Ambient Auras — full-spectrum color shift
-   
-   Each aura orbits on a different path
-   with staggered durations to prevent sync.
-   Identical on Desktop and Mobile.
+   Ambient auras
+
+   Three fixed-hue lights orbit on different
+   paths and periods (18s / 24s / 21s never
+   resync). With screen blending, the colour
+   under the name shifts continuously as they
+   overlap — the same full-spectrum drift as
+   before, but only transform and opacity
+   animate, so it stays on the compositor.
    ─────────────────────────────────────── */
 
 .aura {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  z-index: 1;
-  pointer-events: none;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  will-change: transform, background-color, opacity;
+  z-index: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
 }
 
+/* Indigo — the site accent */
 .aura1 {
-  width: 200px;
-  height: 200px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle closest-side, rgba(124, 110, 246, 0.5), rgba(124, 110, 246, 0.16) 45%, rgba(124, 110, 246, 0) 100%);
   animation: orbit1 18s ease-in-out infinite;
 }
 
+/* Sky — cool counterweight */
 .aura2 {
-  width: 160px;
-  height: 160px;
+  width: 270px;
+  height: 270px;
+  background: radial-gradient(circle closest-side, rgba(56, 189, 248, 0.42), rgba(56, 189, 248, 0.13) 45%, rgba(56, 189, 248, 0) 100%);
   animation: orbit2 24s ease-in-out infinite;
 }
 
+/* Amber — the lamp */
 .aura3 {
-  width: 130px;
-  height: 130px;
+  width: 230px;
+  height: 230px;
+  background: radial-gradient(circle closest-side, rgba(245, 158, 11, 0.38), rgba(245, 158, 11, 0.11) 45%, rgba(245, 158, 11, 0) 100%);
   animation: orbit3 21s ease-in-out infinite;
 }
 
 @keyframes orbit1 {
-  0% {
+  0%,
+  100% {
     transform: translate(-50%, -50%) translate(-100px, -45px) scale(1);
-    opacity: 0.45;
-    background-color: rgba(139, 92, 246, 0.55);
+    opacity: 0.75;
   }
 
-  16.6% {
-    transform: translate(-50%, -50%) translate(40px, -70px) scale(1.08);
-    opacity: 0.6;
-    background-color: rgba(56, 189, 248, 0.5);
-  }
-
-  33.3% {
-    transform: translate(-50%, -50%) translate(110px, -10px) scale(0.95);
-    opacity: 0.5;
-    background-color: rgba(245, 158, 11, 0.45);
+  25% {
+    transform: translate(-50%, -50%) translate(60px, -65px) scale(1.08);
+    opacity: 0.95;
   }
 
   50% {
-    transform: translate(-50%, -50%) translate(70px, 50px) scale(1.05);
-    opacity: 0.55;
-    background-color: rgba(16, 185, 129, 0.45);
+    transform: translate(-50%, -50%) translate(90px, 40px) scale(0.95);
+    opacity: 0.8;
   }
 
-  66.6% {
-    transform: translate(-50%, -50%) translate(-20px, 60px) scale(1.1);
-    opacity: 0.6;
-    background-color: rgba(244, 114, 182, 0.45);
-  }
-
-  83.3% {
-    transform: translate(-50%, -50%) translate(-90px, 15px) scale(0.92);
-    opacity: 0.45;
-    background-color: rgba(99, 102, 241, 0.5);
-  }
-
-  100% {
-    transform: translate(-50%, -50%) translate(-100px, -45px) scale(1);
-    opacity: 0.45;
-    background-color: rgba(139, 92, 246, 0.55);
+  75% {
+    transform: translate(-50%, -50%) translate(-40px, 60px) scale(1.1);
+    opacity: 1;
   }
 }
 
-/* Orbit 2: emerald → coral → violet → teal → rose → emerald */
 @keyframes orbit2 {
-  0% {
-    transform: translate(-50%, -50%) translate(95px, 35px) scale(1);
-    opacity: 0.4;
-    background-color: rgba(16, 185, 129, 0.45);
-  }
-
-  20% {
-    transform: translate(-50%, -50%) translate(30px, -65px) scale(1.1);
-    opacity: 0.55;
-    background-color: rgba(251, 146, 60, 0.45);
-  }
-
-  40% {
-    transform: translate(-50%, -50%) translate(-80px, -40px) scale(0.9);
-    opacity: 0.45;
-    background-color: rgba(168, 85, 247, 0.45);
-  }
-
-  60% {
-    transform: translate(-50%, -50%) translate(-110px, 25px) scale(1.05);
-    opacity: 0.6;
-    background-color: rgba(56, 189, 248, 0.4);
-  }
-
-  80% {
-    transform: translate(-50%, -50%) translate(-15px, 65px) scale(1.12);
-    opacity: 0.5;
-    background-color: rgba(244, 114, 182, 0.4);
-  }
-
+  0%,
   100% {
     transform: translate(-50%, -50%) translate(95px, 35px) scale(1);
-    opacity: 0.4;
-    background-color: rgba(16, 185, 129, 0.45);
+    opacity: 0.7;
+  }
+
+  25% {
+    transform: translate(-50%, -50%) translate(20px, -65px) scale(1.1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translate(-100px, -20px) scale(0.92);
+    opacity: 0.75;
+  }
+
+  75% {
+    transform: translate(-50%, -50%) translate(-30px, 60px) scale(1.05);
+    opacity: 0.95;
   }
 }
 
-/* Orbit 3: rose → amber → emerald → violet → teal → rose */
 @keyframes orbit3 {
-  0% {
-    transform: translate(-50%, -50%) translate(0px, -60px) scale(1);
-    opacity: 0.35;
-    background-color: rgba(244, 114, 182, 0.4);
-  }
-
-  20% {
-    transform: translate(-50%, -50%) translate(75px, -20px) scale(1.12);
-    opacity: 0.5;
-    background-color: rgba(245, 158, 11, 0.4);
-  }
-
-  40% {
-    transform: translate(-50%, -50%) translate(50px, 50px) scale(0.9);
-    opacity: 0.4;
-    background-color: rgba(16, 185, 129, 0.45);
-  }
-
-  60% {
-    transform: translate(-50%, -50%) translate(-50px, 45px) scale(1.08);
-    opacity: 0.5;
-    background-color: rgba(139, 92, 246, 0.45);
-  }
-
-  80% {
-    transform: translate(-50%, -50%) translate(-70px, -15px) scale(1.05);
-    opacity: 0.45;
-    background-color: rgba(56, 189, 248, 0.4);
-  }
-
+  0%,
   100% {
     transform: translate(-50%, -50%) translate(0px, -60px) scale(1);
-    opacity: 0.35;
-    background-color: rgba(244, 114, 182, 0.4);
+    opacity: 0.6;
+  }
+
+  25% {
+    transform: translate(-50%, -50%) translate(80px, -10px) scale(1.12);
+    opacity: 0.85;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translate(30px, 55px) scale(0.9);
+    opacity: 0.7;
+  }
+
+  75% {
+    transform: translate(-50%, -50%) translate(-75px, 20px) scale(1.05);
+    opacity: 0.8;
   }
 }
 
 /* ───────────────────────────────────────
-   Responsive — same aesthetics, adjusted spacing
+   Responsive — same composition, tighter halo
    ─────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  .main {
-    padding: var(--space-sm);
-  }
-
-  .centeredHero {
-    height: 100vh;
-  }
-
   .nameContainer {
-    padding: 50px 60px;
+    padding: 60px 40px;
+  }
+
+  .descriptor {
+    margin-top: -24px;
+  }
+
+  /* Two balanced lines; the dot that would start line two is dropped */
+  .sepBreak {
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .aura1 {
+    width: 240px;
+    height: 240px;
+  }
+
+  .aura2 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .aura3 {
+    width: 170px;
+    height: 170px;
   }
 }

@@ -1,35 +1,66 @@
-.nav {
+.header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
+    pointer-events: none;
+}
+
+/* Progressive veil — blur and tint fade out toward the bottom edge,
+   so scrolling content dissolves beneath the nav instead of meeting
+   a hard bar. */
+.header::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 -24px 0;
+    background: linear-gradient(to bottom, rgba(6, 6, 8, 0.92) 0%, rgba(6, 6, 8, 0.7) 55%, rgba(6, 6, 8, 0) 100%);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    pointer-events: none;
+}
+
+.nav {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 2rem;
-    background: rgba(6, 6, 8, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    height: var(--nav-h);
+    max-width: calc(var(--frame) + 2 * var(--gutter));
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    pointer-events: auto;
 }
 
-/* Logo / Home link — geometric house icon */
-.logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--foreground);
-    text-decoration: none;
+/* Home mark */
+.mark {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-left: -13px;
+    color: var(--ink);
+    opacity: 0.85;
     transition: opacity var(--duration-normal) var(--ease-out-expo);
-    opacity: 0.8;
 }
 
-.logo:hover {
+.asterisk {
+    transition: transform 0.9s var(--ease-out-expo);
+}
+
+.mark:hover {
     opacity: 1;
 }
 
-/* Page links — right-aligned */
+/* 60° brings the spokes back onto themselves — motion without change */
+.mark:hover .asterisk,
+.mark:focus-visible .asterisk {
+    transform: rotate(60deg);
+}
+
+/* Page links */
 .links {
     display: flex;
     align-items: center;
@@ -37,44 +68,42 @@
 }
 
 .link {
-    position: relative;
+    display: inline-block;
+    padding: 12px 0;
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: var(--step--2);
+    line-height: 1;
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    color: var(--text-muted);
-    text-decoration: none;
-    padding: 4px 0;
-    transition: color var(--duration-normal) var(--ease-out-expo), background-size var(--duration-normal) var(--ease-out-expo);
+    color: var(--ink-3);
 
-    /* New underline approach without absolute elements to prevent Safari artifacting */
-    background-image: linear-gradient(var(--foreground), var(--foreground));
+    /* Underline drawn with background-size (no pseudo-elements — avoids
+       Safari subpixel artefacts). Sits 8px below the cap height. */
+    background-image: linear-gradient(currentColor, currentColor);
     background-size: 0% 1px;
-    background-position: left bottom;
+    background-position: left calc(100% - 6px);
     background-repeat: no-repeat;
+    transition:
+        color var(--duration-normal) var(--ease-out-expo),
+        background-size var(--duration-normal) var(--ease-out-expo);
 }
 
 .link:hover {
-    color: var(--foreground);
+    color: var(--ink);
     background-size: 100% 1px;
 }
 
-/* Active state */
 .active {
-    color: var(--foreground);
+    color: var(--ink);
     background-size: 100% 1px;
 }
 
 @media (max-width: 480px) {
-    .nav {
-        padding: 0.85rem 1.25rem;
-    }
-
     .links {
-        gap: 1.25rem;
+        gap: 1.1rem;
     }
 
     .link {
-        font-size: 0.62rem;
+        letter-spacing: 0.12em;
     }
 }

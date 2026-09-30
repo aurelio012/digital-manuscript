@@ -1,36 +1,65 @@
+/* ═══════════════════════════════════════════════════════════════
+   Digital Manuscript — design tokens
+   A nocturnal reading room: warm ink on near-black, one cool accent,
+   one reserved warm note (rose, for Sandy). Every text colour below
+   clears WCAG 2.2 AA (4.5:1) against --bg.
+   ═══════════════════════════════════════════════════════════════ */
+
 :root {
-  /* Colors — refined nocturnal palette */
-  --background: #060608;
-  --foreground: #E2E0DE;
-  /* Warmer, softer off-white — less clinical */
-  --text-muted: #8A8A8A;
-  /* Lifted from #666 — better readability without shouting */
-  --text-dim: #4A4A4A;
-  /* Slightly lifted for subtlety */
+  color-scheme: dark;
+
+  /* Surface */
+  --bg: #060608;
+
+  /* Ink — warm greys that share the off-white's hue, so the page
+     reads as one material rather than white text on a neutral grid.
+     Contrast on --bg: 15.9 / 8.3 / 5.7 / 4.6 */
+  --ink: #E6E2DC;
+  --ink-2: #A8A5A0;
+  --ink-3: #8B8883;
+  --ink-4: #7A7873;
+
+  /* Hairlines */
+  --rule: rgba(230, 226, 220, 0.08);
+  --rule-strong: rgba(230, 226, 220, 0.16);
+
+  /* Colour — used sparingly and semantically */
   --accent: #7C7FE4;
-  /* Softened indigo — less saturated, more refined */
-  --accent-glow: rgba(124, 127, 228, 0.15);
+  --accent-soft: rgba(124, 127, 228, 0.25);
+  --rose: #D67C7C;
 
-  /* Fonts (injected by next/font) */
-  --font-serif: var(--font-serif);
-  --font-mono: var(--font-mono);
-  --font-sans: var(--font-sans);
+  /* Type scale — fluid, ~1.25 ratio at the small end widening to
+     display sizes. Mono labels never drop below 11px. */
+  --step--2: 0.6875rem;
+  --step--1: 0.8125rem;
+  --step-0: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);
+  --step-1: clamp(1.1875rem, 1.1rem + 0.35vw, 1.375rem);
+  --step-2: clamp(1.4rem, 1.2rem + 0.8vw, 1.875rem);
+  --step-3: clamp(1.75rem, 1.35rem + 1.7vw, 2.75rem);
+  --step-4: clamp(2.6rem, 1.6rem + 4.4vw, 5.5rem);
 
-  /* Spacing — tighter default rhythm */
+  /* Space */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
   --space-lg: 4rem;
   --space-xl: 8rem;
-  --space-2xl: 14rem;
 
-  /* Transitions */
+  /* Frame — nav and every page share one column system */
+  --frame: 1200px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --measure: 64ch;
+  --nav-h: 64px;
+
+  /* Motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --duration-fast: 0.2s;
   --duration-normal: 0.4s;
-  --duration-slow: 0.6s;
+  --duration-slow: 0.7s;
 }
+
+/* ─── Reset ─────────────────────────────────────────────────── */
 
 *,
 *::before,
@@ -42,51 +71,52 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
-html,
 body {
-  max-width: 100vw;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
   overflow-x: hidden;
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--bg);
+  color: var(--ink);
   font-family: var(--font-sans);
+  font-size: var(--step-0);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-
-  /* Sticky Footer Setup */
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
-  /* Global non-selectable text (Art Object feel) */
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-/* Ensure main content fills space to push footer down */
-main {
-  flex-grow: 1;
-  isolation: isolate;
-  /* Creates new stacking context without breaking position:fixed children */
-}
-
-/* Force hardware acceleration on all interactive elements */
-button,
-a,
-input {
-  transform: translateZ(0);
 }
 
 ::selection {
-  background: rgba(124, 127, 228, 0.25);
+  background: var(--accent-soft);
   color: #fff;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
 h1,
@@ -96,44 +126,151 @@ h4,
 h5,
 h6 {
   font-family: var(--font-serif);
-  font-weight: 300;
-  /* Light weight for elegance, letting opsz handle the contrast */
+  font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.01em;
-  font-style: italic;
-  /* Research aesthetic */
+  text-wrap: balance;
 }
 
-h1 {
-  font-weight: 300;
-  /* Keep it light and sharp */
-  font-style: normal;
-  /* Main title upright */
+p {
+  text-wrap: pretty;
 }
 
 code,
 pre {
   font-family: var(--font-mono);
   letter-spacing: -0.02em;
-  /* Tighter mono for technical look */
 }
 
-/* --- Page entry animation --- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── Shared vocabulary ─────────────────────────────────────── */
+
+/* Running head — the small mono line that opens every page */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  font-variant-numeric: tabular-nums;
+}
+
+.eyebrow .section-mark {
+  color: var(--ink-3);
+  margin-right: 0.35em;
+  letter-spacing: 0;
+}
+
+.eyebrow .divider {
+  margin: 0 0.15em;
+  opacity: 0.6;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  padding: 0.6rem 1rem;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  transform: translateY(-200%);
+  transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* ─── Page entry ────────────────────────────────────────────────
+   template.tsx remounts on every navigation, so a mount animation
+   is all a page transition needs — no JS, no layout thrash. The end
+   state is `none` so no transform lingers to trap fixed children. */
+
+.page {
+  position: relative;
+  z-index: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  animation: pageEnter var(--duration-slow) var(--ease-out-expo) both;
+}
+
+.page > main {
+  flex-grow: 1;
+}
+
 @keyframes pageEnter {
   from {
     opacity: 0;
-    transform: translateY(12px);
-    will-change: transform, opacity;
+    transform: translateY(10px);
+    filter: blur(2px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+    filter: none;
   }
 }
 
-/* Global focus style for accessibility */
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+/* ─── Motion preferences ────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Print — the manuscript on paper ───────────────────────── */
+
+@media print {
+  :root {
+    color-scheme: light;
+    --bg: #fff;
+    --ink: #111;
+    --ink-2: #333;
+    --ink-3: #444;
+    --ink-4: #555;
+    --rule: rgba(0, 0, 0, 0.12);
+    --rule-strong: rgba(0, 0, 0, 0.25);
+  }
+
+  [data-print='hide'] {
+    display: none !important;
+  }
+
+  .page {
+    animation: none;
+  }
 }

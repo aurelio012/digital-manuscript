@@ -1,71 +1,132 @@
 .main {
-    height: 100vh;
-    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 76px var(--space-md) 48px;
-    overflow: hidden;
+    padding: calc(var(--nav-h) + var(--space-lg)) var(--gutter) var(--space-lg);
 }
 
-.contentWrapper {
-    position: relative;
-    z-index: 10;
-    max-width: 580px;
+/* 12-column frame. The lead spans wide; the body sits at a reading
+   measure; the marginalia hang in the left margin, aligned to the
+   first line of the text they annotate. */
+.article {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    color: var(--foreground);
+    max-width: var(--frame);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-md);
+    row-gap: 0;
 }
 
-.bioContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: var(--text-muted);
-    text-align: left;
-}
-
-.bioContainer p {
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-    color: var(--foreground-muted);
-}
-
-/* The lede — serif, larger, full foreground color */
-.bioContainer p:first-of-type {
-    font-size: 1.3rem;
-    line-height: 1.4;
-    color: var(--foreground);
-    font-family: var(--font-serif);
-    letter-spacing: -0.015em;
+.head {
+    grid-column: 5 / -1;
+    grid-row: 1;
+    margin-bottom: var(--space-md);
 }
 
 .lead {
+    grid-column: 5 / 12;
+    grid-row: 2;
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 1.4rem;
-    line-height: 1.4;
-    color: var(--foreground);
-    margin-bottom: 2.5rem !important;
-    /* Force breathing room */
+    font-weight: 300;
+    font-size: var(--step-3);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 22ch;
+    margin-bottom: var(--space-lg);
 }
 
-@media (max-width: 768px) {
+.body {
+    grid-column: 5 / 11;
+    grid-row: 3;
+    max-width: var(--measure);
+    font-size: var(--step-0);
+    line-height: 1.7;
+    color: var(--ink-2);
+    hanging-punctuation: first;
+}
+
+.body p + p {
+    margin-top: 1.25em;
+}
+
+/* Marginalia */
+.margin {
+    grid-column: 1 / 4;
+    grid-row: 3;
+    /* Align the first note with the cap height of the first body line */
+    padding-top: 0.3em;
+}
+
+.margin dl {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.note {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.note dt {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+}
+
+.note dd {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.35;
+}
+
+.primary {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    color: var(--ink);
+}
+
+.secondary {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.9375rem;
+    color: var(--ink-3);
+}
+
+@media (max-width: 960px) {
     .main {
-        padding: 68px 1.25rem 48px;
+        align-items: flex-start;
+        padding-top: calc(var(--nav-h) + var(--space-md));
     }
 
-    .bioContainer {
-        font-size: 0.88rem;
-        gap: 1rem;
+    .article {
+        grid-template-columns: minmax(0, 1fr);
     }
 
-    .bioContainer p:first-of-type {
-        font-size: 1.15rem;
+    .head,
+    .lead,
+    .body,
+    .margin {
+        grid-column: 1 / -1;
+        grid-row: auto;
+    }
+
+    .lead {
+        margin-bottom: var(--space-md);
+    }
+
+    .margin {
+        margin-top: var(--space-lg);
+        padding-top: 0;
+    }
+
+    .margin dl {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+        gap: var(--space-md);
     }
 }
