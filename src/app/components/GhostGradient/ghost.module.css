@@ -102,18 +102,26 @@
     }
 }
 
-/* Fireflies — bloom where the page was touched, then dissolve */
+/* Fireflies — the original soft auras: heavy blur, low core opacity,
+   dimmed as a layer so they read as light, not objects */
+.fireflies {
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+}
+
 .firefly {
     position: absolute;
+    background: radial-gradient(circle,
+            hsla(var(--hue), 90%, 75%, 0.6) 0%,
+            hsla(var(--hue), 90%, 65%, 0.2) 30%,
+            hsla(var(--hue), 90%, 65%, 0) 70%);
     border-radius: 50%;
-    background: radial-gradient(circle closest-side,
-            hsla(var(--hue), 85%, 72%, 0.4) 0%,
-            hsla(var(--hue), 85%, 65%, 0.14) 40%,
-            hsla(var(--hue), 85%, 65%, 0) 100%);
     mix-blend-mode: screen;
+    filter: blur(40px);
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.4);
-    animation: fireflyLife 7s var(--ease-out-quart) forwards;
+    animation: fireflyLife 8s ease-out forwards;
     will-change: opacity, transform;
 }
 
@@ -123,18 +131,33 @@
         transform: translate(-50%, -50%) scale(0.4);
     }
 
-    10% {
-        opacity: 0.9;
-        transform: translate(-50%, -50%) scale(1);
+    8% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.85);
     }
 
-    30% {
+    18% {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+
+    35% {
         opacity: 0.7;
-        transform: translate(-50%, -50%) scale(1.08);
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    55% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1.0);
+    }
+
+    75% {
+        opacity: 0.25;
+        transform: translate(-50%, -50%) scale(0.95);
     }
 
     100% {
         opacity: 0;
-        transform: translate(-50%, -54%) scale(1.2);
+        transform: translate(-50%, -50%) scale(0.85);
     }
 }

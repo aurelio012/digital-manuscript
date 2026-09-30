@@ -10,17 +10,16 @@
 }
 
 /* ───────────────────────────────────────
-   Hero
+   Hero — the name, and nothing else
    ─────────────────────────────────────── */
 
 .hero {
   flex: 1;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   /* Optical centre sits a little above the geometric one */
-  padding-bottom: 6vh;
+  padding-bottom: 5vh;
 }
 
 .nameContainer {
@@ -28,56 +27,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 120px;
-}
-
-.name {
-  position: relative;
-  z-index: 2;
-  font-family: var(--font-serif);
-  font-size: var(--step-4);
-  font-weight: 400;
-  letter-spacing: -0.035em;
-  line-height: 1;
-  text-align: center;
-  color: var(--ink);
-}
-
-.descriptor {
-  position: relative;
-  z-index: 2;
-  margin-top: -40px;
-  font-family: var(--font-mono);
-  font-size: var(--step--2);
-  line-height: 1.8;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--ink-4);
-  opacity: 0;
-  animation: rise 1.4s var(--ease-out-expo) 0.5s forwards;
-}
-
-.item {
-  white-space: nowrap;
-}
-
-.sep {
-  margin: 0 0.9em;
-  color: var(--ink-4);
-  opacity: 0.7;
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 /* ───────────────────────────────────────
@@ -86,10 +35,10 @@
    Three fixed-hue lights orbit on different
    paths and periods (18s / 24s / 21s never
    resync). With screen blending, the colour
-   under the name shifts continuously as they
-   overlap — the same full-spectrum drift as
-   before, but only transform and opacity
-   animate, so it stays on the compositor.
+   under the name shifts as they overlap.
+   Sizes track the viewport so the halo keeps
+   its proportion to the name; orbits are in
+   percentages of each aura's own size.
    ─────────────────────────────────────── */
 
 .aura {
@@ -105,47 +54,47 @@
 
 /* Indigo — the site accent */
 .aura1 {
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle closest-side, rgba(124, 110, 246, 0.5), rgba(124, 110, 246, 0.16) 45%, rgba(124, 110, 246, 0) 100%);
+  width: clamp(240px, 36vw, 620px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle closest-side, rgba(124, 110, 246, 0.42), rgba(124, 110, 246, 0.13) 45%, rgba(124, 110, 246, 0) 100%);
   animation: orbit1 18s ease-in-out infinite;
 }
 
 /* Sky — cool counterweight */
 .aura2 {
-  width: 270px;
-  height: 270px;
-  background: radial-gradient(circle closest-side, rgba(56, 189, 248, 0.42), rgba(56, 189, 248, 0.13) 45%, rgba(56, 189, 248, 0) 100%);
+  width: clamp(200px, 30vw, 520px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle closest-side, rgba(56, 189, 248, 0.34), rgba(56, 189, 248, 0.1) 45%, rgba(56, 189, 248, 0) 100%);
   animation: orbit2 24s ease-in-out infinite;
 }
 
 /* Amber — the lamp */
 .aura3 {
-  width: 230px;
-  height: 230px;
-  background: radial-gradient(circle closest-side, rgba(245, 158, 11, 0.38), rgba(245, 158, 11, 0.11) 45%, rgba(245, 158, 11, 0) 100%);
+  width: clamp(170px, 26vw, 440px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle closest-side, rgba(245, 158, 11, 0.3), rgba(245, 158, 11, 0.09) 45%, rgba(245, 158, 11, 0) 100%);
   animation: orbit3 21s ease-in-out infinite;
 }
 
 @keyframes orbit1 {
   0%,
   100% {
-    transform: translate(-50%, -50%) translate(-100px, -45px) scale(1);
+    transform: translate(-50%, -50%) translate(-40%, -14%) scale(1);
     opacity: 0.75;
   }
 
   25% {
-    transform: translate(-50%, -50%) translate(60px, -65px) scale(1.08);
+    transform: translate(-50%, -50%) translate(22%, -20%) scale(1.08);
     opacity: 0.95;
   }
 
   50% {
-    transform: translate(-50%, -50%) translate(90px, 40px) scale(0.95);
+    transform: translate(-50%, -50%) translate(36%, 12%) scale(0.95);
     opacity: 0.8;
   }
 
   75% {
-    transform: translate(-50%, -50%) translate(-40px, 60px) scale(1.1);
+    transform: translate(-50%, -50%) translate(-14%, 19%) scale(1.1);
     opacity: 1;
   }
 }
@@ -153,22 +102,22 @@
 @keyframes orbit2 {
   0%,
   100% {
-    transform: translate(-50%, -50%) translate(95px, 35px) scale(1);
+    transform: translate(-50%, -50%) translate(42%, 13%) scale(1);
     opacity: 0.7;
   }
 
   25% {
-    transform: translate(-50%, -50%) translate(20px, -65px) scale(1.1);
+    transform: translate(-50%, -50%) translate(8%, -24%) scale(1.1);
     opacity: 0.9;
   }
 
   50% {
-    transform: translate(-50%, -50%) translate(-100px, -20px) scale(0.92);
+    transform: translate(-50%, -50%) translate(-44%, -7%) scale(0.92);
     opacity: 0.75;
   }
 
   75% {
-    transform: translate(-50%, -50%) translate(-30px, 60px) scale(1.05);
+    transform: translate(-50%, -50%) translate(-12%, 22%) scale(1.05);
     opacity: 0.95;
   }
 }
@@ -176,58 +125,22 @@
 @keyframes orbit3 {
   0%,
   100% {
-    transform: translate(-50%, -50%) translate(0px, -60px) scale(1);
+    transform: translate(-50%, -50%) translate(0%, -26%) scale(1);
     opacity: 0.6;
   }
 
   25% {
-    transform: translate(-50%, -50%) translate(80px, -10px) scale(1.12);
+    transform: translate(-50%, -50%) translate(40%, -4%) scale(1.12);
     opacity: 0.85;
   }
 
   50% {
-    transform: translate(-50%, -50%) translate(30px, 55px) scale(0.9);
+    transform: translate(-50%, -50%) translate(14%, 24%) scale(0.9);
     opacity: 0.7;
   }
 
   75% {
-    transform: translate(-50%, -50%) translate(-75px, 20px) scale(1.05);
+    transform: translate(-50%, -50%) translate(-36%, 9%) scale(1.05);
     opacity: 0.8;
-  }
-}
-
-/* ───────────────────────────────────────
-   Responsive — same composition, tighter halo
-   ─────────────────────────────────────── */
-
-@media (max-width: 768px) {
-  .nameContainer {
-    padding: 60px 40px;
-  }
-
-  .descriptor {
-    margin-top: -24px;
-  }
-
-  /* Two balanced lines; the dot that would start line two is dropped */
-  .sepBreak {
-    display: block;
-    height: 0;
-    overflow: hidden;
-  }
-
-  .aura1 {
-    width: 240px;
-    height: 240px;
-  }
-
-  .aura2 {
-    width: 200px;
-    height: 200px;
-  }
-
-  .aura3 {
-    width: 170px;
-    height: 170px;
   }
 }

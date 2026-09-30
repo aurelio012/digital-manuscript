@@ -203,6 +203,41 @@ pre {
   transform: translateY(0);
 }
 
+/* ─── Arrival motion ────────────────────────────────────────────
+   .reveal: a line of display type rises out of its own mask.
+   .rise:   supporting content fades up a few pixels.
+   Both take a --d delay for staggering and use `backwards` fill so
+   nothing is pinned by a final keyframe once they settle. */
+
+.reveal {
+  display: block;
+  overflow: hidden;
+  padding: 0.08em 0.1em 0.16em 0;
+  margin: -0.08em -0.1em -0.16em 0;
+}
+
+.reveal > span {
+  display: block;
+  animation: revealUp 1.2s var(--ease-out-expo) var(--d, 0s) backwards;
+}
+
+.rise {
+  animation: riseIn 1s var(--ease-out-expo) var(--d, 0s) backwards;
+}
+
+@keyframes revealUp {
+  from {
+    transform: translateY(110%);
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
 /* ─── Page entry ────────────────────────────────────────────────
    template.tsx remounts on every navigation, so a mount animation
    is all a page transition needs — no JS, no layout thrash. The end

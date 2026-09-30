@@ -5,34 +5,31 @@ import styles from './ghost.module.css';
 
 interface Firefly {
     id: number;
-    x: number;
-    y: number;
+    top: number;
+    left: number;
     hue: number;
-    size: number;
+    size: string;
+    delay: string;
 }
 
-// Curated hues drawn from the ambient field (indigo, violet, sky, amber).
-// Rose is deliberately absent — it belongs to the tribute.
-const HUES = [236, 258, 200, 38];
-const MAX_FIREFLIES = 24;
+const MAX_FIREFLIES = 50;
 
 export default function GhostGradient() {
     const [fireflies, setFireflies] = useState<Firefly[]>([]);
     const containerRef = useRef<HTMLDivElement>(null);
     const idRef = useRef(0);
 
-    // Click anywhere: a soft light blooms where you touched the page.
-    const spawnFirefly = useCallback((e: MouseEvent) => {
+    // Click anywhere: a soft, heavily blurred light blooms somewhere in the field
+    const spawnFirefly = useCallback(() => {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-        const jitter = () => (Math.random() - 0.5) * 40;
-        const base = HUES[Math.floor(Math.random() * HUES.length)];
         const fly: Firefly = {
             id: idRef.current++,
-            x: e.clientX + jitter(),
-            y: e.clientY + jitter(),
-            hue: base + (Math.random() - 0.5) * 24,
-            size: 150 + Math.random() * 140,
+            top: Math.random() * 100,
+            left: Math.random() * 100,
+            hue: Math.floor(Math.random() * 360), // Full spectrum
+            size: `${100 + Math.random() * 150}px`, // 100px - 250px
+            delay: `${Math.random() * 0.2 + 0.05}s`, // 0.05s - 0.25s
         };
         setFireflies(prev => [...prev.slice(-(MAX_FIREFLIES - 1)), fly]);
     }, []);
@@ -75,20 +72,23 @@ export default function GhostGradient() {
                 <div className={styles.orb2} />
             </div>
 
-            {fireflies.map(fly => (
-                <div
-                    key={fly.id}
-                    className={styles.firefly}
-                    onAnimationEnd={() => retire(fly.id)}
-                    style={{
-                        left: fly.x,
-                        top: fly.y,
-                        width: fly.size,
-                        height: fly.size,
-                        '--hue': fly.hue.toFixed(0),
-                    } as React.CSSProperties}
-                />
-            ))}
+            <div className={styles.fireflies}>
+                {fireflies.map(fly => (
+                    <div
+                        key={fly.id}
+                        className={styles.firefly}
+                        onAnimationEnd={() => retire(fly.id)}
+                        style={{
+                            top: `${fly.top}%`,
+                            left: `${fly.left}%`,
+                            width: fly.size,
+                            height: fly.size,
+                            '--hue': `${fly.hue}`,
+                            animationDelay: fly.delay,
+                        } as React.CSSProperties}
+                    />
+                ))}
+            </div>
 
             <div className={styles.noise} />
         </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import RunningHead from '../components/RunningHead';
+import SectionIndex from './SectionIndex';
 import styles from './resume.module.css';
 
 export const metadata: Metadata = {
@@ -154,10 +155,27 @@ const fellowships: Entry[] = [
     },
 ];
 
-function Section({ title, entries }: { title: string; entries: Entry[] }) {
+const SECTIONS = [
+    { id: 'education', label: 'Education', count: education.length },
+    { id: 'experience', label: 'Experience', count: experience.length },
+    { id: 'fellowships', label: 'Fellowships', count: fellowships.length },
+    { id: 'publications', label: 'Publications', count: 1 },
+];
+
+function SectionTitle({ id, title }: { id: string; title: string }) {
+    const n = SECTIONS.findIndex(s => s.id === id) + 1;
     return (
-        <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>{title}</h2>
+        <h2 className={styles.sectionTitle}>
+            <span className={styles.sectionNum}>{String(n).padStart(2, '0')}</span>
+            {title}
+        </h2>
+    );
+}
+
+function Section({ id, title, entries }: { id: string; title: string; entries: Entry[] }) {
+    return (
+        <section id={id} className={styles.section}>
+            <SectionTitle id={id} title={title} />
             <ol className={styles.entries}>
                 {entries.map(entry => (
                     <li key={`${entry.org}-${entry.date}`} className={styles.row}>
@@ -188,10 +206,12 @@ export default function Resume() {
         <main className={styles.main}>
             <div className={styles.frame}>
                 <header className={styles.header}>
-                    <RunningHead folio="02" label="Resume" className={styles.head} />
-                    <h1 className={styles.headerName}>Isaac Aurelio Felix</h1>
+                    <RunningHead folio="01" label="Resume" className={`${styles.head} rise`} />
+                    <h1 className={styles.headerName}>
+                        <span className="reveal"><span style={{ '--d': '0.1s' } as React.CSSProperties}>Isaac Aurelio Felix</span></span>
+                    </h1>
 
-                    <ul className={styles.contact}>
+                    <ul className={`${styles.contact} rise`} style={{ '--d': '0.35s' } as React.CSSProperties}>
                         <li>New York, NY</li>
                         <li>
                             <a href="https://www.linkedin.com/in/isaacfelix/" target="_blank" rel="noopener noreferrer" className={styles.link}>
@@ -208,7 +228,8 @@ export default function Resume() {
                     <a
                         href="/Isaac_Felix_Resume.docx"
                         download="Isaac_Felix_Resume_Product.docx"
-                        className={styles.downloadButton}
+                        className={`${styles.downloadButton} rise`}
+                        style={{ '--d': '0.45s' } as React.CSSProperties}
                         data-print="hide"
                     >
                         Download Resume
@@ -218,27 +239,33 @@ export default function Resume() {
                     </a>
                 </header>
 
-                <Section title="Education" entries={education} />
-                <Section title="Experience" entries={experience} />
-                <Section title="Fellowships & Leadership Experience" entries={fellowships} />
+                <div className={`${styles.layout} rise`} style={{ '--d': '0.55s' } as React.CSSProperties}>
+                    <SectionIndex sections={SECTIONS} />
 
-                <section className={styles.section}>
-                    <h2 className={styles.sectionTitle}>Research and Publications</h2>
-                    <ol className={styles.entries}>
-                        <li className={styles.row}>
-                            <p className={styles.date}>March 2024</p>
-                            <div className={styles.body}>
-                                <h3 className={styles.role}>Publication (HRI ’24)</h3>
-                                <p className={styles.citation}>
-                                    M. A. Rahman, I. A. Felix, U. Shahid, and J. E. Michaelis, &ldquo;PATHWiSE: An AI-Assisted Teacher Authoring Tool for Creating Custom Robot-Assisted Learning Activities,&rdquo; <cite>Companion of the 2024 ACM/IEEE International Conference on Human-Robot Interaction (HRI &rsquo;24)</cite>, pp. 88–90, March 2024. DOI:{' '}
-                                    <a href="https://doi.org/10.1145/3610978.3641086" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        10.1145/3610978.3641086
-                                    </a>
-                                </p>
-                            </div>
-                        </li>
-                    </ol>
-                </section>
+                    <div className={styles.sections}>
+                        <Section id="education" title="Education" entries={education} />
+                        <Section id="experience" title="Experience" entries={experience} />
+                        <Section id="fellowships" title="Fellowships & Leadership Experience" entries={fellowships} />
+
+                        <section id="publications" className={styles.section}>
+                            <SectionTitle id="publications" title="Research and Publications" />
+                            <ol className={styles.entries}>
+                                <li className={styles.row}>
+                                    <p className={styles.date}>March 2024</p>
+                                    <div className={styles.body}>
+                                        <h3 className={styles.role}>Publication (HRI ’24)</h3>
+                                        <p className={styles.citation}>
+                                            M. A. Rahman, I. A. Felix, U. Shahid, and J. E. Michaelis, &ldquo;PATHWiSE: An AI-Assisted Teacher Authoring Tool for Creating Custom Robot-Assisted Learning Activities,&rdquo; <cite>Companion of the 2024 ACM/IEEE International Conference on Human-Robot Interaction (HRI &rsquo;24)</cite>, pp. 88–90, March 2024. DOI:{' '}
+                                            <a href="https://doi.org/10.1145/3610978.3641086" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                                10.1145/3610978.3641086
+                                            </a>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </section>
+                    </div>
+                </div>
             </div>
         </main>
     );

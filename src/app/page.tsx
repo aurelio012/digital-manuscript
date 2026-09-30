@@ -1,3 +1,4 @@
+import KineticName from './components/KineticName';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -10,18 +11,8 @@ export default function Home() {
           <div className={`${styles.aura} ${styles.aura2}`} aria-hidden="true" />
           <div className={`${styles.aura} ${styles.aura3}`} aria-hidden="true" />
 
-          <h1 id="home-name" className={styles.name}>Isaac Felix</h1>
+          <KineticName text="Isaac Felix" id="home-name" />
         </div>
-
-        <p className={styles.descriptor}>
-          <span className={styles.item}>AI Safety</span>
-          <span className={styles.sep} aria-hidden="true">·</span>
-          <span className="visually-hidden">, </span>
-          <span className={styles.item}>Public Policy</span>
-          <span className={`${styles.sep} ${styles.sepBreak}`} aria-hidden="true">·</span>
-          <span className="visually-hidden">, </span>
-          <span className={styles.item}>Human-Centered Systems</span>
-        </p>
       </section>
     </main>
   );
